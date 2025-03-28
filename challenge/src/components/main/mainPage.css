@@ -1,8 +1,30 @@
 
 
-.Img {
-    width: 600px;
-    border: 3px blue;
+.mainScreen {
+    /* display: block; */
+    position: relative;
+    width: 100%;
+    border: 3px solid red;
+/*     margin: 0;
+    padding: 0; */
   }
+
+  .mainPic {
+    width: 100%;
+
+  }
+
+  .newGameBtn {
+    /* display: inline-block; */
+    position: absolute;
+   /*  margin-left: 100px; */
+ left: 50%;
+
+    color: red;
+    width: 100px;
+
+/*     padding-bottom: 100px; */
+  }
+
   
   
