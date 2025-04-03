@@ -1,7 +1,7 @@
 
 import './App.css';
 import NewGameScreen from '../main/mainPage'; 
-
+/* import GamePage from '../gamePage/gamePage'; */
 
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
 
 return (
 
-<NewGameScreen />
+<NewGameScreen/>
 
 
 );

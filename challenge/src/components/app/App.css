@@ -1,5 +1,14 @@
 body {
-    width: 1000px;
-
+    /* width: auto; */
+   /*  background: content-box radial-gradient(crimson, skyblue); */
+    background-color:#1f1c1c;
+    background-image: url('../../resources/img/backGround.jpg');
+    background-size: 90%;
+    background-repeat: no-repeat;
+    /* background-position: auto center; */
     border: 3px solid green;
+
+    background-position: 50% -5%;
+    
+    
 }
