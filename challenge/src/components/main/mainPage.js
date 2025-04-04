@@ -6,51 +6,61 @@ import frame from '../../resources/img/neon3.png'
 function NewGameScreen() {
 
 
-     const newGame = () => {
-        
-      return (
-     
-             <img src={frame} alt="frame" />
-     
-         )
-     }
+    const newGame = () => {
+
+        return (
+
+            <img src={frame} alt="frame" />
+
+        )
+    }
 
 
 
-/* const gg = <GamePage/>; */
+    /* const gg = <GamePage/>; */
 
 
-/*     function newGame () {
-        return(
-        
-            <GamePage/>
-       
-      )
-    }  */
+    /*     function newGame () {
+            return(
+            
+                <GamePage/>
+           
+          )
+        }  */
 
-     /*  const gg = <GamePage/> */
-/*       const View = () => {
-          
-          return (
-              <GamePage/>
-          );
-      } */
+    /*  const gg = <GamePage/> */
+    /*       const View = () => {
+              
+              return (
+                  <GamePage/>
+              );
+          } */
 
- /*    const vv = <View/> */
+    /*    const vv = <View/> */
 
     return (
-     
-/*         <div className='mainScreen'>
-            <img className='mainPic' src={img} alt="main" />
-            <button className="newGameBtn"
-                    onClick={newGame}> try
-            </button>
 
-        </div > */
+        /*         <div className='mainScreen'>
+                    <img className='mainPic' src={img} alt="main" />
+                    <button className="newGameBtn"
+                            onClick={newGame}> try
+                    </button>
+        
+                </div > */
+        <div className='big'>
 
-<button className="newGameBtn"
+            <div className="cont">
+               
+            </div>
+            <div className="btnCont">
+                <button className="newGameBtn"
 /* onClick={newGame} */> try
-</button>
+                </button>
+            </div>
+        </div>
+
+
+
 
 
 
