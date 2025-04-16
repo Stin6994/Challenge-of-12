@@ -1,28 +1,8 @@
-import { Fragment, useState, useEffect } from 'react';
+import { useState } from 'react';
 
 
-/* function useInputWithValidate(initialValue) {
-    const [value, setValue] = useState(initialValue);
 
-    const onChange = event => {
-          event.preventDefault();
-        setValue(event.target.value);
-    }
-
-    const plus = event => {
-        event.preventDefault();
-  
-        console.log(event.target.value);
-        setValue(event.target.value++);
-        console.log(event.target.value);
-    }
-
-    return { value, onChange, plus }  
-}
- */
-
-
-const FormMyHooks = () => {
+const Pici = () => {
 
     const [value, setValue] = useState(5);
 
@@ -34,14 +14,7 @@ const FormMyHooks = () => {
         setValue(event.target.value);
     }
 
-/*     useEffect(() => {
-        
-      }); */
 
-/*       function plus (event) {
-        event.preventDefault();
-        setValue((value) => value + 1);
-    } */
 
     function plus (event) {
         event.preventDefault();
@@ -49,7 +22,6 @@ const FormMyHooks = () => {
     }
 
 
-    /* const area = useInputWithValidate(''); */
 
     return (
         <div>
@@ -80,4 +52,4 @@ const FormMyHooks = () => {
     )
 }
 
-export default FormMyHooks;
+export default Pici;
