@@ -14,9 +14,9 @@ function App() {
 return (
     <Fragment>
 <NewGameScreen/>
-<FormMyHooks/>
-<Pici/>
 
+<Pici/>
+<FormMyHooks/>
 
     </Fragment>
 

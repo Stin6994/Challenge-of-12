@@ -1,53 +1,40 @@
 import { useState } from 'react';
-
+import './testPic.css';
 
 
 const Pici = () => {
 
-    const [value, setValue] = useState(5);
+    /* const [value, setValue] = useState(5); */
 
 
 
 
-    function onChange(event) {
+/*     function onChange(event) {
         event.preventDefault();
         setValue(event.target.value);
-    }
+    } */
 
 
 
-    function plus (event) {
+/*     function plus (event) {
         event.preventDefault();
         setValue((value) => Number(value) + 1);
     }
-
+ */
 
 
     return (
-        <div>
-            <form className="w-50 border mt-5 p-3 m-auto">
-                <div className="mb-3">
-                    <input value={value * 2} readOnly />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="exampleFormControlTextarea1" className="form-label">Example textarea</label>
-                    <input
-                        onChange={onChange}
-                        value={value}
-                        className="form-control"
-                        id="exampleFormControlTextarea1"
-                        rows="3"
-                        type="number">
-                            
-                        </input>
-                </div>
-                <div>
-                    <button
-                        onClick={plus}
-                    >plus
-                    </button>
-                </div>
-            </form>
+        <div className='myField'>
+            <div className='myCountersCont'>
+                <span className='myCounters'>x4</span>
+                <span className='myCounters'>x4</span>
+                <span className='myCounters'>x4</span>
+            </div>
+            <div className='myButtonsCont'>
+                <button className='myButton rock'>rock</button>
+                <button className='myButton scissors'>scissors</button>
+                <button className='myButton paper'>paper</button>
+            </div>
         </div>
     )
 }
