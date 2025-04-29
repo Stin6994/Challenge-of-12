@@ -9,33 +9,36 @@ const Pici = () => {
 
 
 
-/*     function onChange(event) {
-        event.preventDefault();
-        setValue(event.target.value);
-    } */
+    /*     function onChange(event) {
+            event.preventDefault();
+            setValue(event.target.value);
+        } */
 
 
 
-/*     function plus (event) {
-        event.preventDefault();
-        setValue((value) => Number(value) + 1);
-    }
- */
+    /*     function plus (event) {
+            event.preventDefault();
+            setValue((value) => Number(value) + 1);
+        }
+     */
 
 
     return (
         <div className='myField'>
-            <div className='myCountersCont'>
-                <span className='myCounters'>x4</span>
-                <span className='myCounters'>x4</span>
-                <span className='myCounters'>x4</span>
+            <div className='myRock Cont'>
+                <span className='rockCounter'>x4</span>
+                <button className='myButton rock'></button>
             </div>
-            <div className='myButtonsCont'>
-                <button className='myButton rock'>rock</button>
+            <div className='myScissors Cont'>
+                <span className='scissorsCounter'>x4</span>
                 <button className='myButton scissors'>scissors</button>
+            </div>
+            <div className='myPaper Cont'>
+                <span className='paperCounter'>x4</span>
                 <button className='myButton paper'>paper</button>
             </div>
-        </div>
+
+        </div >
     )
 }
 

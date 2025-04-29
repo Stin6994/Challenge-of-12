@@ -52,10 +52,8 @@ function NewGameScreen() {
             <div className="cont">
                
             </div>
-            <div className="btnCont">
-                <button className="newGameBtn"
-/* onClick={newGame} */> try
-                </button>
+            <div className="spanCont">
+                <span className="scoreTotal">Тут будет подсчет очков</span>
             </div>
         </div>
 

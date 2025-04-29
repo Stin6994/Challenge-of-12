@@ -2,8 +2,8 @@
 
 
 .big {
-
-  margin-left: 5%;
+ margin-top: 3%;
+  margin-left: 9%;
   margin-right: 60%;
   border: 3px solid red;
 }  
@@ -38,13 +38,13 @@
   
 
 
-  .newGameBtn {
+  .scoreTotal {
     /* display: inline-block;
     position: absolute; */
    /*  margin-left: 100px; */
     /* left: 50%; */
     /* size: 100%; */
-    color: red;
+    color: white;
     width: 80%;
     /* width:; */
     padding-bottom: 1em;

@@ -1,5 +1,35 @@
 .myField {
     border: 3px solid white;
-    margin-left: 5%;
+    margin-left: 9%;
   margin-right: 60%;
+  display: flex;
+  justify-content: space-around;
+
+}
+
+span {
+  color: white;
+}
+
+.Cont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid green;
+}
+
+.Cont button {
+  padding-bottom: 50%;
+  background-size: cover;
+}
+
+.rock {
+  background-image: url('../../resources/img/rock.png');
+  /* background-size: cover; */
+ /*  padding-left: 10em;
+  padding-bottom: 10em; */
+  border: 2px solid green;
+ /*  width: 50px;
+  height: 100px; */
+
 }
