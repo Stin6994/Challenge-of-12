@@ -50,11 +50,16 @@ function NewGameScreen() {
         <div className='big'>
 
             <div className="cont">
-               
+
             </div>
-            <div className="spanCont">
-                <span className="scoreTotal">Тут будет подсчет очков</span>
-            </div>
+            
+                <div className='testCont'>
+                    <span
+                        style={{ fontSize: "1vw"}}> Тут будет подсчет очков
+                    </span>
+                </div>
+
+            
         </div>
 
 

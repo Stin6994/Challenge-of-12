@@ -4,30 +4,35 @@ import './testPic.css';
 
 const Pici = () => {
 
-    /* const [value, setValue] = useState(5); */
+    const [rockCount, setRockCount] = useState(4);
 
 
 
 
-    /*     function onChange(event) {
+        function onChange(event) {
             event.preventDefault();
-            setValue(event.target.value);
-        } */
-
-
-
-    /*     function plus (event) {
-            event.preventDefault();
-            setValue((value) => Number(value) + 1);
+            setRockCount(event.target.value);
         }
-     */
+
+
+
+        function minus (event) {
+            event.preventDefault();
+            setRockCount((rockCount) => Number(rockCount) - 1);
+        }
+    
 
 
     return (
         <div className='myField'>
             <div className='myRock Cont'>
-                <span className='rockCounter'>x4</span>
-                <button className='myButton rock'></button>
+                <span 
+                className='rockCounter'
+                onChange={onChange}
+                >{rockCount}</span>
+                <button className='myButton rock'
+                onClick={minus}
+                ></button>
             </div>
             <div className='myScissors Cont'>
                 <span className='scissorsCounter'>x4</span>

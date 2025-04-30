@@ -10,47 +10,21 @@
 
 
 .cont {
-    
-    
-    /* transform: rotate(90deg); */
     background-image: url('../../resources/img/Frame.png');
     background-size: 90%;
     background-repeat: no-repeat;
     border: 5px solid blue;
-    /* width: 100%; */
-   /*  max-width: 1000px; */
     padding-bottom: 50%;
-    /* padding-top: 30%; */
-    /* margin-top: -5%; */
-    
-   
-    /* top: 50px; */
+    margin-top: 3%;
   }
 
   .btnCont {
-
     border: 5px solid rgb(158, 40, 105);
-    /* max-width: 90%; */
-    /* height: 50%; */
     padding-bottom: 20%;
   }
 
-  
-
-
-  .scoreTotal {
-    /* display: inline-block;
-    position: absolute; */
-   /*  margin-left: 100px; */
-    /* left: 50%; */
-    /* size: 100%; */
-    color: white;
-    width: 80%;
-    /* width:; */
-    padding-bottom: 1em;
-    
-
-    
-
-/*     padding-bottom: 100px; */
+  .testCont {
+    border: 1px solid yellow;
   }
+
+  
