@@ -1,10 +1,15 @@
 .myField {
+  position: absolute;
     border: 3px solid white;
-    margin-left: 9%;
-  margin-right: 60%;
+/*     margin-left: 9%;
+  margin-right: 60%; */
   display: flex;
   justify-content: space-around;
-
+  /* background-image: url('../../resources/img/enemyFrame.jpg'); */
+  background-size: contain;
+ /*  width: 30vw;
+  height: 26vw; */
+  z-index: 5;
 }
 
 span {
@@ -12,28 +17,62 @@ span {
 }
 
 .Cont {
+  
   display: flex;
   flex-direction: column;
   align-items: center;
   border: 2px solid green;
   width: 10vw;
   height: 16vw;
+
+  /* background-repeat: no-repeat; */
+
 }
 
 .Cont button {
+  
   padding-bottom: 50%;
   background-size: cover;
-  width: 10vw;
-  height: 16vw;
+  width: 5vw;
+  height: 8vw;
 }
 
 .rock {
   background-image: url('../../resources/img/rock.png');
-  /* background-size: 10vw; */
- /*  padding-left: 10em;
-  padding-bottom: 10em; */
-  border: 2px solid green;
- /*  width: 50px;
-  height: 100px; */
+}
+
+.scissors {
+  background-image: url('../../resources/img/scissors.png');
+}
+
+.paper {
+  background-image: url('../../resources/img/paper.png');
+}
+
+/* .myFieldPic {
+
+  position: absolute;
+  width: 30vw;
+  height: 18vw;
+  background-image: url('../../resources/img/Frame.png');
+  background-size: 100%;
+  top: 0;
+  z-index: 5;
+  
+} */
+
+.playField{
+  position: absolute;
+
+  width: 34vw;
+  height: 16vw;
 
 }
+
+/* .myFieldPic {
+  position: absolute;
+
+  width: 35vw;
+  height: 16vw;
+  
+} */
