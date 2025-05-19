@@ -1,11 +1,9 @@
 import { useState } from 'react';
-import './testPic.css';
-import myFrame from '../../resources/img/Frame.png';
-import back from '../../resources/img/enemyFrame.jpg'
-import playField from '../../resources/img/playField.png'
+import './myPlayField.css';
+import playFieldImg from '../../resources/img/playField.png'
 
 
-const Pici = () => {
+const MyPlayField = () => {
 
     const [rockCount, setRockCount] = useState(4);
     const [scissorsCount, setScissorsCount] = useState(4);
@@ -46,13 +44,13 @@ const Pici = () => {
 
     return (
 
-        <div className='myFieldPic'>
-            <img src={playField}
-                alt="playField"
-                className='playField' />
+        <div className='myFieldAll'>
+            <img src={playFieldImg}
+                alt="playFieldImg"
+                className='playFieldImg' />
 
 
-            <div className='myField'>
+            <div className='myFieldContent'>
                 <div className='myRock Cont'>
                     <span
                         className='rockCounter'
@@ -88,4 +86,4 @@ const Pici = () => {
     )
 }
 
-export default Pici;
+export default MyPlayField;

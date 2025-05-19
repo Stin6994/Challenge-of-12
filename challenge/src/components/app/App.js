@@ -1,28 +1,30 @@
 
 import './App.css';
-import NewGameScreen from '../main/mainPage'; 
+import EnemyPlayField from '../enemyPlayField/enemyPlayField';
 /* import GamePage from '../gamePage/gamePage'; */
 /* import FormMyHooks from '../test_counter/test'; */
 import { Fragment } from 'react';
-import Pici from '../test_pictures/testPic';
+import MyPlayField from '../myPlayField/myPlayField';
+import ScoreBar from '../scoreBar/scoreBar';
 
 
 function App() {
 
 
 
-return (
-    <Fragment>
-<NewGameScreen/>
+    return (
+        <Fragment>
 
-<Pici/>
-
-
-    </Fragment>
+            <EnemyPlayField />
+            <ScoreBar/>
+            <MyPlayField />
 
 
+        </Fragment>
 
-);
+
+
+    );
 }
 
 export default App;

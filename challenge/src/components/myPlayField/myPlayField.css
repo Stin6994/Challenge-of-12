@@ -1,4 +1,4 @@
-.myField {
+.myFieldContent {
   position: absolute;
     border: 3px solid white;
 /*     margin-left: 9%;
@@ -9,7 +9,12 @@
   background-size: contain;
  /*  width: 30vw;
   height: 26vw; */
-  z-index: 5;
+/* left: 9%; */
+}
+
+.myFieldAll {
+  position: absolute;
+  left: 9%;
 }
 
 span {
@@ -61,10 +66,10 @@ span {
   
 } */
 
-.playField{
+.playFieldImg{
   position: absolute;
 
-  width: 34vw;
+  width: 32vw;
   height: 16vw;
 
 }

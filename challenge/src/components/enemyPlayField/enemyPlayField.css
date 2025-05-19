@@ -1,0 +1,25 @@
+.enemyFieldAll {
+  margin-top: 3%;
+  margin-left: 9%;
+  width: 35%;
+  border: 3px solid red;
+}
+
+.enemyFieldImg {
+  width: 32vw;
+  height: 16vw;
+}
+
+.enemyFieldContent {
+  position: absolute;
+  border: 2px solid green;
+  top: 4%;
+  
+}
+
+.enemyCard {
+  /* position: absolute; */
+  width: 7vw;
+  height: 11vw;
+ 
+}
