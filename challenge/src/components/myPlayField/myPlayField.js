@@ -1,13 +1,21 @@
 import { useState } from 'react';
 import './myPlayField.css';
 import playFieldImg from '../../resources/img/playField.png'
-
+import ArrayEnemyCard from '../arrayEnemyCards/arrayEnemyCards';
 
 const MyPlayField = () => {
+
+    const {pushtest, array} = ArrayEnemyCard();
+
+   console.log(array)
 
     const [rockCount, setRockCount] = useState(4);
     const [scissorsCount, setScissorsCount] = useState(4);
     const [paperCount, setPaperCount] = useState(4);
+    const [arraytest, setArray] = useState(array);
+
+   /*  console.log(arraytest) */
+
 
 
 
@@ -20,9 +28,13 @@ const MyPlayField = () => {
 
     function useRock(event) {
         event.preventDefault();
+        
         if (Number(rockCount) > 0) {
             setRockCount((rockCount) => Number(rockCount) - 1);
+            setArray((arraytest) => pushtest());
+            console.log(arraytest)
         }
+        
 
     }
 

@@ -6,10 +6,12 @@ import EnemyPlayField from '../enemyPlayField/enemyPlayField';
 import { Fragment } from 'react';
 import MyPlayField from '../myPlayField/myPlayField';
 import ScoreBar from '../scoreBar/scoreBar';
+import ArrayEnemyCard from '../arrayEnemyCards/arrayEnemyCards';
 
 
 function App() {
 
+    const {pushtest} = ArrayEnemyCard();
 
 
     return (
@@ -17,7 +19,7 @@ function App() {
 
             <EnemyPlayField />
             <ScoreBar/>
-            <MyPlayField />
+            <MyPlayField test={pushtest}/>
 
 
         </Fragment>
