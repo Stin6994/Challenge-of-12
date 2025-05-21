@@ -13,26 +13,32 @@ function EnemyPlayField() {
 
 
 
-const { array, set, push, remove, filter, update, clear } = useArray(
-    [enemyCard, enemyCard, empty, enemyCard]);
+    const { array, set, push, remove, filter, update, clear } = useArray(
+        [enemyCard, enemyCard, empty, enemyCard]);
 
-    
-    function refresh () {
-           set([enemyCard, enemyCard, enemyCard, enemyCard]) ;
+
+    function refresh() {
+        set([enemyCard, enemyCard, enemyCard, enemyCard]);
+
     }
 
-const randomIndex = array[Math.floor(Math.random()*array.length)];
-const ind = array.indexOf(randomIndex);
+    /* const randomIndex = Math.floor(Math.random()*array.length); */
 
-    function pushtest (event){
+    function pushtest(event) {
         event.preventDefault();
-        console.log(array.length);
-        console.log(Math.random()*array.length);
-        console.log(Math.floor(Math.random()*array.length));
+        /* console.log(randomIndex); */
+        const modArray = array.map((img, value) => (img !== empty ? value : -1))
+            .filter(img => img !== -1);
 
-        console.log(randomIndex);
-        console.log(ind);
-        update(0, empty);
+        console.log(modArray);
+
+        if (modArray.length > 0) {
+            const randomIndex = modArray[Math.floor(Math.random() * modArray.length)];
+            update(randomIndex, empty);
+
+        }
+
+
     }
 
     return (
@@ -58,13 +64,13 @@ const ind = array.indexOf(randomIndex);
             </div>
 
             <button className='buttonTest'
-            onClick={pushtest}
-                /* onClick={changeImg} */
+                onClick={pushtest}
+            /* onClick={changeImg} */
             > удалить случайную карту
             </button>
 
             <button className='buttonTest'
-            onClick={refresh}
+                onClick={refresh}
             > refresh
             </button>
 
