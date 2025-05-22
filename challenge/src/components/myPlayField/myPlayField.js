@@ -1,47 +1,39 @@
 import { useState } from 'react';
 import './myPlayField.css';
 import playFieldImg from '../../resources/img/playField.png'
-import ArrayEnemyCard from '../arrayEnemyCards/arrayEnemyCards';
 
-const MyPlayField = () => {
 
-    const {pushtest, array} = ArrayEnemyCard();
-
-   console.log(array)
+const MyPlayField = ({ testbutton }) => {
 
     const [rockCount, setRockCount] = useState(4);
     const [scissorsCount, setScissorsCount] = useState(4);
     const [paperCount, setPaperCount] = useState(4);
-    const [arraytest, setArray] = useState(array);
-
-   /*  console.log(arraytest) */
 
 
 
 
-    /*    function onChange(event) {
-           event.preventDefault();
-           setRockCount(event.target.value);
-       } */
-
-
-
-    function useRock(event) {
+    /* function useRock(event) {
         event.preventDefault();
-        
         if (Number(rockCount) > 0) {
             setRockCount((rockCount) => Number(rockCount) - 1);
-            setArray((arraytest) => pushtest());
-            console.log(arraytest)
+            testbutton();
         }
-        
+    } */
 
+    function myButton(button, setButton) {
+        /* event.preventDefault(); */
+        if (Number(button) > 0) {
+            setButton((button) => Number(button) - 1);
+            testbutton();
+        }
     }
 
-    function useScissors(event) {
+
+    /* function useScissors(event) {
         event.preventDefault();
         if (Number(scissorsCount) > 0) {
             setScissorsCount((scissorsCount) => Number(scissorsCount) - 1);
+            testbutton();
         }
     }
 
@@ -49,9 +41,10 @@ const MyPlayField = () => {
         event.preventDefault();
         if (Number(paperCount) > 0) {
             setPaperCount((paperCount) => Number(paperCount) - 1);
+            testbutton();
         }
     }
-
+ */
 
 
     return (
@@ -69,7 +62,8 @@ const MyPlayField = () => {
                     /* onChange={onChange} */
                     >x{rockCount}</span>
                     <button className='myButton rock'
-                        onClick={useRock}
+                        onClick={(e) => {e.preventDefault();
+                            myButton(rockCount, setRockCount)}}
                     ></button>
                 </div>
                 <div className='myScissors Cont'>
@@ -78,13 +72,15 @@ const MyPlayField = () => {
                     /* onChange={onChange} */
                     >x{scissorsCount}</span>
                     <button className='myButton scissors'
-                        onClick={useScissors}
+                        onClick={(e) => {e.preventDefault();
+                            myButton(scissorsCount, setScissorsCount)}}
                     ></button>
                 </div>
                 <div className='myPaper Cont'>
                     <span className='paperCounter'>x{paperCount}</span>
                     <button className='myButton paper'
-                        onClick={usePaper}
+                        onClick={(e) => {e.preventDefault();
+                            myButton(paperCount, setPaperCount)}}
                     ></button>
                 </div>
 

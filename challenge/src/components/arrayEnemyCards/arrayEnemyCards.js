@@ -3,19 +3,18 @@ import enemyCard from '../../resources/img/enemyCard.png'
 import empty from '../../resources/img/neon3.png'
 
 const ArrayEnemyCard = () => {
-    const { array, set, update } = useArray(
-        [enemyCard, enemyCard, empty, enemyCard]);
+    const { array, set, update, defaultArr} = useArray(
+        [enemyCard, enemyCard, enemyCard, enemyCard,
+        enemyCard, enemyCard, enemyCard, enemyCard,
+        enemyCard, enemyCard, enemyCard, enemyCard
+        ]);
 
-    /* function refresh() {
-        set([enemyCard, enemyCard, enemyCard, enemyCard]);
-    } */
 
-        const refresh = () => {
-            set([enemyCard, enemyCard, enemyCard, enemyCard]);
-        }
+    const refresh = () => {
+        set(defaultArr);
+    }
 
     const pushtest = () => {
-        /* event.preventDefault(); */
         const modArray = array.map((img, value) => (img !== empty ? value : -1))
             .filter(img => img !== -1);
         if (modArray.length > 0) {
@@ -25,9 +24,10 @@ const ArrayEnemyCard = () => {
     }
     return {
         refresh,
-        pushtest, 
+        pushtest,
         array
     }
 }
+
 
 export default ArrayEnemyCard;

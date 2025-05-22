@@ -38,9 +38,9 @@ import ArrayEnemyCard from '../arrayEnemyCards/arrayEnemyCards';
 } */
 
 
-function EnemyPlayField() {
+function EnemyPlayField({ arr }) {
 
-const {refresh, pushtest, array} = ArrayEnemyCard();
+    /* const {refresh, pushtest, array} = ArrayEnemyCard(); */
 
     return (
 
@@ -50,30 +50,15 @@ const {refresh, pushtest, array} = ArrayEnemyCard();
                 alt="enemyPlayField" />
 
             <div className="enemyFieldContent">
-                <img src={array[0]}
-                    className='enemyCard'
-                    alt="enemyCard" />
-                <img src={array[1]}
-                    className='enemyCard'
-                    alt="enemyCard" />
-                <img src={array[2]}
-                    className='enemyCard'
-                    alt="enemyCard" />
-                <img src={array[3]}
-                    className='enemyCard'
-                    alt="enemyCard" />
-            </div>
-
-            <button className='buttonTest'
-                onClick={pushtest}
-            /* onClick={changeImg} */
-            > удалить случайную карту
-            </button>
-
-            <button className='buttonTest'
-                onClick={refresh}
-            > refresh
-            </button>
+                {arr.map((src, index) => (
+                    <img
+                        key={index}
+                        src={src}
+                        className='enemyCard'
+                        alt="enemyCard"
+                    />
+                ))}
+            </div> 
 
         </div>
 
@@ -83,4 +68,4 @@ const {refresh, pushtest, array} = ArrayEnemyCard();
 
 
 
-export default EnemyPlayField ;
+export default EnemyPlayField;
