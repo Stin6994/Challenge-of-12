@@ -1,11 +1,10 @@
 import { useState } from "react"
 
+
 export default function useArray(defaultValue) {
     const [array, setArray] = useState(defaultValue)
 
-    function defaultArr() {
-        setArray(defaultValue)
-    }
+    
 
     function push(element) {
         setArray(a => [...a, element])
@@ -31,5 +30,5 @@ export default function useArray(defaultValue) {
         setArray([])
     }
 
-    return { array, set: setArray, push, filter, update, remove, clear, defaultArr }
+    return { array, set: setArray, push, filter, update, remove, clear }
 }

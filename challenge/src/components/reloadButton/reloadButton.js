@@ -1,18 +1,10 @@
 
-import {  useState } from 'react';
 
-function ReloadButton ({refresh, countCards})  {
-
-    const {rock, scissors, paper} = countCards;
-
+function ReloadButton ({reloadEnemyCards, reloadMyCards})  {
 
     function backToStart() {
-        console.log(countCards)
-        refresh();
-        console.log(countCards)
-      /*   rock = 4;
-        scissors = 4;
-        paper = 4; */
+            reloadEnemyCards();
+            reloadMyCards();
     }
 
 
