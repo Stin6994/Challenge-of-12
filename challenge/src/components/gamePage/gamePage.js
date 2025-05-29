@@ -6,7 +6,7 @@ import MyPlayField from '../myPlayField/myPlayField';
 import ScoreBar from '../scoreBar/scoreBar';
 import ArrayEnemyCard from '../arrayEnemyCards/arrayEnemyCards';
 import ReloadButton from '../reloadButton/reloadButton';
-
+import ResultField from '../resultField/resultField';
 
 const GamePage = () => {
 
@@ -36,6 +36,8 @@ const GamePage = () => {
 
             <ReloadButton reloadEnemyCards={reloadEnemyCards}
                 reloadMyCards={resetMyCards} />
+
+            <ResultField />
 
         </Fragment>
     )

@@ -1,0 +1,19 @@
+.mainCont {
+    position: relative;
+    margin-top: -20%;
+    margin-left: 50%;
+    width: 15%;
+    border: 3px solid white;
+
+}
+
+/* img {
+    background-size: cover;
+} */
+
+img {
+
+    width: 7vw;
+    height: 10vw;
+
+}
