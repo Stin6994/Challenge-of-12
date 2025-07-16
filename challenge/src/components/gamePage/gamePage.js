@@ -10,18 +10,34 @@ import ResultField from '../resultField/resultField';
 
 const GamePage = () => {
 
-    const { reloadEnemyCards, array, enemyPlay } = ArrayEnemyCard();
+    const { reloadEnemyCards, array, enemyPlay, createDeck, currentEnemyCard,
+        drawRandomCard } = ArrayEnemyCard();
 
-    const initialCards = {
+    const MyInitialCards = {
         rock: 4,
         scissors: 4,
         paper: 4
     };
 
-    const [myCardsCount, setMyCardsCount] = useState(initialCards);
+     const EnemyInitialCards = {
+        rock: 4,
+        scissors: 4,
+        paper: 4
+    };
 
-    const resetMyCards = () => {
-        setMyCardsCount(initialCards);
+    const [myCardsCount, setMyCardsCount] = useState(MyInitialCards);
+
+   
+
+    const [myCurrentCard, setMyCurrentCard] = useState('default');
+
+
+
+
+ const resetMyCards = () => {
+        setMyCardsCount(MyInitialCards);
+        setMyCurrentCard('default');
+  
     };
 
 
@@ -32,12 +48,19 @@ const GamePage = () => {
             <ScoreBar />
             <MyPlayField enemyPlay={enemyPlay}
                 myCardsCount={myCardsCount}
-                setMyCardsCount={setMyCardsCount} />
-
+                setMyCardsCount={setMyCardsCount} 
+                setMyCurrentCard={setMyCurrentCard}
+                myCurrentCard={myCurrentCard}
+                drawRandomCard={drawRandomCard}/>
+                
             <ReloadButton reloadEnemyCards={reloadEnemyCards}
                 reloadMyCards={resetMyCards} />
 
-            <ResultField />
+            <ResultField myCurrentCard={myCurrentCard}
+            createDeck={createDeck}
+            currentEnemyCard={currentEnemyCard}
+            drawRandomCard={drawRandomCard}
+            />
 
         </Fragment>
     )

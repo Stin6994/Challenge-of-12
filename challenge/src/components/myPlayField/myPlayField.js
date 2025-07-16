@@ -3,17 +3,24 @@ import './myPlayField.css';
 import playFieldImg from '../../resources/img/playField.png'
 
 
-const MyPlayField = ({ myCardsCount, setMyCardsCount, enemyPlay }) => {
+const MyPlayField = ({ myCardsCount, setMyCardsCount, enemyPlay, setMyCurrentCard, myCurrentCard, drawRandomCard }) => {
 
     function play(cardType) {
         if (myCardsCount[cardType] > 0) {
             setMyCardsCount(prev => ({
                 ...prev,
                 [cardType]: prev[cardType] - 1  // Корректное уменьшение значения
+                
             }));
+            setMyCurrentCard (myCurrentCard = cardType);
+            console.log(myCurrentCard)
             enemyPlay();
+            drawRandomCard();
+
         }
     }
+
+
 
 
 
