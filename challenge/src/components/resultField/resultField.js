@@ -5,7 +5,7 @@ import scissorsImg from '../../resources/img/scissors.png';
 import myPlayField from '../../resources/img/playFieldVertical.png'
 import './resultField.css'
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 
@@ -32,15 +32,48 @@ const ResultField = ({ myCurrentCard, currentEnemyCard }) => {
         start: 'Выбери карту',
     }
 
-    const [result, setResult] = useState(resultRound.start);
+    const { victory, draw, defeat, start } = resultRound;
 
-   
+    const [result, setResult] = useState(start);
 
+useEffect(() => {
 
+    /* if (myCurrentCard === currentEnemyCard && myCurrentCard !== 'default') {
+        setResult(draw)
+        return result
+    } else if ((myCurrentCard === 'rock' && currentEnemyCard === 'scissors') ||
+        (myCurrentCard === 'scissors' && currentEnemyCard === 'paper') ||
+        (myCurrentCard === 'paper' && currentEnemyCard === 'rock')) {
+        setResult(victory)
+        return result
+    } else {
+        setResult(defeat)
+        return result
+    } */
 
+        if (!myCurrentCard || myCurrentCard === 'default') {
+            setResult(start);
+            return;
+        }
+
+        if (!currentEnemyCard) return;
+
+        if (myCurrentCard === currentEnemyCard) {
+            setResult(draw);
+        } else if (
+            (myCurrentCard === 'rock' && currentEnemyCard === 'scissors') ||
+            (myCurrentCard === 'scissors' && currentEnemyCard === 'paper') ||
+            (myCurrentCard === 'paper' && currentEnemyCard === 'rock')
+        ) {
+            setResult(victory);
+        } else {
+            setResult(defeat);
+        }
+}, [myCurrentCard, currentEnemyCard]) 
+/* }, [myCurrentCard, currentEnemyCard, defeat, draw, victory, result, start]) */
 
     const myCurrentImage = cardImages[myCurrentCard] || cardImages.default; // моя карта
-    
+
 
 
     return (
@@ -49,7 +82,7 @@ const ResultField = ({ myCurrentCard, currentEnemyCard }) => {
                 <img src={currentEnemyCard ? cardImages[currentEnemyCard] : cardImages.default} alt="enemyPlayCard" />
             </div>
             <div>
-                <span className="resultText">Тут будет результат</span>
+                <span className="resultText">{result}</span>
             </div>
             <div className="playField">
                 <img src={myCurrentImage} alt="enemyPlayCard" />
