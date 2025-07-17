@@ -102,7 +102,9 @@ const ArrayEnemyCard = () => {
         array,
         createDeck,
         currentEnemyCard,
-        drawRandomCard
+        setCurrentEnemyCard,
+        drawRandomCard, 
+        setDeck
     }
 }
 

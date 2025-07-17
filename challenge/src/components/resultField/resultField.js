@@ -5,6 +5,7 @@ import scissorsImg from '../../resources/img/scissors.png';
 import myPlayField from '../../resources/img/playFieldVertical.png'
 import './resultField.css'
 
+import { useState } from 'react';
 
 
 
@@ -24,9 +25,23 @@ const ResultField = ({ myCurrentCard, currentEnemyCard }) => {
         default: myPlayField
     };
 
-    const myCurrentImage = cardImages[myCurrentCard] || cardImages.default; // моя карта
+    const resultRound = {
+        victory: 'Победа',
+        draw: 'Ничья',
+        defeat: 'Поражение',
+        start: 'Выбери карту',
+    }
 
- 
+    const [result, setResult] = useState(resultRound.start);
+
+   
+
+
+
+
+    const myCurrentImage = cardImages[myCurrentCard] || cardImages.default; // моя карта
+    
+
 
     return (
         <div className="mainCont">
