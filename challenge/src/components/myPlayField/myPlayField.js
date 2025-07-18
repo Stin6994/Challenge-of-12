@@ -1,6 +1,8 @@
 
 import './myPlayField.css';
 import playFieldImg from '../../resources/img/playField.png'
+import myStar from '../../resources/img/Star.png';
+import loseStar from '../../resources/img/loseStar.png'
 import { useEffect } from 'react';
 
 const MyPlayField = ({ myCardsCount, setMyCardsCount, enemyPlay, setMyCurrentCard, myCurrentCard,
@@ -23,11 +25,11 @@ const MyPlayField = ({ myCardsCount, setMyCardsCount, enemyPlay, setMyCurrentCar
 
     // изменение счетчика количетсва жизней
     useEffect(() => {
-            if(result==='Поражение'){
-                setLife((prev) => (prev-1));
-            }      
-        }, [result, setLife]);
-    
+        if (result === 'Поражение') {
+            setLife((prev) => (prev - 1));
+        }
+    }, [result, setLife]);
+
 
     return (
 
@@ -49,8 +51,21 @@ const MyPlayField = ({ myCardsCount, setMyCardsCount, enemyPlay, setMyCurrentCar
                     </div>
                 ))}
                 <span>Количество жизней: {life}</span>
-            </div >
-            
+                <div>
+                    <div style={{ display: 'flex', gap: '10px', position: 'absolute'}}>
+                        {/* Рисуем звезды в зависимости от life */}
+                        {[1, 2, 3].map((star) => (
+                            <img
+                                key={star}
+                                src={star <= life ?  myStar  :  loseStar }
+                                alt={star <= life ? "Горящая звезда" : "Потухшая звезда"}
+                                width="10"
+                                height="10"
+                            />
+                        ))}
+                    </div>
+                </div >
+            </div>
         </div>
     )
 }
