@@ -31,6 +31,7 @@ const GamePage = () => {
         setMyCurrentCard('default');
         setDeck(createDeck);
         setCurrentEnemyCard('default');
+        setLife(3);
 
     };
 
