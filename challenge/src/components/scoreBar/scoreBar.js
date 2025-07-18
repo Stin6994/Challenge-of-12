@@ -6,8 +6,9 @@ function ScoreBar() {
     return (
         <div className='testCont'>
                     <span
-                        style={{ fontSize: "1vw"}}> Тут будет подсчет очков ТЕСТ ТЕСТ ТЕСТ
+                        style={{ fontSize: "1vw"}}> Тут будет лучший результат
                     </span>
+            
                 </div>
     )
 }

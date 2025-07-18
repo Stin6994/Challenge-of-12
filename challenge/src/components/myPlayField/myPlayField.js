@@ -3,19 +3,22 @@ import './myPlayField.css';
 import playFieldImg from '../../resources/img/playField.png'
 import myStar from '../../resources/img/Star.png';
 import loseStar from '../../resources/img/loseStar.png'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const MyPlayField = ({ myCardsCount, setMyCardsCount, enemyPlay, setMyCurrentCard, myCurrentCard,
-    drawRandomCard, life, setLife, result }) => {
+    drawRandomCard, life, setLife, result, setResult }) => {
 
     function play(cardType) {
         if (myCardsCount[cardType] > 0) {
+
+            
+            setMyCurrentCard(cardType);
             setMyCardsCount(prev => ({
                 ...prev,
                 [cardType]: prev[cardType] - 1  // Корректное уменьшение значения
 
             }));
-            setMyCurrentCard(myCurrentCard = cardType);
+            
             console.log(myCurrentCard)
             enemyPlay();
             drawRandomCard();
@@ -29,6 +32,10 @@ const MyPlayField = ({ myCardsCount, setMyCardsCount, enemyPlay, setMyCurrentCar
             setLife((prev) => (prev - 1));
         }
     }, [result, setLife]);
+
+    
+
+
 
 
     return (

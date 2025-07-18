@@ -10,7 +10,7 @@ import { useState, useEffect } from 'react';
 
 
 
-const ResultField = ({ myCurrentCard, currentEnemyCard, result, setResult}) => {
+const ResultField = ({ myCurrentCard, currentEnemyCard, result, setResult, setCurrentEnemyCard, setMyCurrentCard}) => {
 
 
     console.log(currentEnemyCard);
@@ -34,29 +34,53 @@ const ResultField = ({ myCurrentCard, currentEnemyCard, result, setResult}) => {
 
     const { victory, draw, defeat, start } = resultRound;
 
-    /* const [result, setResult] = useState(start); */
+
+
+
+/* useEffect(() => {
+    if (!myCurrentCard || myCurrentCard === 'default') {
+        if (result !== start) setResult(start); // Обновляем только если нужно
+        return;
+    }
+
+    if (!currentEnemyCard) return;
+
+    const newResult = 
+        myCurrentCard === currentEnemyCard ? draw :
+        (myCurrentCard === 'rock' && currentEnemyCard === 'scissors') ||
+        (myCurrentCard === 'scissors' && currentEnemyCard === 'paper') ||
+        (myCurrentCard === 'paper' && currentEnemyCard === 'rock') ? victory : defeat;
+
+    if (result !== newResult) setResult(newResult);// Обновляем только при изменени
+
+
+}, [myCurrentCard, currentEnemyCard]);  */
 
 useEffect(() => {
+    if (!myCurrentCard || myCurrentCard === 'default') {
+        setResult(start);
+        return;
+    }
 
-        if (!myCurrentCard || myCurrentCard === 'default') {
-            setResult(start);
-            return;
-        }
+    if (!currentEnemyCard) return;
 
-        if (!currentEnemyCard) return;
+    if (myCurrentCard === currentEnemyCard) {
+        setResult(draw);
+    } else if (
+        (myCurrentCard === 'rock' && currentEnemyCard === 'scissors') ||
+        (myCurrentCard === 'scissors' && currentEnemyCard === 'paper') ||
+        (myCurrentCard === 'paper' && currentEnemyCard === 'rock')
+    ) {
+        setResult(victory);
+    } else {
+        setResult(defeat);
+    }
+}, [myCurrentCard, currentEnemyCard]); // Только эти зависимости
 
-        if (myCurrentCard === currentEnemyCard) {
-            setResult(draw);
-        } else if (
-            (myCurrentCard === 'rock' && currentEnemyCard === 'scissors') ||
-            (myCurrentCard === 'scissors' && currentEnemyCard === 'paper') ||
-            (myCurrentCard === 'paper' && currentEnemyCard === 'rock')
-        ) {
-            setResult(victory);
-        } else {
-            setResult(defeat);
-        }
-}, [myCurrentCard, currentEnemyCard, defeat, draw, victory, result, start])
+
+
+
+
 
     const myCurrentImage = cardImages[myCurrentCard] || cardImages.default; // моя карта
 
