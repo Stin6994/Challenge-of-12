@@ -21,12 +21,9 @@ const GamePage = () => {
 
 
     const [myCardsCount, setMyCardsCount] = useState(MyInitialCards);
-
-
-
     const [myCurrentCard, setMyCurrentCard] = useState('default');
-
-
+    const [result, setResult] = useState();
+    const [life, setLife] = useState(3);
 
 
     const resetMyCards = () => {
@@ -48,7 +45,11 @@ const GamePage = () => {
                 setMyCardsCount={setMyCardsCount}
                 setMyCurrentCard={setMyCurrentCard}
                 myCurrentCard={myCurrentCard}
-                drawRandomCard={drawRandomCard} />
+                drawRandomCard={drawRandomCard} 
+                life={life}
+                setLife={setLife}
+                result={result}
+                />
 
             <ReloadButton reloadEnemyCards={reloadEnemyCards}
                 reloadMyCards={resetMyCards} />
@@ -57,6 +58,8 @@ const GamePage = () => {
                 createDeck={createDeck}
                 currentEnemyCard={currentEnemyCard}
                 drawRandomCard={drawRandomCard}
+                result={result}
+                setResult={setResult}
             />
 
         </Fragment>

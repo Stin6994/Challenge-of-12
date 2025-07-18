@@ -52,18 +52,6 @@ const ArrayEnemyCard = () => {
 
 
 
-
-
-    // Создаем маппинг карт на изображения
-    /*     const cardImages = {
-            paper: paperImg,
-            rock: rockImg,
-            scissors: scissorsImg,
-            default: myPlayField
-        }; */
-
-
-
     const [deck, setDeck] = useState([]);
     const [currentEnemyCard, setCurrentEnemyCard] = useState(null);
 

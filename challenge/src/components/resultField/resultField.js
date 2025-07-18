@@ -10,7 +10,7 @@ import { useState, useEffect } from 'react';
 
 
 
-const ResultField = ({ myCurrentCard, currentEnemyCard }) => {
+const ResultField = ({ myCurrentCard, currentEnemyCard, result, setResult}) => {
 
 
     console.log(currentEnemyCard);
@@ -34,22 +34,9 @@ const ResultField = ({ myCurrentCard, currentEnemyCard }) => {
 
     const { victory, draw, defeat, start } = resultRound;
 
-    const [result, setResult] = useState(start);
+    /* const [result, setResult] = useState(start); */
 
 useEffect(() => {
-
-    /* if (myCurrentCard === currentEnemyCard && myCurrentCard !== 'default') {
-        setResult(draw)
-        return result
-    } else if ((myCurrentCard === 'rock' && currentEnemyCard === 'scissors') ||
-        (myCurrentCard === 'scissors' && currentEnemyCard === 'paper') ||
-        (myCurrentCard === 'paper' && currentEnemyCard === 'rock')) {
-        setResult(victory)
-        return result
-    } else {
-        setResult(defeat)
-        return result
-    } */
 
         if (!myCurrentCard || myCurrentCard === 'default') {
             setResult(start);
@@ -69,8 +56,7 @@ useEffect(() => {
         } else {
             setResult(defeat);
         }
-}, [myCurrentCard, currentEnemyCard]) 
-/* }, [myCurrentCard, currentEnemyCard, defeat, draw, victory, result, start]) */
+}, [myCurrentCard, currentEnemyCard, defeat, draw, victory, result, start])
 
     const myCurrentImage = cardImages[myCurrentCard] || cardImages.default; // моя карта
 

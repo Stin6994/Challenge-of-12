@@ -1,18 +1,19 @@
 
 import './myPlayField.css';
 import playFieldImg from '../../resources/img/playField.png'
+import { useEffect } from 'react';
 
-
-const MyPlayField = ({ myCardsCount, setMyCardsCount, enemyPlay, setMyCurrentCard, myCurrentCard, drawRandomCard }) => {
+const MyPlayField = ({ myCardsCount, setMyCardsCount, enemyPlay, setMyCurrentCard, myCurrentCard,
+    drawRandomCard, life, setLife, result }) => {
 
     function play(cardType) {
         if (myCardsCount[cardType] > 0) {
             setMyCardsCount(prev => ({
                 ...prev,
                 [cardType]: prev[cardType] - 1  // Корректное уменьшение значения
-                
+
             }));
-            setMyCurrentCard (myCurrentCard = cardType);
+            setMyCurrentCard(myCurrentCard = cardType);
             console.log(myCurrentCard)
             enemyPlay();
             drawRandomCard();
@@ -20,9 +21,13 @@ const MyPlayField = ({ myCardsCount, setMyCardsCount, enemyPlay, setMyCurrentCar
         }
     }
 
-
-
-
+    // изменение счетчика количетсва жизней
+    useEffect(() => {
+            if(result==='Поражение'){
+                setLife((prev) => (prev-1));
+            }      
+        }, [result, setLife]);
+    
 
     return (
 
@@ -43,7 +48,9 @@ const MyPlayField = ({ myCardsCount, setMyCardsCount, enemyPlay, setMyCurrentCar
                         ></button>
                     </div>
                 ))}
+                <span>Количество жизней: {life}</span>
             </div >
+            
         </div>
     )
 }
