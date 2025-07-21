@@ -1,7 +1,7 @@
 
 import './gamePage.css';
 import EnemyPlayField from '../enemyPlayField/enemyPlayField';
-import { Fragment, useState } from 'react';
+import { Fragment, useState, useEffect } from 'react';
 import MyPlayField from '../myPlayField/myPlayField';
 import ScoreBar from '../scoreBar/scoreBar';
 import ArrayEnemyCard from '../arrayEnemyCards/arrayEnemyCards';
@@ -21,7 +21,7 @@ const GamePage = () => {
     };
 
 
-    
+
 
     const [myCardsCount, setMyCardsCount] = useState(MyInitialCards);
     const [myCurrentCard, setMyCurrentCard] = useState('default');
@@ -30,7 +30,15 @@ const GamePage = () => {
     const [myScore, setMyScore] = useState(0);
     const [bonus, setBonus] = useState(1);
     const [roundId, setRoundId] = useState(0);
+    const [isGameOver, setIsGameOver] = useState(false);
 
+    useEffect(() => {
+        if (life <= 0) {
+            setIsGameOver(true);
+        }
+    }, [life]);
+
+ 
 
 
     const resetMyCards = () => {
@@ -43,9 +51,32 @@ const GamePage = () => {
         setBonus(1)
     };
 
+   const resetGame = () => {
+        resetMyCards(); // Ваша существующая функция сброса
+        setIsGameOver(false);
+        setLife(3); // Восстанавливаем жизни
+    };
+
+
+
 
     return (
         <Fragment>
+
+            {isGameOver && (
+                <div className="gameOverModal">
+                    <div className="modalContent">
+                        <h2>Игра окончена!</h2>
+                        <p>Ваш результат: {myScore} очков</p>
+                        <button 
+                            onClick={resetGame}
+                            className="refreshButton"
+                        >
+                            Начать заново
+                        </button>
+                    </div>
+                </div>
+            )}
 
             <EnemyPlayField arr={array} />
             <ScoreBar />
@@ -61,6 +92,7 @@ const GamePage = () => {
                 result={result}
                 setResult={setResult}
                 setRoundId={setRoundId}
+                isGameOver={isGameOver}
             />
 
             <ReloadButton reloadEnemyCards={reloadEnemyCards}
@@ -76,13 +108,13 @@ const GamePage = () => {
                 setResult={setResult}
                 roundId={roundId}
             />
-            <BuySaleBar 
-            myScore={myScore}
-            setMyScore={setMyScore}
-            result={result}
-            setResult={setResult}
-            bonus={bonus}
-            setBonus={setBonus}
+            <BuySaleBar
+                myScore={myScore}
+                setMyScore={setMyScore}
+                result={result}
+                setResult={setResult}
+                bonus={bonus}
+                setBonus={setBonus}
             />
         </Fragment>
     )
