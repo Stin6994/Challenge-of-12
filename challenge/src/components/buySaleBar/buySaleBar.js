@@ -12,7 +12,13 @@ useEffect(() => {
             setMyScore(prevScore => prevScore + 1000 * prev);
             return newBonus;
         });
+        } else if (result === 'Поражение') {
+        setBonus(prev => {
+            const newBonus = Math.max(prev / 2, 1); // Уменьшаем вдвое, но не меньше 1
+            return newBonus;
+        });
     }
+    
 }, [result]); // Теперь эффект будет срабатывать при каждом изменении result
 
 
