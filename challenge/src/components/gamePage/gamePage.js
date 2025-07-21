@@ -29,6 +29,7 @@ const GamePage = () => {
     const [life, setLife] = useState(3);
     const [myScore, setMyScore] = useState(0);
     const [bonus, setBonus] = useState(1);
+    const [roundId, setRoundId] = useState(0);
 
 
 
@@ -59,6 +60,7 @@ const GamePage = () => {
                 setLife={setLife}
                 result={result}
                 setResult={setResult}
+                setRoundId={setRoundId}
             />
 
             <ReloadButton reloadEnemyCards={reloadEnemyCards}
@@ -72,6 +74,7 @@ const GamePage = () => {
                 drawRandomCard={drawRandomCard}
                 result={result}
                 setResult={setResult}
+                roundId={roundId}
             />
             <BuySaleBar 
             myScore={myScore}

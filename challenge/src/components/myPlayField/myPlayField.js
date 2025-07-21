@@ -6,19 +6,19 @@ import loseStar from '../../resources/img/loseStar.png'
 import { useEffect, useState } from 'react';
 
 const MyPlayField = ({ myCardsCount, setMyCardsCount, enemyPlay, setMyCurrentCard, myCurrentCard,
-    drawRandomCard, life, setLife, result, setResult }) => {
+    drawRandomCard, life, setLife, result, setResult, setRoundId }) => {
 
     function play(cardType) {
         if (myCardsCount[cardType] > 0) {
-
-            
+            setResult("▪▪▪"); 
+            setRoundId(prev => prev + 1);
             setMyCurrentCard(cardType);
             setMyCardsCount(prev => ({
                 ...prev,
                 [cardType]: prev[cardType] - 1  // Корректное уменьшение значения
 
             }));
-            
+
             console.log(myCurrentCard)
             enemyPlay();
             drawRandomCard();
@@ -26,14 +26,19 @@ const MyPlayField = ({ myCardsCount, setMyCardsCount, enemyPlay, setMyCurrentCar
         }
     }
 
-    // изменение счетчика количетсва жизней
+    /*     // изменение счетчика количетсва жизней
+        useEffect(() => {
+            if (result === 'Поражение') {
+                setLife((prev) => (prev - 1));
+            }
+        }, [result, setLife]); */
+
     useEffect(() => {
         if (result === 'Поражение') {
-            setLife((prev) => (prev - 1));
+            setLife(prev => prev - 1);
         }
-    }, [result, setLife]);
+    }, [result]);
 
-    
 
 
 
@@ -59,12 +64,12 @@ const MyPlayField = ({ myCardsCount, setMyCardsCount, enemyPlay, setMyCurrentCar
                 ))}
                 <span>Количество жизней: {life}</span>
                 <div>
-                    <div style={{ display: 'flex', gap: '10px', position: 'absolute'}}>
+                    <div style={{ display: 'flex', gap: '10px', position: 'absolute' }}>
                         {/* Рисуем звезды в зависимости от life */}
                         {[1, 2, 3].map((star) => (
                             <img
                                 key={star}
-                                src={star <= life ?  myStar  :  loseStar }
+                                src={star <= life ? myStar : loseStar}
                                 alt={star <= life ? "Горящая звезда" : "Потухшая звезда"}
                                 width="10"
                                 height="10"
