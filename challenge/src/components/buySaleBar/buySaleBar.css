@@ -5,6 +5,10 @@
     margin-top: 0%;
     margin-left: 70%;
     width: 15%;
-    
 
+}
+
+button:disabled {
+  opacity: 0.6;
+  text-decoration: none;
 }

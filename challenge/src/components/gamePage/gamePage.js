@@ -38,7 +38,7 @@ const GamePage = () => {
         }
     }, [life]);
 
- 
+
 
 
     const resetMyCards = () => {
@@ -51,7 +51,7 @@ const GamePage = () => {
         setBonus(1)
     };
 
-   const resetGame = () => {
+    const resetGame = () => {
         resetMyCards(); // Ваша существующая функция сброса
         setIsGameOver(false);
         setLife(3); // Восстанавливаем жизни
@@ -63,12 +63,12 @@ const GamePage = () => {
     return (
         <Fragment>
 
-            {(isGameOver || (myCardsCount.rock===0 && myCardsCount.paper===0 && myCardsCount.scissors===0)) &&(
+            {(isGameOver || (myCardsCount.rock === 0 && myCardsCount.paper === 0 && myCardsCount.scissors === 0)) && (
                 <div className="gameOverModal">
                     <div className="modalContent">
-                        <h2>{isGameOver ? `Вы проиграли`: `Победа!`}</h2>
-                        <p>{isGameOver ? `Очков нет`:`Ваш результат: ${myScore} очков`}</p>
-                        <button 
+                        <h2>{isGameOver ? `Вы проиграли` : `Победа!`}</h2>
+                        <p>{isGameOver ? `Очков нет` : `Ваш результат: ${myScore} очков`}</p>
+                        <button
                             onClick={resetGame}
                             className="refreshButton"
                         >
@@ -115,6 +115,8 @@ const GamePage = () => {
                 setResult={setResult}
                 bonus={bonus}
                 setBonus={setBonus}
+                life={life}
+                setLife={setLife}
             />
         </Fragment>
     )
