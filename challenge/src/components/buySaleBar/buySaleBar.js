@@ -3,7 +3,12 @@ import { useEffect, useCallback } from 'react';
 
 function BuySaleBar({ myScore, setMyScore, result, setResult, bonus, setBonus, life, setLife }) {
 
+    // Рассчитываем стоимость покупки жизни
+    const getLifePrice = () => {
+        return myScore <= 10000 ? 5000 : Math.floor(myScore / 2);
+    };
 
+    const lifePrice = getLifePrice();
 
     useEffect(() => {
         if (result === 'Победа') {
@@ -21,12 +26,21 @@ function BuySaleBar({ myScore, setMyScore, result, setResult, bonus, setBonus, l
 
     }, [result]); // Теперь эффект будет срабатывать при каждом изменении result
 
+    // Функция продажи жизни
     const sellLife = () => {
         setLife(prev => prev - 1);
         setMyScore(prev => prev + bonus * 1000);
         setBonus(prev => Math.max(prev / 2, 1));
     };
 
+
+    // Функция покупки жизни
+    const buyLife = () => {
+        if (myScore >= lifePrice && life < 3) {
+            setMyScore(prev => prev - lifePrice);
+            setLife(prev => prev + 1);
+        }
+    };
 
     return (
         <div className='Contmytest'>
@@ -41,9 +55,29 @@ function BuySaleBar({ myScore, setMyScore, result, setResult, bonus, setBonus, l
                 </span>
             </div>
             <div>
-                <span
-                    style={{ fontSize: "1vw" }}> Купить за
-                </span>
+                <button
+                    onClick={buyLife}
+                    disabled={life >= 3 || myScore < lifePrice}
+                    style={{
+                        fontSize: "1vw",
+                        background: 'none',
+                        border: 'none',
+                        color: (life >= 3 || myScore < lifePrice) ? '#888' : 'white',
+                        cursor: (life >= 3 || myScore < lifePrice) ? 'not-allowed' : 'pointer',
+                        padding: 0,
+                        textDecoration: 'underline'
+                    }}
+                    title={
+                        life >= 3
+                            ? "Нельзя купить - максимальное количество жизней (3)"
+                            : myScore < lifePrice
+                                ? `Не хватает очков (нужно ${lifePrice})`
+                                : `Купить 1 жизнь за ${lifePrice} очков`
+                    }
+
+                >
+                    Купить за {lifePrice}
+                </button>
             </div>
             <div>
                 <button
