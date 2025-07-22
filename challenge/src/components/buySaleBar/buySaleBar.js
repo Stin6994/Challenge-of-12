@@ -80,7 +80,7 @@ function BuySaleBar({ myScore, setMyScore, result, setResult, bonus, setBonus, l
                 </button>
             </div>
             <div>
-                <button
+                {/* <button
                     onClick={sellLife}
                     disabled={life <= 1}
                     style={{
@@ -95,10 +95,31 @@ function BuySaleBar({ myScore, setMyScore, result, setResult, bonus, setBonus, l
                     title={life <= 1 ? "Нельзя продать последнюю жизнь" : ""}
                 >
                     Продать за {bonus * 1000}
+                </button> */}
+                <button
+                    onClick={sellLife}
+                    disabled={life <= 1}
+                    className="neon-button"
+                    title={
+                        life <= 1
+                            ? "Нельзя продать - минимальное количество жизней (1)"
+                            : `Продать 1 жизнь за ${bonus * 1000} очков`
+                    }
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Продать за {bonus * 1000}
                 </button>
+
             </div>
         </div>
     )
 }
+
+
+
+
 
 export default BuySaleBar;
