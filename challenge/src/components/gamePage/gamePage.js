@@ -63,11 +63,11 @@ const GamePage = () => {
     return (
         <Fragment>
 
-            {isGameOver && (
+            {(isGameOver || (myCardsCount.rock===0 && myCardsCount.paper===0 && myCardsCount.scissors===0)) &&(
                 <div className="gameOverModal">
                     <div className="modalContent">
-                        <h2>Игра окончена!</h2>
-                        <p>Ваш результат: {myScore} очков</p>
+                        <h2>{isGameOver ? `Вы проиграли`: `Победа!`}</h2>
+                        <p>{isGameOver ? `Очков нет`:`Ваш результат: ${myScore} очков`}</p>
                         <button 
                             onClick={resetGame}
                             className="refreshButton"
