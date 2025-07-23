@@ -1,6 +1,43 @@
- .testCont {
-    /* position: absolute; */
+/*  .testCont {
+    
     border: 1px solid yellow;
     margin-left: 9%;
     width: 25%;
+  } */
+
+
+.pulse-animation {
+  display: inline-block;
+  animation: pulse 0.5s infinite alternate;
+  color: #ff00ff; /* Яркий цвет для нового рекорда */
+  text-shadow: 0 0 10px #ff00ff;
+}
+
+@keyframes pulse {
+  from { 
+    transform: scale(1);
+    color: #03e9f4;
+    text-shadow: 0 0 5px #03e9f4;
   }
+  to { 
+    transform: scale(1.1);
+    color: #ff00ff;
+    text-shadow: 0 0 15px #ff00ff;
+  }
+}
+
+.buttonTest {
+  margin-left: 15px;
+  background: transparent;
+  border: 1px solid #03e9f4;
+  color: #03e9f4;
+  padding: 3px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.buttonTest:hover {
+  background: #03e9f4;
+  color: #000;
+}

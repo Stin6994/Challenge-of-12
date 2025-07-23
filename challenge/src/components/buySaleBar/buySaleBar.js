@@ -39,6 +39,7 @@ function BuySaleBar({ myScore, setMyScore, result, setResult, bonus, setBonus, l
         if (myScore >= lifePrice && life < 3) {
             setMyScore(prev => prev - lifePrice);
             setLife(prev => prev + 1);
+            setBonus(prev => Math.max(prev / 2, 1));
         }
     };
 

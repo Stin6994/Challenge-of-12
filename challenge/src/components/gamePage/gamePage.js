@@ -79,7 +79,9 @@ const GamePage = () => {
             )}
 
             <EnemyPlayField arr={array} />
-            <ScoreBar />
+            <ScoreBar 
+            myScore={myScore}
+            result={result}/>
 
             <MyPlayField enemyPlay={enemyPlay}
                 myCardsCount={myCardsCount}
