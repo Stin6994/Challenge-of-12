@@ -8,6 +8,7 @@ import ArrayEnemyCard from '../arrayEnemyCards/arrayEnemyCards';
 import ReloadButton from '../reloadButton/reloadButton';
 import ResultField from '../resultField/resultField';
 import BuySaleBar from '../buySaleBar/buySaleBar';
+import PlayedCardsCollection from '../cardCollection/cardCollection';
 
 const GamePage = () => {
 
@@ -32,14 +33,15 @@ const GamePage = () => {
     const [roundId, setRoundId] = useState(0);
     const [gameStatus, setGameStatus] = useState(null); // 'won' | 'lost' | null
     const [showGameOver, setShowGameOver] = useState(false);
-    
+    const [playedCards, setPlayedCards] = useState([]); // коллекция карт
+
 
     // Обработчик завершения игры
     useEffect(() => {
-        const gameFinished = life <= 0 || 
-                           (myCardsCount.rock === 0 && 
-                            myCardsCount.paper === 0 && 
-                            myCardsCount.scissors === 0);
+        const gameFinished = life <= 0 ||
+            (myCardsCount.rock === 0 &&
+                myCardsCount.paper === 0 &&
+                myCardsCount.scissors === 0);
 
         if (gameFinished) {
             // Даем время на обработку последнего раунда
@@ -47,12 +49,21 @@ const GamePage = () => {
                 setGameStatus(life <= 0 ? 'lost' : 'won');
                 setShowGameOver(true);
             }, 100); // Небольшая задержка для обработки последнего раунда
-            
+
             return () => clearTimeout(timer);
         }
     }, [life, myCardsCount]);
 
-
+    // Обновляем коллекцию после каждого раунда
+    useEffect(() => {
+        if (myCurrentCard !== 'default' && currentEnemyCard) {
+            setPlayedCards(prev => [
+                ...prev,
+                { type: myCurrentCard, isPlayer: true },
+                { type: currentEnemyCard, isPlayer: false }
+            ]);
+        }
+    }, [myCurrentCard, currentEnemyCard]);
 
 
     const resetMyCards = () => {
@@ -62,21 +73,29 @@ const GamePage = () => {
         setCurrentEnemyCard('default');
         setLife(3);
         setMyScore(0);
-        setBonus(1)
+        setBonus(1);
+        setPlayedCards([]);
     };
 
-    // Полный сброс игры
     const resetGame = () => {
+        // Сброс основной логики игры
         resetMyCards();
         reloadEnemyCards();
+
+        // Сброс всех состояний
         setGameStatus(null);
         setShowGameOver(false);
         setLife(3);
         setMyScore(0);
         setBonus(1);
+        setRoundId(0);
+        setResult(null);
+        setMyCurrentCard('default');
+        setCurrentEnemyCard('default');
+
+        // Сброс коллекции сыгранных карт
+        setPlayedCards([]);
     };
-
-
 
 
     return (
@@ -135,6 +154,8 @@ const GamePage = () => {
                 setLife={setLife}
                 showGameOver={showGameOver}
             />
+            <PlayedCardsCollection
+                playedCards={playedCards} />
         </Fragment>
     )
 }

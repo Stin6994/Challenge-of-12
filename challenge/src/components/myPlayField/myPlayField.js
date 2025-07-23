@@ -3,14 +3,14 @@ import './myPlayField.css';
 import playFieldImg from '../../resources/img/playField.png'
 import myStar from '../../resources/img/Star.png';
 import loseStar from '../../resources/img/loseStar.png'
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 const MyPlayField = ({ myCardsCount, setMyCardsCount, enemyPlay, setMyCurrentCard, myCurrentCard,
-    drawRandomCard, life, setLife, result, setResult, setRoundId, showGameOver}) => {
+    drawRandomCard, life, setLife, result, setResult, setRoundId, showGameOver }) => {
 
     function play(cardType) {
         if (myCardsCount[cardType] > 0 && !showGameOver) {
-            setResult("▪▪▪"); 
+            setResult("▪▪▪");
             setRoundId(prev => prev + 1);
             setMyCurrentCard(cardType);
             setMyCardsCount(prev => ({
@@ -25,12 +25,7 @@ const MyPlayField = ({ myCardsCount, setMyCardsCount, enemyPlay, setMyCurrentCar
         }
     }
 
-    /*     // изменение счетчика количетсва жизней
-        useEffect(() => {
-            if (result === 'Поражение') {
-                setLife((prev) => (prev - 1));
-            }
-        }, [result, setLife]); */
+    // изменение счетчика количетсва жизней
 
     useEffect(() => {
         if (result === 'Поражение') {

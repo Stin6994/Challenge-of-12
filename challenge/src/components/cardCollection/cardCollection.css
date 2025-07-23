@@ -1,0 +1,37 @@
+.played-cards-container {
+    position: absolute;
+    top: 50px;
+    right: 130px;
+    width: 410px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid #03e9f4;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 0 10px #03e9f4;
+}
+
+.played-cards-row {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.played-card, .empty-card {
+    width: 45px;
+    height: 65px;
+    margin: 2px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.played-card img {
+    width: 45px;
+    height: 65px;;
+    object-fit: contain;
+}
+
+.empty-card {
+    background: rgba(255, 255, 255, 0.1);
+}
