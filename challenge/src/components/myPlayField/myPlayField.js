@@ -6,10 +6,10 @@ import loseStar from '../../resources/img/loseStar.png'
 import { useEffect, useState } from 'react';
 
 const MyPlayField = ({ myCardsCount, setMyCardsCount, enemyPlay, setMyCurrentCard, myCurrentCard,
-    drawRandomCard, life, setLife, result, setResult, setRoundId, isGameOver}) => {
+    drawRandomCard, life, setLife, result, setResult, setRoundId, showGameOver}) => {
 
     function play(cardType) {
-        if (myCardsCount[cardType] > 0 && !isGameOver) {
+        if (myCardsCount[cardType] > 0 && !showGameOver) {
             setResult("▪▪▪"); 
             setRoundId(prev => prev + 1);
             setMyCurrentCard(cardType);
@@ -56,9 +56,9 @@ const MyPlayField = ({ myCardsCount, setMyCardsCount, enemyPlay, setMyCurrentCar
                             className={`myButton ${cardType}`}
                             onClick={(e) => {
                                 e.preventDefault();
-                                if (!isGameOver) play(cardType);
+                                if (!showGameOver) play(cardType);
                             }}
-                            disabled={isGameOver}
+                            disabled={showGameOver}
                         ></button>
                     </div>
                 ))}

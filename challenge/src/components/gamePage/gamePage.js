@@ -30,9 +30,7 @@ const GamePage = () => {
     const [myScore, setMyScore] = useState(0);
     const [bonus, setBonus] = useState(1);
     const [roundId, setRoundId] = useState(0);
-    const [isGameOver, setIsGameOver] = useState(false);
     const [gameStatus, setGameStatus] = useState(null); // 'won' | 'lost' | null
-    const [finalScore, setFinalScore] = useState(0);
     const [showGameOver, setShowGameOver] = useState(false);
     
 
@@ -110,7 +108,7 @@ const GamePage = () => {
                 result={result}
                 setResult={setResult}
                 setRoundId={setRoundId}
-                isGameOver={isGameOver}
+                showGameOver={showGameOver}
             />
 
             <ReloadButton reloadEnemyCards={reloadEnemyCards}
@@ -135,7 +133,7 @@ const GamePage = () => {
                 setBonus={setBonus}
                 life={life}
                 setLife={setLife}
-                isGameOver={isGameOver}
+                showGameOver={showGameOver}
             />
         </Fragment>
     )

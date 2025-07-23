@@ -1,7 +1,7 @@
 import './buySaleBar.css';
 import { useEffect, useCallback } from 'react';
 
-function BuySaleBar({ myScore, setMyScore, result, setResult, bonus, setBonus, life, setLife, isGameOver }) {
+function BuySaleBar({ myScore, setMyScore, result, setResult, bonus, setBonus, life, setLife, showGameOver }) {
 
     // Рассчитываем стоимость покупки жизни
     const getLifePrice = () => {
@@ -11,7 +11,7 @@ function BuySaleBar({ myScore, setMyScore, result, setResult, bonus, setBonus, l
     const lifePrice = getLifePrice();
 
     useEffect(() => {
-        if (result === 'Победа' && !isGameOver) {
+        if (result === 'Победа' && !showGameOver) {
             setBonus(prev => {
                 const newBonus = prev * 2;
                 setMyScore(prevScore => prevScore + 1000 * prev);
