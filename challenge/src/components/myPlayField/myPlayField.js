@@ -9,7 +9,7 @@ const MyPlayField = ({ myCardsCount, setMyCardsCount, enemyPlay, setMyCurrentCar
     drawRandomCard, life, setLife, result, setResult, setRoundId, isGameOver}) => {
 
     function play(cardType) {
-        if (myCardsCount[cardType] > 0) {
+        if (myCardsCount[cardType] > 0 && !isGameOver) {
             setResult("▪▪▪"); 
             setRoundId(prev => prev + 1);
             setMyCurrentCard(cardType);
@@ -19,7 +19,6 @@ const MyPlayField = ({ myCardsCount, setMyCardsCount, enemyPlay, setMyCurrentCar
 
             }));
 
-            console.log(myCurrentCard)
             enemyPlay();
             drawRandomCard();
 

@@ -2,28 +2,26 @@ import './scoreBar.css';
 import { useEffect, useState } from 'react';
 
 
-function ScoreBar({ myScore, result}) {
+function ScoreBar({ gameStatus, myScore }) {
     const [highScore, setHighScore] = useState(0);
     const [isNewRecord, setIsNewRecord] = useState(false);
 
-    // Загружаем рекорд при монтировании
+     // Загрузка рекорда
     useEffect(() => {
-        const savedHighScore = localStorage.getItem('highScore');
-        if (savedHighScore) {
-            setHighScore(parseInt(savedHighScore));
-        }
+        const savedHighScore = localStorage.getItem('highScore') || 0;
+        setHighScore(parseInt(savedHighScore));
     }, []);
 
-// Обновляем рекорд только при победе
+    // Проверка рекорда
     useEffect(() => {
-        if (result === 'Победа' && myScore > highScore) {
+        if (gameStatus === 'won' && myScore > highScore) {
             setHighScore(myScore);
             localStorage.setItem('highScore', myScore.toString());
             setIsNewRecord(true);
             const timer = setTimeout(() => setIsNewRecord(false), 2000);
             return () => clearTimeout(timer);
         }
-    }, [result, myScore]);
+    }, [gameStatus, myScore]);
 
     function resetRecord() {
         localStorage.removeItem('highScore');
@@ -33,8 +31,9 @@ function ScoreBar({ myScore, result}) {
 
      return (
         <div className='testCont'>
-            <span className={isNewRecord ? 'pulse-animation' : ''}>
-                Рекорд: {highScore.toLocaleString()} {isNewRecord && '🔥'}
+            <span className={isNewRecord ? 'record-pulse' : ''}>
+                Рекорд: {highScore.toLocaleString()} 
+                {isNewRecord && ' 🎉'}
             </span>
             <button className='buttonTest' onClick={resetRecord}>
                 Сбросить рекорд

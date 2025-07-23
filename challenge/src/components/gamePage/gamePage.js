@@ -31,12 +31,28 @@ const GamePage = () => {
     const [bonus, setBonus] = useState(1);
     const [roundId, setRoundId] = useState(0);
     const [isGameOver, setIsGameOver] = useState(false);
+    const [gameStatus, setGameStatus] = useState(null); // 'won' | 'lost' | null
+    const [finalScore, setFinalScore] = useState(0);
+    const [showGameOver, setShowGameOver] = useState(false);
+    
 
+    // Обработчик завершения игры
     useEffect(() => {
-        if (life <= 0) {
-            setIsGameOver(true);
+        const gameFinished = life <= 0 || 
+                           (myCardsCount.rock === 0 && 
+                            myCardsCount.paper === 0 && 
+                            myCardsCount.scissors === 0);
+
+        if (gameFinished) {
+            // Даем время на обработку последнего раунда
+            const timer = setTimeout(() => {
+                setGameStatus(life <= 0 ? 'lost' : 'won');
+                setShowGameOver(true);
+            }, 100); // Небольшая задержка для обработки последнего раунда
+            
+            return () => clearTimeout(timer);
         }
-    }, [life]);
+    }, [life, myCardsCount]);
 
 
 
@@ -51,10 +67,15 @@ const GamePage = () => {
         setBonus(1)
     };
 
+    // Полный сброс игры
     const resetGame = () => {
-        resetMyCards(); // Ваша существующая функция сброса
-        setIsGameOver(false);
-        setLife(3); // Восстанавливаем жизни
+        resetMyCards();
+        reloadEnemyCards();
+        setGameStatus(null);
+        setShowGameOver(false);
+        setLife(3);
+        setMyScore(0);
+        setBonus(1);
     };
 
 
@@ -63,25 +84,20 @@ const GamePage = () => {
     return (
         <Fragment>
 
-            {(isGameOver || (myCardsCount.rock === 0 && myCardsCount.paper === 0 && myCardsCount.scissors === 0)) && (
+            {showGameOver && (
                 <div className="gameOverModal">
                     <div className="modalContent">
-                        <h2>{isGameOver ? `Вы проиграли` : `Победа!`}</h2>
-                        <p>{isGameOver ? `Очков нет` : `Ваш результат: ${myScore} очков`}</p>
-                        <button
-                            onClick={resetGame}
-                            className="refreshButton"
-                        >
-                            Начать заново
-                        </button>
+                        <h2>{gameStatus === 'won' ? 'Победа!' : 'Поражение'}</h2>
+                        <p>{gameStatus === 'won' ? `Очков: ${myScore}` : 'Попробуйте еще раз!'}</p>
+                        <button onClick={resetGame}>Новая игра</button>
                     </div>
                 </div>
             )}
 
             <EnemyPlayField arr={array} />
-            <ScoreBar 
-            myScore={myScore}
-            result={result}/>
+            <ScoreBar
+                gameStatus={gameStatus}
+                myScore={myScore} />
 
             <MyPlayField enemyPlay={enemyPlay}
                 myCardsCount={myCardsCount}
@@ -119,6 +135,7 @@ const GamePage = () => {
                 setBonus={setBonus}
                 life={life}
                 setLife={setLife}
+                isGameOver={isGameOver}
             />
         </Fragment>
     )
