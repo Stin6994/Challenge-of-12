@@ -1,12 +1,4 @@
-/* body {
-    background-color:#1f1c1c;
-    background-image: url('../../resources/img/backGround.jpg');
-    background-size: 90%;
-    background-repeat: no-repeat;
-    border: 3px solid green;
-    background-position: 50% -5%;   
-} */
-body {
+.neon {
       width: 100%;
       height: 100vh;
       background: 
@@ -21,7 +13,7 @@ body {
     }
 
     /* Основное свечение на весь экран */
-    body::before {
+    .neon::before {
       content: '';
       position: absolute;
       top: -50%;
@@ -31,18 +23,18 @@ body {
       background: 
         radial-gradient(
           circle at center,
-          rgba(130, 100, 255, 0.45) 0%,
-          rgba(21, 11, 75, 0.15) 20%,
+          rgba(130, 100, 255, 0.25) 0%,
+          rgba(80, 60, 180, 0.15) 40%,
           transparent 80%
         );
       animation: 
         pulse 16s infinite alternate ease-in-out,
-       /*  drift 24s infinite linear; */
-      /* filter: blur(30px); */
+        drift 24s infinite linear;
+      filter: blur(30px);
     }
 
     /* Дополнительные блики */
-    body::after {
+    .neon::after {
       content: '';
       position: absolute;
       top: -20%;
@@ -55,8 +47,8 @@ body {
           rgba(160, 120, 255, 0.15) 0%,
           transparent 60%
         );
-  /*     animation: 
-        float 28s infinite linear reverse; */
+      animation: 
+        float 28s infinite linear reverse;
       filter: blur(40px);
       mix-blend-mode: screen;
     }
@@ -66,42 +58,17 @@ body {
       100% { transform: scale(1.05); opacity: 1; }
     }
 
- /*    @keyframes drift {
+    @keyframes drift {
       0% { transform: translate(0, 0); }
       25% { transform: translate(-5%, -3%); }
       50% { transform: translate(0, -5%); }
       75% { transform: translate(5%, -3%); }
       100% { transform: translate(0, 0); }
-    } */
+    }
 
-   /*  @keyframes float {
+    @keyframes float {
       0% { transform: translate(0, 0); }
       33% { transform: translate(10%, 5%); }
       66% { transform: translate(-5%, 10%); }
       100% { transform: translate(0, 0); }
-    } */
-
-
-
-/* Основные стили */
-/* body {
-  background: radial-gradient(circle, #0a0e2a 0%, #000000 100%);
-  font-family: 'Orbitron', sans-serif;
-  color: #03e9f4;
-  margin: 0;
-  overflow-x: hidden;
-} */
-
-/* Неоновые эффекты */
-/* .neon-box {
-  border: 1px solid #03e9f4;
-  box-shadow: 0 0 10px #03e9f4, inset 0 0 5px #03e9f4;
-  border-radius: 8px;
-} */
-
-/* Анимации */
-/* @keyframes pulse {
-  0% { opacity: 0.8; }
-  50% { opacity: 1; transform: scale(1.02); }
-  100% { opacity: 0.8; }
-} */
+    }
