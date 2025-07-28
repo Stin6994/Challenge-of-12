@@ -35,3 +35,30 @@
 .empty-card {
     background: rgba(255, 255, 255, 0.1);
 }
+
+
+/* 
+.played-cards-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 200px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid #03e9f4;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.played-cards-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 5px;
+}
+
+.played-card {
+  width: 20px;
+  height: 20px;
+  margin: 2px;
+  background-size: contain;
+  background-repeat: no-repeat;
+} */

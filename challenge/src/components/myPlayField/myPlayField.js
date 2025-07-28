@@ -57,7 +57,6 @@ const MyPlayField = ({ myCardsCount, setMyCardsCount, enemyPlay, setMyCurrentCar
                         ></button>
                     </div>
                 ))}
-                <span>Количество жизней: {life}</span>
                 <div>
                     <div style={{ display: 'flex', gap: '10px', position: 'absolute' }}>
                         {/* Рисуем звезды в зависимости от life */}

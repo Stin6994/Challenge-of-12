@@ -1,17 +1,34 @@
 body {
-    /* width: auto; */
-    /* background: content-box radial-gradient(crimson, skyblue); */
     background-color:#1f1c1c;
     background-image: url('../../resources/img/backGround.jpg');
-  /*   background-image: url('../../resources/img/enemyFrame.jpg'); */
     background-size: 90%;
     background-repeat: no-repeat;
-    
-    /* background-position: auto center; */
     border: 3px solid green;
-
-
-    background-position: 50% -5%;
-    
-    
+    background-position: 50% -5%;   
 }
+
+
+
+
+/* Основные стили */
+/* body {
+  background: radial-gradient(circle, #0a0e2a 0%, #000000 100%);
+  font-family: 'Orbitron', sans-serif;
+  color: #03e9f4;
+  margin: 0;
+  overflow-x: hidden;
+} */
+
+/* Неоновые эффекты */
+/* .neon-box {
+  border: 1px solid #03e9f4;
+  box-shadow: 0 0 10px #03e9f4, inset 0 0 5px #03e9f4;
+  border-radius: 8px;
+} */
+
+/* Анимации */
+/* @keyframes pulse {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; transform: scale(1.02); }
+  100% { opacity: 0.8; }
+} */

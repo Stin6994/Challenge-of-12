@@ -100,62 +100,63 @@ const GamePage = () => {
 
     return (
         <Fragment>
-
-            {showGameOver && (
-                <div className="gameOverModal">
-                    <div className="modalContent">
-                        <h2>{gameStatus === 'won' ? 'Победа!' : 'Поражение'}</h2>
-                        <p>{gameStatus === 'won' ? `Очков: ${myScore}` : 'Попробуйте еще раз!'}</p>
-                        <button onClick={resetGame}>Новая игра</button>
+            <div className="game-container">
+                {showGameOver && (
+                    <div className="gameOverModal">
+                        <div className="modalContent">
+                            <h2>{gameStatus === 'won' ? 'Победа!' : 'Поражение'}</h2>
+                            <p>{gameStatus === 'won' ? `Очков: ${myScore}` : 'Попробуйте еще раз!'}</p>
+                            <button onClick={resetGame}>Новая игра</button>
+                        </div>
                     </div>
-                </div>
-            )}
+                )}
 
-            <EnemyPlayField arr={array} />
-            <ScoreBar
-                gameStatus={gameStatus}
-                myScore={myScore} />
+                <EnemyPlayField arr={array} />
+                <ScoreBar
+                    gameStatus={gameStatus}
+                    myScore={myScore} />
 
-            <MyPlayField enemyPlay={enemyPlay}
-                myCardsCount={myCardsCount}
-                setMyCardsCount={setMyCardsCount}
-                setMyCurrentCard={setMyCurrentCard}
-                myCurrentCard={myCurrentCard}
-                drawRandomCard={drawRandomCard}
-                life={life}
-                setLife={setLife}
-                result={result}
-                setResult={setResult}
-                setRoundId={setRoundId}
-                showGameOver={showGameOver}
-            />
+                <MyPlayField enemyPlay={enemyPlay}
+                    myCardsCount={myCardsCount}
+                    setMyCardsCount={setMyCardsCount}
+                    setMyCurrentCard={setMyCurrentCard}
+                    myCurrentCard={myCurrentCard}
+                    drawRandomCard={drawRandomCard}
+                    life={life}
+                    setLife={setLife}
+                    result={result}
+                    setResult={setResult}
+                    setRoundId={setRoundId}
+                    showGameOver={showGameOver}
+                />
 
-            <ReloadButton reloadEnemyCards={reloadEnemyCards}
-                reloadMyCards={resetMyCards} />
+                <ReloadButton reloadEnemyCards={reloadEnemyCards}
+                    reloadMyCards={resetMyCards} />
 
-            <ResultField myCurrentCard={myCurrentCard}
-                setMyCurrentCard={setMyCurrentCard}
-                createDeck={createDeck}
-                currentEnemyCard={currentEnemyCard}
-                setCurrentEnemyCard={setCurrentEnemyCard}
-                drawRandomCard={drawRandomCard}
-                result={result}
-                setResult={setResult}
-                roundId={roundId}
-            />
-            <BuySaleBar
-                myScore={myScore}
-                setMyScore={setMyScore}
-                result={result}
-                setResult={setResult}
-                bonus={bonus}
-                setBonus={setBonus}
-                life={life}
-                setLife={setLife}
-                showGameOver={showGameOver}
-            />
-            <PlayedCardsCollection
-                playedCards={playedCards} />
+                <ResultField myCurrentCard={myCurrentCard}
+                    setMyCurrentCard={setMyCurrentCard}
+                    createDeck={createDeck}
+                    currentEnemyCard={currentEnemyCard}
+                    setCurrentEnemyCard={setCurrentEnemyCard}
+                    drawRandomCard={drawRandomCard}
+                    result={result}
+                    setResult={setResult}
+                    roundId={roundId}
+                />
+                <BuySaleBar
+                    myScore={myScore}
+                    setMyScore={setMyScore}
+                    result={result}
+                    setResult={setResult}
+                    bonus={bonus}
+                    setBonus={setBonus}
+                    life={life}
+                    setLife={setLife}
+                    showGameOver={showGameOver}
+                />
+                <PlayedCardsCollection
+                    playedCards={playedCards} />
+            </div>
         </Fragment>
     )
 }

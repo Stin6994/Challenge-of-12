@@ -7,13 +7,32 @@
 
 }
 
-/* img {
-    background-size: cover;
-} */
-
 img {
-
     width: 7vw;
     height: 10vw;
-
 }
+
+/* .mainCont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.playField {
+  width: 150px;
+  height: 200px;
+  margin: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid #03e9f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.resultText {
+  font-size: 1.5rem;
+  margin: 15px 0;
+  color: #ff00ff;
+  text-shadow: 0 0 5px #ff00ff;
+} */

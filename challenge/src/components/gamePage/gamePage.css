@@ -27,3 +27,35 @@
     border-radius: 5px;
     cursor: pointer;
 }
+/* 
+.game-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 5px solid greenyellow
+}
+
+.gameOverModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: #0a0e2a;
+  padding: 30px;
+  border: 2px solid #ff00ff;
+  box-shadow: 0 0 20px #ff00ff;
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+}
+ */

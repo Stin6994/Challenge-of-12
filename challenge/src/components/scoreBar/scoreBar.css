@@ -1,15 +1,9 @@
-/*  .testCont {
-    
-    border: 1px solid yellow;
-    margin-left: 9%;
-    width: 25%;
-  } */
 
 
 .pulse-animation {
   display: inline-block;
   animation: pulse 0.5s infinite alternate;
-  color: #ff00ff; /* Яркий цвет для нового рекорда */
+  color: #ff00ff; 
   text-shadow: 0 0 10px #ff00ff;
 }
 
@@ -41,3 +35,33 @@
   background: #03e9f4;
   color: #000;
 }
+
+
+/* 
+.testCont {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid #03e9f4;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin: 10px auto;
+  max-width: 300px;
+  text-align: center;
+}
+
+.record-pulse {
+  animation: pulse 1.5s infinite;
+}
+
+.buttonTest {
+  background: transparent;
+  border: 1px solid #ff00ff;
+  color: #fff;
+  padding: 5px 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.buttonTest:hover {
+  box-shadow: 0 0 10px #ff00ff;
+} */
