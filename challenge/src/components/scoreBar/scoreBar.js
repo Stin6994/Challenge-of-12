@@ -29,14 +29,17 @@ function ScoreBar({ gameStatus, myScore }) {
         setIsNewRecord(false);
     }
 
-     return (
-        <div className='testCont'>
-            <span className={isNewRecord ? 'record-pulse' : ''}>
-                Рекорд: {highScore.toLocaleString()} 
-                {isNewRecord && ' 🎉'}
-            </span>
-            <button className='buttonTest' onClick={resetRecord}>
-                Сбросить рекорд
+      return (
+        <div className='score-bar-container'>
+            <div className={`score-display ${isNewRecord ? 'record-pulse' : ''}`}>
+                <span className="score-label">Рекорд:</span>
+                <span className="score-value">{highScore.toLocaleString()}</span>
+                {isNewRecord && <span className="celebration">✨</span>}
+            </div>
+            <button className='neon-reset-btn' onClick={resetRecord}>
+                <span className="btn-icon">×</span>
+                <span className="btn-text">Сбросить</span>
+                <span className="btn-glow"></span>
             </button>
         </div>
     );

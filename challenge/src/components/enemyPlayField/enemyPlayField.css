@@ -32,8 +32,8 @@ border: 1px solid white;
 
  .enemy-cards-container {
     position: absolute;
-    top: 350px;
-    left: 130px;
+    top: 100px;
+    left: 30px;
     width: 410px;
     background: rgba(0, 0, 0, 0.5);
     border: 2px solid #ff073a;

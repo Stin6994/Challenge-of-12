@@ -9,7 +9,7 @@ import ReloadButton from '../reloadButton/reloadButton';
 import ResultField from '../resultField/resultField';
 import BuySaleBar from '../buySaleBar/buySaleBar';
 import PlayedCardsCollection from '../cardCollection/cardCollection';
-import Test from '../testCss/testcss';
+/* import Test from '../testCss/testcss'; */
 
 const GamePage = () => {
 
@@ -158,7 +158,7 @@ const GamePage = () => {
                 <PlayedCardsCollection
                     playedCards={playedCards} />
             </div>
-                <Test/>
+               {/*  <Test/> */}
         </Fragment>
     )
 }

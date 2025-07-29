@@ -1,38 +1,86 @@
-.mainCont {
+.result-field {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 200px;
+    min-height: 320px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.card-display {
+    width: 100px;
+    height: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
     position: relative;
-    margin-top: -20%;
-    margin-left: 50%;
-    width: 15%;
-    border: 3px solid white;
-
+    overflow: hidden;
 }
 
-img {
-    width: 7vw;
-    height: 10vw;
+.card-display img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
 }
 
-/* .mainCont {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 20px 0;
+.card-display img.hidden {
+    opacity: 0;
+    transform: scale(0.8);
 }
 
-.playField {
-  width: 150px;
-  height: 200px;
-  margin: 10px;
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid #03e9f4;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.card-display img.visible {
+    animation: cardAppear 0.5s forwards;
 }
 
-.resultText {
-  font-size: 1.5rem;
-  margin: 15px 0;
-  color: #ff00ff;
-  text-shadow: 0 0 5px #ff00ff;
-} */
+.card-display.enemy::after,
+.card-display.player::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 8px;
+    z-index: -1;
+}
+
+.card-display.enemy::after {
+    border: 2px solid #f0f;
+    box-shadow: 0 0 15px #f0f, inset 0 0 10px #f0f;
+}
+
+.card-display.player::after {
+    border: 2px solid #0ff;
+    box-shadow: 0 0 15px #0ff, inset 0 0 10px #0ff;
+}
+
+.result-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-radius: 5px;
+    text-align: center;
+    animation: pulse 2s infinite;
+    white-space: nowrap;
+}
+
+/* ... (остальные стили результата остаются без изменений) ... */
+
+@keyframes cardAppear {
+    0% { opacity: 0; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.9; }
+    50% { transform: scale(1.05); opacity: 1; }
+}
