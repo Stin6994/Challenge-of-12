@@ -1,9 +1,7 @@
 import './buySaleBar.css';
-import { useEffect, useCallback } from 'react';
+import { useEffect } from 'react';
 
 function BuySaleBar({ myScore, setMyScore, result, setResult, bonus, setBonus, life, setLife, showGameOver }) {
-
-    // Рассчитываем стоимость покупки жизни
     const getLifePrice = () => {
         return myScore <= 10000 ? 5000 : Math.floor(myScore / 2);
     };
@@ -18,23 +16,16 @@ function BuySaleBar({ myScore, setMyScore, result, setResult, bonus, setBonus, l
                 return newBonus;
             });
         } else if (result === 'Поражение') {
-            setBonus(prev => {
-                const newBonus = Math.max(prev / 2, 1); // Уменьшаем вдвое, но не меньше 1
-                return newBonus;
-            });
+            setBonus(prev => Math.max(prev / 2, 1));
         }
+    }, [result]);
 
-    }, [result]); // Теперь эффект будет срабатывать при каждом изменении result
-
-    // Функция продажи жизни
     const sellLife = () => {
         setLife(prev => prev - 1);
         setMyScore(prev => prev + bonus * 1000);
         setBonus(prev => Math.max(prev / 2, 1));
     };
 
-
-    // Функция покупки жизни
     const buyLife = () => {
         if (myScore >= lifePrice && life < 3) {
             setMyScore(prev => prev - lifePrice);
@@ -44,83 +35,48 @@ function BuySaleBar({ myScore, setMyScore, result, setResult, bonus, setBonus, l
     };
 
     return (
-        <div className='Contmytest'>
-            <div>
-                <span
-                    style={{ fontSize: "1vw" }}> Очки: {myScore}
-                </span>
+        <div className='buy-sale-container'>
+            <div className="score-display">
+                <span className="neon-text">Очки: {myScore.toLocaleString()}</span>
             </div>
-            <div>
-                <span
-                    style={{ fontSize: "1vw" }}> Множитель Х{bonus}
-                </span>
+            
+            <div className="score-display">
+                <span className="neon-text">Множитель: Х{bonus}</span>
             </div>
-            <div>
-                <button
-                    onClick={buyLife}
-                    disabled={life >= 3 || myScore < lifePrice}
-                    style={{
-                        fontSize: "1vw",
-                        background: 'none',
-                        border: 'none',
-                        color: (life >= 3 || myScore < lifePrice) ? '#888' : 'white',
-                        cursor: (life >= 3 || myScore < lifePrice) ? 'not-allowed' : 'pointer',
-                        padding: 0,
-                        textDecoration: 'underline'
-                    }}
-                    title={
-                        life >= 3
-                            ? "Нельзя купить - максимальное количество жизней (3)"
-                            : myScore < lifePrice
-                                ? `Не хватает очков (нужно ${lifePrice})`
-                                : `Купить 1 жизнь за ${lifePrice} очков`
-                    }
-
-                >
-                    Купить за {lifePrice}
-                </button>
-            </div>
-            <div>
-                {/* <button
-                    onClick={sellLife}
-                    disabled={life <= 1}
-                    style={{
-                        fontSize: "1vw",
-                        background: 'none',
-                        border: 'none',
-                        color: life <= 1 ? '#888' : 'white',
-                        cursor: life <= 1 ? 'not-allowed' : 'pointer',
-                        padding: 0,
-                        textDecoration: 'underline'
-                    }}
-                    title={life <= 1 ? "Нельзя продать последнюю жизнь" : ""}
-                >
-                    Продать за {bonus * 1000}
-                </button> */}
-                <button
-                    onClick={sellLife}
-                    disabled={life <= 1}
-                    className="neon-button"
-                    title={
-                        life <= 1
-                            ? "Нельзя продать - минимальное количество жизней (1)"
-                            : `Продать 1 жизнь за ${bonus * 1000} очков`
-                    }
-                >
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    Продать за {bonus * 1000}
-                </button>
-
-            </div>
+            
+            <button
+                onClick={buyLife}
+                disabled={life >= 3 || myScore < lifePrice}
+                className="neon-button buy-button"
+                title={
+                    life >= 3
+                        ? "Максимальное количество жизней (3)"
+                        : myScore < lifePrice
+                            ? `Не хватает очков (нужно ${lifePrice})`
+                            : `Купить 1 жизнь за ${lifePrice} очков`
+                }
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Купить за {lifePrice}
+            </button>
+            
+            <button
+                onClick={sellLife}
+                disabled={life <= 1}
+                className="neon-button sell-button"
+                title={life <= 1 ? "Нельзя продать последнюю жизнь" : `Продать 1 жизнь за ${bonus * 1000} очков`}
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Продать за {bonus * 1000}
+            </button>
         </div>
-    )
+    );
 }
-
-
-
-
 
 export default BuySaleBar;
