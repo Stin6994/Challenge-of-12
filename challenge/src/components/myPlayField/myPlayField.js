@@ -1,8 +1,6 @@
 
 import './myPlayField.css';
-import playFieldImg from '../../resources/img/playField.png'
-import myStar from '../../resources/img/Star.png';
-import loseStar from '../../resources/img/loseStar.png'
+import Star from '../star/star';
 import { useEffect } from 'react';
 
 const MyPlayField = ({ myCardsCount, setMyCardsCount, enemyPlay, setMyCurrentCard, myCurrentCard,
@@ -31,49 +29,54 @@ const MyPlayField = ({ myCardsCount, setMyCardsCount, enemyPlay, setMyCurrentCar
         if (result === 'Поражение') {
             setLife(prev => prev - 1);
         }
-    }, [result]);
+    }, [result, setLife]);
 
 
 
 
 
-    return (
+      // Функция проверки пустых карт
+  const isCardEmpty = (cardType) => myCardsCount[cardType] <= 0;
 
-        <div className='myFieldAll'>
-            <img src={playFieldImg}
-                alt="playFieldImg"
-                className='playFieldImg' />
-            <div className='myFieldContent'>
-                {['rock', 'scissors', 'paper'].map(cardType => (
-                    <div key={cardType} className={`my${cardType} Cont`}>
-                        <span className={`${cardType}Counter`}>x{myCardsCount[cardType]}</span>
-                        <button
-                            className={`myButton ${cardType}`}
-                            onClick={(e) => {
-                                e.preventDefault();
-                                if (!showGameOver) play(cardType);
-                            }}
-                            disabled={showGameOver}
-                        ></button>
-                    </div>
-                ))}
-                <div>
-                    <div style={{ display: 'flex', gap: '10px', position: 'absolute' }}>
-                        {/* Рисуем звезды в зависимости от life */}
-                        {[1, 2, 3].map((star) => (
-                            <img
-                                key={star}
-                                src={star <= life ? myStar : loseStar}
-                                alt={star <= life ? "Горящая звезда" : "Потухшая звезда"}
-                                width="10"
-                                height="10"
-                            />
-                        ))}
-                    </div>
-                </div >
-            </div>
-        </div>
-    )
+  return (
+    <div className='myFieldAll'>
+      <div className="cards-container">
+        {['rock', 'scissors', 'paper'].map(cardType => (
+          <div 
+            key={cardType} 
+            className={`card-slot ${isCardEmpty(cardType) ? 'empty' : ''}`}
+          >
+            {!isCardEmpty(cardType) && (
+              <>
+                <div className="card-counter">
+                  {myCardsCount[cardType]}
+                </div>
+                <button
+                  className={`card-button ${cardType}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (!showGameOver) play(cardType);
+                  }}
+                  disabled={showGameOver}
+                />
+              </>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <div className="stars-container">
+        {[1, 2, 3].map((star) => (
+          <Star
+            key={star}
+            filled={star <= life}
+            size={40}
+            color="#0ff"
+          />
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default MyPlayField;

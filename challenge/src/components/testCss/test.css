@@ -1,74 +1,8 @@
-.neon {
-      width: 100%;
-      height: 100vh;
-      background: 
-        /* Базовый сине-фиолетовый градиент */
-        radial-gradient(
-          circle at center,
-          #0c0720 0%,
-          #050314 100%
-        );
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Основное свечение на весь экран */
-    .neon::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: 
-        radial-gradient(
-          circle at center,
-          rgba(130, 100, 255, 0.25) 0%,
-          rgba(80, 60, 180, 0.15) 40%,
-          transparent 80%
-        );
-      animation: 
-        pulse 16s infinite alternate ease-in-out,
-        drift 24s infinite linear;
-      filter: blur(30px);
-    }
-
-    /* Дополнительные блики */
-    .neon::after {
-      content: '';
-      position: absolute;
-      top: -20%;
-      left: -20%;
-      width: 140%;
-      height: 140%;
-      background: 
-        radial-gradient(
-          circle at 30% 30%,
-          rgba(160, 120, 255, 0.15) 0%,
-          transparent 60%
-        );
-      animation: 
-        float 28s infinite linear reverse;
-      filter: blur(40px);
-      mix-blend-mode: screen;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(0.95); opacity: 0.7; }
-      100% { transform: scale(1.05); opacity: 1; }
-    }
-
-    @keyframes drift {
-      0% { transform: translate(0, 0); }
-      25% { transform: translate(-5%, -3%); }
-      50% { transform: translate(0, -5%); }
-      75% { transform: translate(5%, -3%); }
-      100% { transform: translate(0, 0); }
-    }
-
-    @keyframes float {
-      0% { transform: translate(0, 0); }
-      33% { transform: translate(10%, 5%); }
-      66% { transform: translate(-5%, 10%); }
-      100% { transform: translate(0, 0); }
-    }
+.neon-star {
+  background: "#111";
+    height: "100vh";
+    display: "flex";
+    justify-content: "center";
+    align-items: "center";
+    gap: "20px";
+}

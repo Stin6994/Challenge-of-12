@@ -55,6 +55,7 @@ const EnemyPlayField = ({ arr }) => {
                 ))}
             </div>
         </div>
+
     );
 };
 

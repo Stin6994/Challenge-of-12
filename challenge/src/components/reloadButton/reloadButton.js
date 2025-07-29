@@ -1,4 +1,4 @@
-
+import './reloadButton.css'
 
 function ReloadButton ({reloadEnemyCards, reloadMyCards})  {
 
@@ -9,10 +9,12 @@ function ReloadButton ({reloadEnemyCards, reloadMyCards})  {
 
 
     return (
-        <button className='buttonTest'
-            onClick={backToStart}
-        > refresh
-        </button>)
+    <button className="neon-refresh-btn" onClick={backToStart}>
+      <span className="neon-icon">↻</span>
+      <span className="neon-text">Restart</span>
+      <span className="neon-glow"></span>
+    </button>
+  );
 }
 
 export default ReloadButton;
