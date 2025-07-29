@@ -18,6 +18,7 @@ body {
         );
       position: relative;
       overflow: hidden;
+      z-index: -1;
     }
 
     /* Основное свечение на весь экран */
@@ -28,6 +29,7 @@ body {
       left: -50%;
       width: 200%;
       height: 200%;
+      z-index: -1;
       background: 
         radial-gradient(
           circle at center,
@@ -49,6 +51,7 @@ body {
       left: -20%;
       width: 140%;
       height: 140%;
+      z-index: -1;
       background: 
         radial-gradient(
           circle at 30% 30%,
