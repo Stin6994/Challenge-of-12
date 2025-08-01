@@ -4,47 +4,52 @@ import scissorsImg from '../../resources/img/scissors.png';
 import paperImg from '../../resources/img/paper.png';
 
 const PlayedCardsCollection = ({ playedCards }) => {
-    // Группируем карты по типам
-    const rocks = playedCards.filter(card => card.type === 'rock');
-    const scissors = playedCards.filter(card => card.type === 'scissors');
-    const papers = playedCards.filter(card => card.type === 'paper');
+    const cardImages = {
+        rock: rockImg,
+        scissors: scissorsImg,
+        paper: paperImg
+    };
 
-    // Создаем ячейки для каждого типа
-    const renderCells = (cards, type) => {
-        const cells = [];
-        const cardImages = {
-            rock: rockImg,
-            scissors: scissorsImg,
-            paper: paperImg
-        };
+    // Функция для создания строки карт
+    const renderRow = (type) => {
+        // Фильтруем карты по типу и берем последние 8
+        const cards = playedCards
+            .filter(card => card.type === type)
+            .slice(-8);
+        
+        // Создаем элементы карт
+        const cardElements = cards.map((card, index) => (
+            <div 
+                key={`${type}-${card.roundId}-${card.isPlayer ? 'p' : 'e'}`}
+                className={`played-card ${card.isPlayer ? 'player' : 'enemy'}`}
+            >
+                <img src={cardImages[type]} alt={type} />
+            </div>
+        ));
 
-        // Заполняем сыгранными картами
-        for (let i = 0; i < cards.length && i < 8; i++) {
-            cells.push(
-                <div key={`${type}-${i}`} className="played-card">
-                    <img src={cardImages[type]} alt={type} />
-                </div>
+        // Добавляем пустые ячейки
+        while (cardElements.length < 8) {
+            cardElements.push(
+                <div 
+                    key={`empty-${type}-${cardElements.length}`}
+                    className="empty-card"
+                />
             );
         }
 
-        // Заполняем оставшиеся пустые ячейки
-        for (let i = cells.length; i < 8; i++) {
-            cells.push(<div key={`empty-${type}-${i}`} className="empty-card"></div>);
-        }
-
-        return cells;
+        return cardElements;
     };
 
     return (
         <div className="played-cards-container">
             <div className="played-cards-row">
-                {renderCells(rocks, 'rock')}
+                {renderRow('rock')}
             </div>
             <div className="played-cards-row">
-                {renderCells(scissors, 'scissors')}
+                {renderRow('scissors')}
             </div>
             <div className="played-cards-row">
-                {renderCells(papers, 'paper')}
+                {renderRow('paper')}
             </div>
         </div>
     );

@@ -56,15 +56,27 @@ const GamePage = () => {
     }, [life, myCardsCount]);
 
     // Обновляем коллекцию после каждого раунда
+  useEffect(() => {
+    if (myCurrentCard !== 'default' && currentEnemyCard) {
+        setPlayedCards(prev => [
+            ...prev,
+            { 
+                type: myCurrentCard, 
+                isPlayer: true,
+                roundId: roundId // Добавляем ID раунда
+            },
+            { 
+                type: currentEnemyCard, 
+                isPlayer: false,
+                roundId: roundId 
+            }
+        ]);
+    }
+}, [myCurrentCard, currentEnemyCard, roundId]);
+
     useEffect(() => {
-        if (myCurrentCard !== 'default' && currentEnemyCard) {
-            setPlayedCards(prev => [
-                ...prev,
-                { type: myCurrentCard, isPlayer: true },
-                { type: currentEnemyCard, isPlayer: false }
-            ]);
-        }
-    }, [myCurrentCard, currentEnemyCard]);
+    console.log('Current playedCards:', playedCards);
+}, [playedCards]);
 
 
     const resetMyCards = () => {
