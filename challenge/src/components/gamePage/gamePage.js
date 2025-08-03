@@ -9,6 +9,7 @@ import ReloadButton from '../reloadButton/reloadButton';
 import ResultField from '../resultField/resultField';
 import BuySaleBar from '../buySaleBar/buySaleBar';
 import PlayedCardsCollection from '../cardCollection/cardCollection';
+import InfoButton from '../infoButton/infoButton';
 /* import Test from '../testCss/testcss'; */
 
 const GamePage = () => {
@@ -56,27 +57,27 @@ const GamePage = () => {
     }, [life, myCardsCount]);
 
     // Обновляем коллекцию после каждого раунда
-  useEffect(() => {
-    if (myCurrentCard !== 'default' && currentEnemyCard) {
-        setPlayedCards(prev => [
-            ...prev,
-            { 
-                type: myCurrentCard, 
-                isPlayer: true,
-                roundId: roundId // Добавляем ID раунда
-            },
-            { 
-                type: currentEnemyCard, 
-                isPlayer: false,
-                roundId: roundId 
-            }
-        ]);
-    }
-}, [myCurrentCard, currentEnemyCard, roundId]);
+    useEffect(() => {
+        if (myCurrentCard !== 'default' && currentEnemyCard) {
+            setPlayedCards(prev => [
+                ...prev,
+                {
+                    type: myCurrentCard,
+                    isPlayer: true,
+                    roundId: roundId // Добавляем ID раунда
+                },
+                {
+                    type: currentEnemyCard,
+                    isPlayer: false,
+                    roundId: roundId
+                }
+            ]);
+        }
+    }, [myCurrentCard, currentEnemyCard, roundId]);
 
     useEffect(() => {
-    console.log('Current playedCards:', playedCards);
-}, [playedCards]);
+        console.log('Current playedCards:', playedCards);
+    }, [playedCards]);
 
 
     const resetMyCards = () => {
@@ -115,11 +116,17 @@ const GamePage = () => {
         <Fragment>
             <div className="game-container">
                 {showGameOver && (
-                    <div className="gameOverModal">
-                        <div className="modalContent">
-                            <h2>{gameStatus === 'won' ? 'Победа!' : 'Поражение'}</h2>
-                            <p>{gameStatus === 'won' ? `Очков: ${myScore}` : 'Попробуйте еще раз!'}</p>
-                            <button onClick={resetGame}>Новая игра</button>
+                    <div className="modal-overlay">
+                        <div className="modal">
+                            <div className="modalContent">
+                                <h2>{gameStatus === 'won' ? 'Победа!' : 'Поражение'}</h2>
+                                <div className="modalText">
+                                    <p>{gameStatus === 'won' ? `Очков: ${myScore}` : 'Попробуйте еще раз!'}</p>
+                                </div>
+                                <button className="refreshButton" onClick={resetGame}>
+                                    Новая игра
+                                </button>
+                            </div>
                         </div>
                     </div>
                 )}
@@ -146,6 +153,8 @@ const GamePage = () => {
                 <ReloadButton reloadEnemyCards={reloadEnemyCards}
                     reloadMyCards={resetMyCards} />
 
+                <InfoButton />
+
                 <ResultField myCurrentCard={myCurrentCard}
                     setMyCurrentCard={setMyCurrentCard}
                     createDeck={createDeck}
@@ -170,7 +179,7 @@ const GamePage = () => {
                 <PlayedCardsCollection
                     playedCards={playedCards} />
             </div>
-               {/*  <Test/> */}
+            {/*  <Test/> */}
         </Fragment>
     )
 }

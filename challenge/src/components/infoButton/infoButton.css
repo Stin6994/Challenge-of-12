@@ -1,0 +1,115 @@
+.neon-info-btn {
+    position: relative;
+    background: transparent;
+    border: none;
+    padding: 12px 24px;
+    color: #f0f;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    margin-left: 20px;
+  }
+  
+  .neon-icon {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 1.4rem;
+  }
+  
+  .neon-text {
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 0 5px #f0f;
+  }
+  
+  .neon-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #f0f;
+    border-radius: 4px;
+    box-shadow: 0 0 10px #f0f, inset 0 0 10px #f0f;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+  }
+  
+  .neon-info-btn:hover {
+    color: #fff;
+    text-shadow: 0 0 10px #fff;
+  }
+  
+  .neon-info-btn:hover .neon-glow {
+    opacity: 1;
+    box-shadow: 0 0 15px #f0f, inset 0 0 15px #f0f;
+  }
+  
+  .neon-info-btn:active {
+    transform: scale(0.95);
+  }
+  
+  /* Modal styles */
+  .info-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .info-modal {
+    background: linear-gradient(145deg, #1a1a2e, #16213e);
+    border-radius: 10px;
+    padding: 2rem;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 0 20px rgba(143, 0, 255, 0.5);
+    border: 1px solid #8f00ff;
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+  }
+  
+  .info-modal-content {
+    position: relative;
+  }
+  
+  .info-modal h2 {
+    color: #8f00ff;
+    text-shadow: 0 0 5px #8f00ff;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .info-modal p {
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+  
+  .neon-close-btn {
+    background: transparent;
+    border: 1px solid #8f00ff;
+    color: #8f00ff;
+    padding: 8px 16px;
+    margin-top: 1rem;
+    font-family: 'Orbitron', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .neon-close-btn:hover {
+    background: rgba(143, 0, 255, 0.2);
+    box-shadow: 0 0 10px #8f00ff;
+  }

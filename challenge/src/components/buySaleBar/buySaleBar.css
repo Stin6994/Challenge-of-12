@@ -16,11 +16,70 @@
 .score-display {
     font-family: 'Orbitron', sans-serif;
     color: #03e9f4;
-    text-shadow: 0 0 5px #03e9f4;
     font-size: 1.1vw;
     text-align: center;
+    position: relative;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    overflow: hidden;
 }
 
+.neon-text {
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 0 5px #03e9f4, 
+                 0 0 10px #03e9f4,
+                 0 0 20px #03e9f4;
+    animation: neonGlow 1.5s ease-in-out infinite alternate;
+}
+
+.score-display::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid #03e9f4;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #03e9f4, 
+                inset 0 0 5px #03e9f4;
+    opacity: 0.7;
+    animation: borderPulse 2s linear infinite;
+}
+
+@keyframes neonGlow {
+    from {
+        text-shadow: 0 0 5px #03e9f4, 
+                     0 0 10px #03e9f4;
+    }
+    to {
+        text-shadow: 0 0 10px #03e9f4, 
+                     0 0 20px #03e9f4,
+                     0 0 30px #03e9f4;
+    }
+}
+
+@keyframes borderPulse {
+    0% {
+        box-shadow: 0 0 5px #03e9f4, 
+                   inset 0 0 5px #03e9f4;
+        opacity: 0.7;
+    }
+    50% {
+        box-shadow: 0 0 10px #03e9f4, 
+                   inset 0 0 10px #03e9f4;
+        opacity: 1;
+    }
+    100% {
+        box-shadow: 0 0 5px #03e9f4, 
+                   inset 0 0 5px #03e9f4;
+        opacity: 0.7;
+    }
+}
+
+/* Стили кнопок остаются без изменений */
 .neon-button {
     position: relative;
     display: inline-block;
