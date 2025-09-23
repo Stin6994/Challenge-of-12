@@ -12,21 +12,21 @@
     overflow: hidden;
     transition: all 0.3s ease;
     margin-left: 20px;
-  }
-  
-  .neon-icon {
+}
+
+.neon-icon {
     display: inline-block;
     margin-right: 10px;
     font-size: 1.4rem;
-  }
-  
-  .neon-text {
+}
+
+.neon-text {
     position: relative;
     z-index: 1;
     text-shadow: 0 0 5px #f0f;
-  }
-  
-  .neon-glow {
+}
+
+.neon-glow {
     position: absolute;
     top: 0;
     left: 0;
@@ -37,24 +37,24 @@
     box-shadow: 0 0 10px #f0f, inset 0 0 10px #f0f;
     opacity: 0.7;
     transition: all 0.3s ease;
-  }
-  
-  .neon-info-btn:hover {
+}
+
+.neon-info-btn:hover {
     color: #fff;
     text-shadow: 0 0 10px #fff;
-  }
-  
-  .neon-info-btn:hover .neon-glow {
+}
+
+.neon-info-btn:hover .neon-glow {
     opacity: 1;
     box-shadow: 0 0 15px #f0f, inset 0 0 15px #f0f;
-  }
-  
-  .neon-info-btn:active {
+}
+
+.neon-info-btn:active {
     transform: scale(0.95);
-  }
-  
-  /* Modal styles */
-  .info-modal-overlay {
+}
+
+/* Modal styles */
+.info-modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -65,41 +65,78 @@
     justify-content: center;
     align-items: center;
     z-index: 1000;
-  }
-  
-  .info-modal {
+}
+
+.info-modal {
     background: linear-gradient(145deg, #1a1a2e, #16213e);
     border-radius: 10px;
     padding: 2rem;
-    max-width: 500px;
+    max-width: 600px;
+    max-height: 80vh;
     width: 90%;
     box-shadow: 0 0 20px rgba(143, 0, 255, 0.5);
     border: 1px solid #8f00ff;
     color: #fff;
     font-family: 'Orbitron', sans-serif;
-  }
-  
-  .info-modal-content {
+    overflow-y: auto;
+}
+
+.info-modal-content {
     position: relative;
-  }
-  
-  .info-modal h2 {
+}
+
+.info-modal h2 {
     color: #8f00ff;
     text-shadow: 0 0 5px #8f00ff;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     text-align: center;
-  }
-  
-  .info-modal p {
-    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.rules-section {
+    margin-bottom: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 3px solid #8f00ff;
+}
+
+.rules-section h3 {
+    color: #8f00ff;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.rules-section ul {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+}
+
+.rules-section li {
+    margin-bottom: 0.3rem;
+    line-height: 1.4;
+}
+
+.rules-section p {
+    margin-bottom: 0.5rem;
     line-height: 1.5;
-  }
-  
-  .neon-close-btn {
+}
+
+.final-challenge {
+    background: rgba(143, 0, 255, 0.1);
+    padding: 0.8rem;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 1rem;
+    border: 1px solid #8f00ff;
+    font-weight: bold;
+}
+
+.neon-close-btn {
     background: transparent;
     border: 1px solid #8f00ff;
     color: #8f00ff;
-    padding: 8px 16px;
+    padding: 10px 20px;
     margin-top: 1rem;
     font-family: 'Orbitron', sans-serif;
     cursor: pointer;
@@ -107,9 +144,31 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-  }
-  
-  .neon-close-btn:hover {
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.neon-close-btn:hover {
     background: rgba(143, 0, 255, 0.2);
     box-shadow: 0 0 10px #8f00ff;
-  }
+}
+
+/* Стили для скроллбара */
+.info-modal::-webkit-scrollbar {
+    width: 8px;
+}
+
+.info-modal::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.info-modal::-webkit-scrollbar-thumb {
+    background: #8f00ff;
+    border-radius: 4px;
+}
+
+.info-modal::-webkit-scrollbar-thumb:hover {
+    background: #a64dff;
+}
