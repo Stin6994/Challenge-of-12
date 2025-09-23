@@ -52,28 +52,28 @@ function BuySaleBar({ myScore, setMyScore, result, setResult, bonus, setBonus, l
                     life >= 3
                         ? "Максимальное количество жизней (3)"
                         : myScore < lifePrice
-                            ? `Не хватает очков (нужно ${lifePrice})`
-                            : `Купить 1 жизнь за ${lifePrice} очков`
+                            ? `Не хватает очков (нужно ${lifePrice.toLocaleString()})`
+                            : `Купить 1 жизнь за ${lifePrice.toLocaleString()} очков`
                 }
             >
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
-                Купить за {lifePrice}
+                Купить за {lifePrice.toLocaleString()}
             </button>
             
             <button
-                onClick={sellLife}
+                onClick={sellLife.toLocaleString()}
                 disabled={life <= 1}
                 className="neon-button sell-button"
-                title={life <= 1 ? "Нельзя продать последнюю жизнь" : `Продать 1 жизнь за ${bonus * 1000} очков`}
+                title={life <= 1 ? "Нельзя продать последнюю жизнь" : `Продать 1 жизнь за ${(bonus * 1000).toLocaleString()} очков`}
             >
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
-                Продать за {bonus * 1000}
+                Продать за {(bonus * 1000).toLocaleString()}
             </button>
         </div>
     );

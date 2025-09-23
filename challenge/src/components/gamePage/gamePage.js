@@ -121,7 +121,7 @@ const GamePage = () => {
                             <div className="modalContent">
                                 <h2>{gameStatus === 'won' ? 'Победа!' : 'Поражение'}</h2>
                                 <div className="modalText">
-                                    <p>{gameStatus === 'won' ? `Очков: ${myScore}` : 'Попробуйте еще раз!'}</p>
+                                    <p>{gameStatus === 'won' ? `Очков: ${myScore.toLocaleString()}` : 'Попробуйте еще раз!'}</p>
                                 </div>
                                 <button className="refreshButton" onClick={resetGame}>
                                     Новая игра
