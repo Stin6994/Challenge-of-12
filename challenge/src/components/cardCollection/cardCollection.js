@@ -56,3 +56,4 @@ const PlayedCardsCollection = ({ playedCards }) => {
 };
 
 export default PlayedCardsCollection;
+

@@ -36,7 +36,8 @@
 }
 
 .card-display img.visible {
-    animation: cardAppear 0.5s forwards;
+    animation: cardAppear 1.5s forwards;
+    border-radius: 8px;
 }
 
 .card-display.enemy::after,

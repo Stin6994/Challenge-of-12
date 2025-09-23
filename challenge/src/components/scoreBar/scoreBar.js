@@ -23,24 +23,23 @@ function ScoreBar({ gameStatus, myScore }) {
         }
     }, [gameStatus, myScore]);
 
-    function resetRecord() {
+  /*   function resetRecord() {
         localStorage.removeItem('highScore');
         setHighScore(0);
         setIsNewRecord(false);
-    }
+    } */
 
       return (
         <div className='score-bar-container'>
             <div className={`score-display ${isNewRecord ? 'record-pulse' : ''}`}>
                 <span className="score-label">Рекорд:</span>
                 <span className="score-value">{highScore.toLocaleString()}</span>
-                {isNewRecord && <span className="celebration">✨</span>}
             </div>
-            <button className='neon-reset-btn' onClick={resetRecord}>
+            {/* <button className='neon-reset-btn' onClick={resetRecord}>
                 <span className="btn-icon">×</span>
                 <span className="btn-text">Сбросить</span>
                 <span className="btn-glow"></span>
-            </button>
+            </button> */}
         </div>
     );
 }
