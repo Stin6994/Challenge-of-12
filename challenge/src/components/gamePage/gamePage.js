@@ -113,7 +113,7 @@ const GamePage = () => {
 
 
     return (
-        <Fragment>
+        
             <div className="game-container">
                 {showGameOver && (
                     <div className="modal-overlay">
@@ -179,8 +179,8 @@ const GamePage = () => {
                 <PlayedCardsCollection
                     playedCards={playedCards} />
             </div>
-            {/*  <Test/> */}
-        </Fragment>
+          
+       
     )
 }
 

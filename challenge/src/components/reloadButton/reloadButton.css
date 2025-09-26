@@ -1,5 +1,16 @@
+.resfresh_butt_cont {
+
+  position: relative;
+border: 2px solid #49dd3b;
+width: 50%;
+
+
+}
+
+
 .neon-refresh-btn {
   position: relative;
+  width: 100%;
   background: transparent;
   border: none;
   padding: 12px 24px;
