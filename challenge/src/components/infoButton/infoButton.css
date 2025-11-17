@@ -14,19 +14,19 @@
     margin-left: 20px;
 }
 
-.neon-icon {
+.neon-info-icon {
     display: inline-block;
     margin-right: 10px;
     font-size: 1.4rem;
 }
 
-.neon-text {
+.neon-info-text {
     position: relative;
     z-index: 1;
     text-shadow: 0 0 5px #f0f;
 }
 
-.neon-glow {
+.neon-info-glow {
     position: absolute;
     top: 0;
     left: 0;

@@ -1,41 +1,48 @@
 .resfresh_butt_cont {
-
   position: relative;
-border: 2px solid #49dd3b;
-width: 50%;
-
-
+  border: 2px solid #49dd3b;
+  width: 30vw;
+  min-height: 5vw;
 }
-
 
 .neon-refresh-btn {
   position: relative;
-  width: 100%;
+  width: 30vw;
+  min-height: 5vw;
   background: transparent;
   border: none;
   padding: 12px 24px;
   color: #0ff;
   font-family: 'Orbitron', sans-serif;
-  font-size: 1.1rem;
+  font-size: 2.0vw; /* Это будет базовым размером для всего содержимого */
   text-transform: uppercase;
   letter-spacing: 2px;
   cursor: pointer;
   overflow: hidden;
   transition: all 0.3s ease;
+  display: flex; /* Добавляем flex для выравнивания */
+  align-items: center; /* Выравниваем по центру */
+  justify-content: center; /* Выравниваем по центру */
+  gap: 0.5vw; /* Расстояние между иконкой и текстом */
 }
 
-.neon-icon {
-  display: inline-block;
-  margin-right: 10px;
-  font-size: 1.4rem;
+ .neon-icon {
+  position: relative;
+  font-size: 1.6vw;
   animation: spin 2s linear infinite paused;
+  line-height: 1; 
 }
+
+
 
 .neon-text {
   position: relative;
   z-index: 1;
   text-shadow: 0 0 5px #0ff;
+  font-size: 1.6vw;
+  line-height: 1;
 }
+
 
 .neon-glow {
   position: absolute;
@@ -73,6 +80,10 @@ width: 50%;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
