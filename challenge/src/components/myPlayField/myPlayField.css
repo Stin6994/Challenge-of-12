@@ -1,5 +1,7 @@
 /* Основной контейнер */
-.myFieldAll {
+.myFieldAll { 
+  /* display: flex; */
+  display: none;
   position: absolute;
   width: 35%;
 /*   height: 45%; */
@@ -12,12 +14,13 @@
   box-shadow: 0 0 15px #0ff, inset 0 0 10px rgba(0, 255, 255, 0.3);
   padding: 20px;
   box-sizing: border-box;
-  display: flex;
+ 
   flex-direction: column;
 }
 
 /* Контейнер карт */
 .cards-container {
+
   display: flex;
   justify-content: space-around;
   width: 100%;

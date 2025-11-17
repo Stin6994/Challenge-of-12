@@ -1,4 +1,5 @@
 .played-cards-container {
+    display: none;
     position: absolute;
     top: 50px;
     right: 130px;

@@ -2,7 +2,8 @@
 
  /* Основные стили */
 .score-bar-container {
-    display: flex;
+    /* display: flex; */
+    display: none;
     align-items: center;
     gap: 20px;
     padding: 12px 20px;

@@ -1,29 +1,36 @@
 .neon-info-btn {
-    position: relative;
+    position: absolute;
+    left: 55%;
+    bottom: 1%;
+    width: 18vw;
+    min-height: 3.5vw;
     background: transparent;
-    border: none;
     padding: 12px 24px;
     color: #f0f;
     font-family: 'Orbitron', sans-serif;
-    font-size: 1.1rem;
+    font-size: 1.6vw;
     text-transform: uppercase;
     letter-spacing: 2px;
     cursor: pointer;
     overflow: hidden;
     transition: all 0.3s ease;
-    margin-left: 20px;
+    border-radius: 5px;
+
 }
 
 .neon-info-icon {
     display: inline-block;
     margin-right: 10px;
-    font-size: 1.4rem;
+    font-size: 1.6vw;
+    line-height: 1;
 }
 
 .neon-info-text {
     position: relative;
     z-index: 1;
     text-shadow: 0 0 5px #f0f;
+    font-size: 1.6vw;
+    line-height: 1;
 }
 
 .neon-info-glow {
