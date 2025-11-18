@@ -62,11 +62,13 @@ function InfoButton() {
 
   return (
     <>
+    <div className='info_butt_cont'>
       <button className="neon-info-btn" onClick={toggleModal}>
         <span className="neon-info-icon">ℹ</span>
         <span className="neon-info-text">Info</span>
         <span className="neon-info-glow"></span>
       </button>
+              </div>
 
       {isModalOpen && (
         <div className="info-modal-overlay">

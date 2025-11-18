@@ -1,20 +1,34 @@
-.neon-info-btn {
+.info_butt_cont {
     position: absolute;
     left: 55%;
     bottom: 1%;
-    width: 18vw;
-    min-height: 3.5vw;
+    width: 18%;
+    height: 5%;
+}
+
+.neon-info-btn {
+    position: relative;
     background: transparent;
-    padding: 12px 24px;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
     color: #f0f;
     font-family: 'Orbitron', sans-serif;
-    font-size: 1.6vw;
+    font-size: 2.0vw;
+    /* Это будет базовым размером для всего содержимого */
     text-transform: uppercase;
     letter-spacing: 2px;
     cursor: pointer;
     overflow: hidden;
     transition: all 0.3s ease;
-    border-radius: 5px;
+    display: flex;
+    /* Добавляем flex для выравнивания */
+    align-items: center;
+    /* Выравниваем по центру */
+    justify-content: center;
+    /* Выравниваем по центру */
+    gap: 0.5vw;
+
 
 }
 
