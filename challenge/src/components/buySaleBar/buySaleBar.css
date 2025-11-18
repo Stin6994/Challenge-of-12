@@ -15,7 +15,7 @@
     box-shadow: 0 0 15px rgba(3, 233, 244, 0.3);
 }
 
-.score-display {
+.buy-sale-score-display {
     font-family: 'Orbitron', sans-serif;
     color: #03e9f4;
     font-size: 1.1vw;
@@ -36,7 +36,7 @@
     animation: neonGlow 1.5s ease-in-out infinite alternate;
 }
 
-.score-display::before {
+.buy-sale-score-display::before {
     content: '';
     position: absolute;
     top: 0;

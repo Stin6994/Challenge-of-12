@@ -36,11 +36,11 @@ function BuySaleBar({ myScore, setMyScore, result, setResult, bonus, setBonus, l
 
     return (
         <div className='buy-sale-container'>
-            <div className="score-display">
+            <div className="buy-sale-score-display">
                 <span className="neon-text">Очки: {myScore.toLocaleString()}</span>
             </div>
             
-            <div className="score-display">
+            <div className="buy-sale-score-display">
                 <span className="neon-text">Множитель: Х{bonus}</span>
             </div>
             

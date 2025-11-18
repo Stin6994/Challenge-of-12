@@ -62,20 +62,20 @@ function InfoButton() {
 
   return (
     <>
-    <div className='info_butt_cont'>
-      <button className="neon-info-btn" onClick={toggleModal}>
-        <span className="neon-info-icon">ℹ</span>
-        <span className="neon-info-text">Info</span>
-        <span className="neon-info-glow"></span>
-      </button>
-              </div>
+      <div className='info_butt_cont'>
+        <button className="neon-info-btn" onClick={toggleModal}>
+          <span className="neon-info-icon">ℹ</span>
+          <span className="neon-info-text">Info</span>
+          <span className="neon-info-glow"></span>
+        </button>
+      </div>
 
       {isModalOpen && (
         <div className="info-modal-overlay">
           <div className="info-modal">
             <div className="info-modal-content">
               <h2>Правила игры "Камень-Ножницы-Бумага: Выживание"</h2>
-              
+
               <div className="rules-section">
                 <h3>🎯 Цель игры</h3>
                 <p>Продержаться 12 раундов, сохранив хотя бы 1 жизнь, и набрать максимальное количество баллов.</p>
@@ -115,8 +115,8 @@ function InfoButton() {
                 <p className="final-challenge"><strong>Ваша задача:</strong> выжить и побить рекорд! 🏆</p>
               </div>
 
-              <button 
-                className="neon-close-btn" 
+              <button
+                className="neon-close-btn"
                 onClick={toggleModal}
               >
                 Закрыть

@@ -6,7 +6,7 @@ function ScoreBar({ gameStatus, myScore }) {
     const [highScore, setHighScore] = useState(0);
     const [isNewRecord, setIsNewRecord] = useState(false);
 
-     // Загрузка рекорда
+    // Загрузка рекорда
     useEffect(() => {
         const savedHighScore = localStorage.getItem('highScore') || 0;
         setHighScore(parseInt(savedHighScore));
@@ -29,17 +29,19 @@ function ScoreBar({ gameStatus, myScore }) {
         setIsNewRecord(false);
     }
 
-      return (
-        <div className='score-bar-container'>
-            <div className={`score-display ${isNewRecord ? 'record-pulse' : ''}`}>
-                <span className="score-label">Рекорд:</span>
-                <span className="score-value">{highScore.toLocaleString()}</span>
+    return (
+        <div className='score-bar-main'>
+            <div className='score-bar-container'>
+                <div className={`score-display ${isNewRecord ? 'record-pulse' : ''}`}>
+                    <span className="score-label">Рекорд:</span>
+                    <span className="score-value">{highScore.toLocaleString()}</span>
+                </div>
+                <button className='neon-reset-btn' onClick={resetRecord}>
+                    <span className="btn-icon">×</span>
+                    <span className="btn-text">Сбросить</span>
+                    <span className="btn-glow"></span>
+                </button>
             </div>
-            <button className='neon-reset-btn' onClick={resetRecord}>
-                <span className="btn-icon">×</span>
-                <span className="btn-text">Сбросить</span>
-                <span className="btn-glow"></span>
-            </button>
         </div>
     );
 }
