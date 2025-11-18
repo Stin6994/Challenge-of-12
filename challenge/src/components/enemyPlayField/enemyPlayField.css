@@ -1,41 +1,9 @@
-/* .enemyFieldAll {
-  margin-top: 3%;
-  margin-left: 9%;
-  width: 35%;
-  border: 3px solid red;
-}
-
-.enemyFieldImg {
-  width: 32vw;
-  height: 16vw;
-}
-
-.enemyFieldContent {
-  position: absolute;
-  display: grid;
-  grid-template-columns: repeat(6, 12%); 
-  border: 2px solid green;
-  margin-top: -17%;
-  width: 40%;
-  
-
-}
-
-.enemyCard {
-  width: 6vw;
-  height: 7vw;
-border: 1px solid white;
-}
-
-
- */
-
  .enemy-cards-container {
-  display: none;
+    /* border: 1px solid white; */
     position: absolute;
-    top: 100px;
-    left: 30px;
-    width: 410px;
+    top: 5%;
+    left: 3%;
+    width: 30%;
     background: rgba(0, 0, 0, 0.5);
     border: 2px solid #ff073a;
     border-radius: 10px;
@@ -44,14 +12,20 @@ border: 1px solid white;
 }
 
 .enemy-cards-grid {
+  position: relative;
+  /* border: 1px solid white; */
+    width: 82%;
+    left: 5%;
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(6, 16.66%);
+    place-items: center;
+    gap: 2%;
 }
 
 .enemy-card-slot {
-    width: 60px;
-    height: 80px;
+    width: 100%;
+    height: 92%;
+    /* border: 1px solid white; */
 }
 
 .enemy-card, .empty-card {
@@ -70,8 +44,8 @@ border: 1px solid white;
 }
 
 .enemy-card img {
-    width: 170%;
-    height: 170%;
+    width: 130%;
+    height: 130%;
     object-fit: contain;
 }
 

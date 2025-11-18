@@ -1,5 +1,6 @@
 .game-container {
-  position: absolute;
+ /*  position: absolute; */
+  position: fixed;
   left: 5%;
   top: 3%;
   border: 1px solid #e6cbcb;
