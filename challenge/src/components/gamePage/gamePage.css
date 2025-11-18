@@ -1,11 +1,16 @@
 .game-container {
- /*  position: absolute; */
   position: fixed;
-  left: 5%;
-  top: 3%;
+ left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   border: 1px solid #e6cbcb;
   width: 90vw;
-  min-height: 45vw;
+  height: 90vh;
+  min-height: 20vw;
+  max-height: 50vw;
+  min-width: 50vh;
+  max-width: 190vh;
+  
 }
 
 /* Общие стили для всех модальных окон */

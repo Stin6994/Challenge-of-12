@@ -14,7 +14,6 @@
   height: 100%;
   color: #0ff;
   font-family: 'Orbitron', sans-serif;
-  font-size: 2.0vw; /* Это будет базовым размером для всего содержимого */
   text-transform: uppercase;
   letter-spacing: 2px;
   cursor: pointer;
@@ -23,12 +22,12 @@
   display: flex; /* Добавляем flex для выравнивания */
   align-items: center; /* Выравниваем по центру */
   justify-content: center; /* Выравниваем по центру */
-  gap: 0.5vw; /* Расстояние между иконкой и текстом */
+  gap: 5%; /* Расстояние между иконкой и текстом */
 }
 
  .neon-icon {
   position: relative;
-  font-size: 1.6vw;
+  font-size: min(1.5vw, 2.5vh, 18px);
   animation: spin 2s linear infinite paused;
   line-height: 1; 
 }
@@ -39,8 +38,9 @@
   position: relative;
   z-index: 1;
   text-shadow: 0 0 5px #0ff;
-  font-size: 1.6vw;
+  font-size: min(1.5vw, 2.5vh, 18px);
   line-height: 1;
+
 }
 
 

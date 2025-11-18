@@ -1,7 +1,7 @@
  .enemy-cards-container {
     /* border: 1px solid white; */
     position: absolute;
-    top: 5%;
+    top: 3%;
     left: 3%;
     width: 30%;
     height: 25%;
@@ -40,14 +40,17 @@
 }
 
 .enemy-card {
+    /* width: 15%;
+    height: 15%; */
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid #ff073a;
     box-shadow: 0 0 5px #ff073a;
 }
 
 .enemy-card img {
-    width: 110%;
-    /* height: 130%; */
+ width: 110%;
+   /*  height: 130%;  */
+    scale: 1.5;
     object-fit: contain;
 }
 

@@ -14,7 +14,7 @@
     height: 100%;
     color: #f0f;
     font-family: 'Orbitron', sans-serif;
-    font-size: 2.0vw;
+    
     /* Это будет базовым размером для всего содержимого */
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -27,15 +27,15 @@
     /* Выравниваем по центру */
     justify-content: center;
     /* Выравниваем по центру */
-    gap: 0.5vw;
+    gap: 5%;
 
 
 }
 
 .neon-info-icon {
     display: inline-block;
-    margin-right: 10px;
-    font-size: 1.6vw;
+    
+    font-size: min(1.5vw, 2.5vh, 18px);
     line-height: 1;
 }
 
@@ -43,7 +43,7 @@
     position: relative;
     z-index: 1;
     text-shadow: 0 0 5px #f0f;
-    font-size: 1.6vw;
+    font-size: min(1.5vw, 2.5vh, 18px);
     line-height: 1;
 }
 
