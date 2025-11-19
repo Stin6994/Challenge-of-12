@@ -16,7 +16,7 @@
     margin-bottom: 5px;
 }
 
-.played-card, .empty-card {
+.played-card, .empty-card-collection {
     width: 45px;
     height: 65px;
     margin: 2px;
@@ -33,7 +33,7 @@
     object-fit: contain;
 }
 
-.empty-card {
+.empty-card-collection {
     background: rgba(255, 255, 255, 0.1);
 }
 

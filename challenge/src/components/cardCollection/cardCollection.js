@@ -32,7 +32,7 @@ const PlayedCardsCollection = ({ playedCards }) => {
             cardElements.push(
                 <div 
                     key={`empty-${type}-${cardElements.length}`}
-                    className="empty-card"
+                    className="empty-card-collection"
                 />
             );
         }
