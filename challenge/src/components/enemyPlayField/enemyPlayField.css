@@ -1,5 +1,4 @@
  .enemy-cards-container {
-
      position: absolute;
      top: 3%;
      left: 3%;
@@ -8,7 +7,6 @@
      background: rgba(0, 0, 0, 0.5);
      border: 2px solid #ff073a;
      border-radius: 10px;
-
      box-shadow: 0 0 10px #ff073a;
      padding: 0;
  }
@@ -21,15 +19,12 @@
      display: grid;
      grid-template-columns: repeat(6, 16.66%);
      place-items: center;
-     gap: 2%;
-     
+     gap: 2%; 
  }
 
  .enemy-card-slot {
      width: 90%;
      height: 87%;
-     /* border: 1px solid white; */
-
  }
 
  .enemy-card {
@@ -67,7 +62,7 @@
  }
 
  .empty-card img {
-     width: 100%;  /* 50% от ширины родителя */
+     width: 100%; 
     height: auto;
     margin: 0;
  }
