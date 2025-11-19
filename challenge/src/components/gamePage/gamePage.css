@@ -10,6 +10,9 @@
   max-height: 50vw;
   min-width: 50vh;
   max-width: 190vh;
+    border: 2px solid #0ff;
+  border-radius: 15px;
+  box-shadow: 0 0 15px #0ff, inset 0 0 10px rgba(0, 255, 255, 0.3);
   
 }
 
