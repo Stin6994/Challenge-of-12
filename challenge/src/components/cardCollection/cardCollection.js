@@ -16,10 +16,10 @@ const PlayedCardsCollection = ({ playedCards }) => {
         const cards = playedCards
             .filter(card => card.type === type)
             .slice(-8);
-        
+
         // Создаем элементы карт
         const cardElements = cards.map((card, index) => (
-            <div 
+            <div
                 key={`${type}-${card.roundId}-${card.isPlayer ? 'p' : 'e'}`}
                 className={`played-card ${card.isPlayer ? 'player' : 'enemy'}`}
             >
@@ -30,7 +30,7 @@ const PlayedCardsCollection = ({ playedCards }) => {
         // Добавляем пустые ячейки
         while (cardElements.length < 8) {
             cardElements.push(
-                <div 
+                <div
                     key={`empty-${type}-${cardElements.length}`}
                     className="empty-card-collection"
                 />
@@ -41,15 +41,17 @@ const PlayedCardsCollection = ({ playedCards }) => {
     };
 
     return (
-        <div className="played-cards-container">
-            <div className="played-cards-row">
-                {renderRow('rock')}
-            </div>
-            <div className="played-cards-row">
-                {renderRow('scissors')}
-            </div>
-            <div className="played-cards-row">
-                {renderRow('paper')}
+        <div className="played-cards-main">
+            <div className="played-cards-container"> 
+                <div className="played-cards-row">
+                    {renderRow('rock')}
+                </div>
+                <div className="played-cards-row">
+                    {renderRow('scissors')}
+                </div>
+                <div className="played-cards-row">
+                    {renderRow('paper')}
+                </div>
             </div>
         </div>
     );
