@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 
 const ResultField = ({ roundId, myCurrentCard, currentEnemyCard, result, setResult }) => {
     const [showCards, setShowCards] = useState(false);
-    
+
     const cardImages = {
         paper: paperImg,
         rock: rockImg,
@@ -34,39 +34,41 @@ const ResultField = ({ roundId, myCurrentCard, currentEnemyCard, result, setResu
         }
         if (!currentEnemyCard) return;
 
-        const newResult = 
+        const newResult =
             myCurrentCard === currentEnemyCard ? resultRound.draw :
-            (myCurrentCard === 'rock' && currentEnemyCard === 'scissors') ||
-            (myCurrentCard === 'scissors' && currentEnemyCard === 'paper') ||
-            (myCurrentCard === 'paper' && currentEnemyCard === 'rock') ? resultRound.victory : resultRound.defeat;
+                (myCurrentCard === 'rock' && currentEnemyCard === 'scissors') ||
+                    (myCurrentCard === 'scissors' && currentEnemyCard === 'paper') ||
+                    (myCurrentCard === 'paper' && currentEnemyCard === 'rock') ? resultRound.victory : resultRound.defeat;
 
         setResult(newResult);
     }, [myCurrentCard, currentEnemyCard, roundId]);
 
     return (
         <div className="result-field">
-            <div className="card-display enemy">
-                {currentEnemyCard && (
-                    <img 
-                        src={cardImages[currentEnemyCard]} 
-                        alt="" 
-                        className={showCards ? 'visible' : 'hidden'}
-                    />
-                )}
-            </div>
-            
-            <div className={`result-text ${result}`}>
-                {result}
-            </div>
-            
-            <div className="card-display player">
-                {myCurrentCard && myCurrentCard !== 'default' && (
-                    <img 
-                        src={cardImages[myCurrentCard]} 
-                        alt="" 
-                        className={showCards ? 'visible' : 'hidden'}
-                    />
-                )}
+            <div className="play-field-card-cont">
+                <div className="card-display enemy">
+                    {currentEnemyCard && (
+                        <img
+                            src={cardImages[currentEnemyCard]}
+                            alt=""
+                            className={showCards ? 'visible' : 'hidden'}
+                        />
+                    )}
+                </div>
+
+                <div className={`result-text ${result}`}>
+                    {result}
+                </div>
+
+                <div className="card-display player">
+                    {myCurrentCard && myCurrentCard !== 'default' && (
+                        <img
+                            src={cardImages[myCurrentCard]}
+                            alt=""
+                            className={showCards ? 'visible' : 'hidden'}
+                        />
+                    )}
+                </div>
             </div>
         </div>
     );

@@ -1,23 +1,34 @@
 .result-field {
-   /*  position: fixed; */
-    /* top: 50%; */
-   /*  display: flex; */
-    display: none;
+    position: absolute;
+    display: flex;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
-    
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    width: 200px;
-    min-height: 320px;
+    width: 15%;
+    height: 56%;
     z-index: 10;
     pointer-events: none;
+   /*  border: 1px solid red; */
+}
+
+.play-field-card-cont {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 49%;
+    height: 100%;
+    /* border: 1px solid green; */
 }
 
 .card-display {
-    width: 100px;
-    height: 140px;
+
+    /* border: 1px solid red; */
+    width: 100%;
+    height: 37%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,9 +38,11 @@
 }
 
 .card-display img {
+
     max-width: 90%;
     max-height: 90%;
     object-fit: contain;
+    /*  border-radius: 15px; */
 }
 
 .card-display img.hidden {
@@ -39,7 +52,7 @@
 
 .card-display img.visible {
     animation: cardAppear 1.5s forwards;
-    border-radius: 8px;
+    border-radius: 15px;
 }
 
 .card-display.enemy::after,
@@ -65,13 +78,20 @@
 }
 
 .result-text {
+    position: relative;
+    display: flex;
+    width: 300%;
+    left: -100%;
+    /* align-items: baseline; */
     font-family: 'Orbitron', sans-serif;
-    font-size: 1.5rem;
+    font-size: min(2.0vw, 2.5vh, 52px);
     font-weight: bold;
     text-transform: uppercase;
-    padding: 8px 20px;
-    border-radius: 5px;
-    text-align: center;
+  /*   border: 1px solid red; */
+    justify-content: center;
+
+
+
     animation: pulse 2s infinite;
     white-space: nowrap;
 }
@@ -79,11 +99,27 @@
 /* ... (остальные стили результата остаются без изменений) ... */
 
 @keyframes cardAppear {
-    0% { opacity: 0; transform: scale(0.8); }
-    100% { opacity: 1; transform: scale(1); }
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 @keyframes pulse {
-    0%, 100% { transform: scale(1); opacity: 0.9; }
-    50% { transform: scale(1.05); opacity: 1; }
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.9;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
 }
