@@ -1,113 +1,165 @@
 .buy-sale-container {
-   /*  display: flex; */
-    display: none;
-    position: relative;
-    top: 550px;
-    right: 5%;
-    width: 20%;
-    
-    flex-direction: column;
-    gap: 15px;
-    padding: 20px;
+    position: absolute;
+    /* display: flex; */
+    top: 45%;
+    right: 3%;
+    width: 30%;
+    height: 44%;
+    /* flex-direction: row; */
     background: rgba(0, 0, 0, 0.7);
-    border: 1px solid #03e9f4;
+    border: 2px solid #03e9f4;
     border-radius: 8px;
-    box-shadow: 0 0 15px rgba(3, 233, 244, 0.3);
+    box-shadow: 0 0 10px #03e9f4;
 }
 
-.buy-sale-score-display {
+.disp-cont {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* align-content: center; */
+    justify-content: space-evenly;
+    align-items: center;
+    /*  border: 2px solid #3c1596; */
+    height: 40%;
+    width: 80%;
+    top: 5%;
+    left: 10%;
+    gap: 5%;
+    border: 2px solid rgb(16, 34, 34);
+  box-shadow: 0 0 10px #03e9f4;
+
+}
+
+.score-display-bar {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    /* border: 2px solid #2bf403; */
+    width: 90%;
     font-family: 'Orbitron', sans-serif;
-    color: #03e9f4;
-    font-size: 1.1vw;
-    text-align: center;
-    position: relative;
-    padding: 10px;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 5px;
-    overflow: hidden;
+    font-size: 1.6vw;
+
+    /* height: 100%; */
 }
 
-.neon-text {
-    position: relative;
+.name-text-bar-cont {
+    display: flex;
+    align-items: center;
+    width: 30%;
+    font-size: min(1.5vw, 2.5vh, 18px);
+}
+
+.name-text-bar-cont-x {
+    display: flex;
+    align-items: center;
+    width: 55%;
+    font-size: min(1.5vw, 2.5vh, 18px);
+}
+
+.value-text-bar-cont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #03e9f4;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #03e9f4;
+    width: 70%;
+    font-size: min(1.5vw, 2.5vh, 18px);
+}
+
+.value-text-bar-cont-x {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #03e9f4;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #03e9f4;
+    width: 45%;
+    font-size: min(1.5vw, 2.5vh, 18px);
+}
+
+
+
+.name-text-bar {
     z-index: 1;
-    text-shadow: 0 0 5px #03e9f4, 
-                 0 0 10px #03e9f4,
-                 0 0 20px #03e9f4;
+    animation: neonGlow 1.5s ease-in-out infinite alternate;
+    color: #03e9f4;
+    text-decoration: none;
+    border-bottom: 3px double currentColor;
+    padding-bottom: 1px;
+    opacity: 0.9;
+}
+
+.value-text-bar {
+    z-index: 1;
     animation: neonGlow 1.5s ease-in-out infinite alternate;
 }
 
-.buy-sale-score-display::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border: 1px solid #03e9f4;
-    border-radius: 5px;
-    box-shadow: 0 0 5px #03e9f4, 
-                inset 0 0 5px #03e9f4;
-    opacity: 0.7;
-    animation: borderPulse 2s linear infinite;
-}
 
 @keyframes neonGlow {
+
+    /* свечение текста */
     from {
-        text-shadow: 0 0 5px #03e9f4, 
-                     0 0 10px #03e9f4;
+        text-shadow: 0 0 5px #03e9f4,
+            0 0 10px #03e9f4;
     }
+
     to {
-        text-shadow: 0 0 10px #03e9f4, 
-                     0 0 20px #03e9f4,
-                     0 0 30px #03e9f4;
+        text-shadow: 0 0 10px #03e9f4,
+            0 0 20px #03e9f4,
+            0 0 30px #03e9f4;
     }
 }
 
-@keyframes borderPulse {
-    0% {
-        box-shadow: 0 0 5px #03e9f4, 
-                   inset 0 0 5px #03e9f4;
-        opacity: 0.7;
-    }
-    50% {
-        box-shadow: 0 0 10px #03e9f4, 
-                   inset 0 0 10px #03e9f4;
-        opacity: 1;
-    }
-    100% {
-        box-shadow: 0 0 5px #03e9f4, 
-                   inset 0 0 5px #03e9f4;
-        opacity: 0.7;
-    }
-}
 
-/* Стили кнопок остаются без изменений */
-.neon-button {
+.button-bar-cont {
     position: relative;
-    display: inline-block;
-    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    left: 5%;
+    height: 40%;
+    top: 10%;
+    gap: 10%;
+    /* border: 1px solid green; */
+}
+
+
+.tooltip-container {
+    position: relative;
+    /* border: 2px solid green; */
+    width: 100%;
+    height: 40%;
+}
+
+
+.neon-button {
+    position: absolute;
+    width: 100%;
+    height: 100%;
     color: #03e9f4;
     background: transparent;
-    border: none;
-    font-size: 1vw;
+    border: 2px solid #03e9f4;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #03e9f4;
+    font-size: min(1.5vw, 2.2vh, 24px);
     font-family: 'Orbitron', sans-serif;
-    /* text-transform: uppercase; */
     letter-spacing: 1px;
     cursor: pointer;
     overflow: hidden;
     transition: 0.5s;
     text-shadow: 0 0 5px #03e9f4;
-    text-align: center;
-    width: 100%;
 }
 
 .neon-button:hover:not(:disabled) {
     background: #03e9f4;
     color: #050801;
     box-shadow: 0 0 5px #03e9f4,
-                0 0 25px #03e9f4,
-                0 0 50px #03e9f4,
-                0 0 200px #03e9f4;
+        0 0 25px #03e9f4,
+        0 0 50px #03e9f4,
+        0 0 200px #03e9f4;
     -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
 }
 
@@ -120,102 +172,46 @@
 .neon-button:disabled:hover {
     background: transparent;
     box-shadow: none;
-    color: #555;
+    box-shadow: 0 0 5px #8d1010,
+        0 0 25px #8d1010,
+        0 0 50px #8d1010,
+        0 0 200px #8d1010;
+    color: #8d1010;
+
 }
 
-.neon-button span {
+
+.tooltip-text {
     position: absolute;
-    display: block;
+    bottom: 10%;
+    /* над кнопкой */
+    left: 50%;
+    transform: translateX(-160%);
+    background: #333;
+    color: white;
+    padding: 2%;
+    border-radius: 4px;
+    border: 1px solid white;
+    font-size: min(1.5vw, 2.2vh, 24px);
+    font-family: 'Orbitron', sans-serif;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
 }
 
-/* Анимация границ для кнопок */
-.neon-button span:nth-child(1) {
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #03e9f4);
-    animation: animate1 2s linear infinite;
+.tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 45%;
+    left: 100%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: #333;
 }
 
-.neon-button.buy-button span:nth-child(1) {
-    background: linear-gradient(90deg, transparent, #0f0);
-}
-
-.neon-button.sell-button span:nth-child(1) {
-    background: linear-gradient(90deg, transparent, #f0f);
-}
-
-@keyframes animate1 {
-    0% { left: -100%; }
-    50%,100% { left: 100%; }
-}
-
-.neon-button span:nth-child(2) {
-    top: -100%;
-    right: 0;
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(180deg, transparent, #03e9f4);
-    animation: animate2 2s linear infinite;
-    animation-delay: 0.5s;
-}
-
-.neon-button.buy-button span:nth-child(2) {
-    background: linear-gradient(180deg, transparent, #0f0);
-}
-
-.neon-button.sell-button span:nth-child(2) {
-    background: linear-gradient(180deg, transparent, #f0f);
-}
-
-@keyframes animate2 {
-    0% { top: -100%; }
-    50%,100% { top: 100%; }
-}
-
-.neon-button span:nth-child(3) {
-    bottom: 0;
-    right: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(270deg, transparent, #03e9f4);
-    animation: animate3 2s linear infinite;
-    animation-delay: 1s;
-}
-
-.neon-button.buy-button span:nth-child(3) {
-    background: linear-gradient(270deg, transparent, #0f0);
-}
-
-.neon-button.sell-button span:nth-child(3) {
-    background: linear-gradient(270deg, transparent, #f0f);
-}
-
-@keyframes animate3 {
-    0% { right: -100%; }
-    50%,100% { right: 100%; }
-}
-
-.neon-button span:nth-child(4) {
-    bottom: -100%;
-    left: 0;
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(360deg, transparent, #03e9f4);
-    animation: animate4 2s linear infinite;
-    animation-delay: 1.5s;
-}
-
-.neon-button.buy-button span:nth-child(4) {
-    background: linear-gradient(360deg, transparent, #0f0);
-}
-
-.neon-button.sell-button span:nth-child(4) {
-    background: linear-gradient(360deg, transparent, #f0f);
-}
-
-@keyframes animate4 {
-    0% { bottom: -100%; }
-    50%,100% { bottom: 100%; }
+.tooltip-container:hover .tooltip-text {
+    opacity: 1;
+    visibility: visible;
 }

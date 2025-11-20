@@ -6,7 +6,9 @@
     height: 7%;
     background: rgba(0, 0, 0, 0.6);
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+    /* box-shadow: 0 0 10px rgba(0, 255, 255, 0.3); */
+    border: 2px solid rgb(16, 34, 34);
+  box-shadow: 0 0 10px #03e9f4;
 }
 
 .score-bar-container {
@@ -33,6 +35,7 @@
     color: #0ff;
     border-radius: 5px;
     /* border: 3px solid rgb(51, 255, 0); */
+    
 }
 
 .score-label {
@@ -40,6 +43,8 @@
     text-shadow: 0 0 5px #0ff;
     letter-spacing: 1px;
     font-size: min(1.5vw, 2.5vh, 18px);
+    
+    
     /* border: 3px solid rgb(51, 255, 0); */
 }
 
