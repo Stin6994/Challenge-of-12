@@ -1,7 +1,7 @@
 // src/hooks/useYandexSDK.js
 import { useState, useEffect } from 'react';
 
-export const useYandexSDK = () => {
+const useYandexSDK = () => {
   const [ysdk, setYsdk] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -33,3 +33,5 @@ export const useYandexSDK = () => {
 
   return { ysdk, isLoading, error };
 };
+
+export default useYandexSDK;

@@ -1,6 +1,6 @@
 // src/components/AdButton.js
 import React from 'react';
-import { useYandexSDK } from '../hooks/useYandexSDK';
+import useYandexSDK from '../../hooks/useYandexSDK';
 
 const AdButton = () => {
   const { ysdk, isLoading, error } = useYandexSDK();
