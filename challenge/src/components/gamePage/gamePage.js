@@ -1,7 +1,7 @@
 
 import './gamePage.css';
 import EnemyPlayField from '../enemyPlayField/enemyPlayField';
-import { Fragment, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import MyPlayField from '../myPlayField/myPlayField';
 import ScoreBar from '../scoreBar/scoreBar';
 import ArrayEnemyCard from '../arrayEnemyCards/arrayEnemyCards';
@@ -76,7 +76,7 @@ const GamePage = () => {
     }, [myCurrentCard, currentEnemyCard, roundId]);
 
     useEffect(() => {
-        console.log('Current playedCards:', playedCards);
+       /*  console.log('Current playedCards:', playedCards); */
     }, [playedCards]);
 
 

@@ -71,7 +71,7 @@ const ArrayEnemyCard = () => {
         // Обновляем состояния
         setCurrentEnemyCard(newCard);
         setDeck(prev => prev.slice(1));
-        console.log(deck);
+        /* console.log(deck); */
 
         if (deck.length === 0) {
             alert('Все карты закончились!');
