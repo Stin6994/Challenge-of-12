@@ -10,6 +10,7 @@ import ResultField from '../resultField/resultField';
 import BuySaleBar from '../buySaleBar/buySaleBar';
 import PlayedCardsCollection from '../cardCollection/cardCollection';
 import InfoButton from '../infoButton/infoButton';
+import AdButton from '../adButton/adButton';
 /* import Test from '../testCss/testcss'; */
 
 const GamePage = () => {
@@ -178,6 +179,8 @@ const GamePage = () => {
                 />
                 <PlayedCardsCollection
                     playedCards={playedCards} />
+
+                    <AdButton />
             </div>
           
        
