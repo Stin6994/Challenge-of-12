@@ -124,6 +124,10 @@ const GamePage = () => {
                                 <div className="modalText">
                                     <p>{gameStatus === 'won' ? `Очков: ${myScore.toLocaleString()}` : 'Попробуйте еще раз!'}</p>
                                 </div>
+                                <AdButton 
+                                setShowGameOver={setShowGameOver}
+                                setLife={setLife}
+                                roundId={roundId}/>
                                 <button className="refreshButton" onClick={resetGame}>
                                     Новая игра
                                 </button>
@@ -149,10 +153,11 @@ const GamePage = () => {
                     setResult={setResult}
                     setRoundId={setRoundId}
                     showGameOver={showGameOver}
+                    roundId={roundId}
                 />
 
-                <ReloadButton reloadEnemyCards={reloadEnemyCards}
-                    reloadMyCards={resetMyCards} />
+                <ReloadButton 
+                    resetGame={resetGame}/>
 
                 <InfoButton />
 
@@ -180,7 +185,7 @@ const GamePage = () => {
                 <PlayedCardsCollection
                     playedCards={playedCards} />
 
-                    <AdButton />
+                    
             </div>
           
        

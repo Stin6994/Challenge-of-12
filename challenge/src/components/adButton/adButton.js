@@ -2,8 +2,10 @@
 import React from 'react';
 import useYandexSDK from '../../hooks/useYandexSDK';
 
-const AdButton = () => {
+
+const AdButton = ({setShowGameOver, setLife, roundId}) => {
   const { ysdk, isLoading, error } = useYandexSDK();
+
 
   const handleShowAd = () => {
     if (!ysdk) {
@@ -48,6 +50,8 @@ const AdButton = () => {
           console.log('🎬 Rewarded ad opened');
         },
         onRewarded: () => {
+          setShowGameOver(false);
+          setLife(prev => prev + 1);
           console.log('💰 Reward granted!');
           alert('Вы получили награду!');
           // Здесь дать игроку награду
@@ -79,7 +83,7 @@ const AdButton = () => {
   return (
     <div style={{ padding: '20px' }}>
       <h3>Тест Яндекс SDK</h3>
-      <button 
+      {/* <button 
         onClick={handleShowAd}
         style={{ 
           padding: '10px 20px', 
@@ -92,9 +96,27 @@ const AdButton = () => {
         }}
       >
         Показать полноэкранную рекламу
-      </button>
+      </button> */}
       
-      <button 
+      { roundId < 12 && (
+        <button className="refreshButton"
+        onClick={handleShowRewardedAd}
+        /* style={{ 
+          padding: '10px 20px', 
+          margin: '10px',
+          fontSize: '16px',
+          backgroundColor: '#4dff88',
+          border: 'none',
+          borderRadius: '5px',
+          cursor: 'pointer'
+        }} */
+      >
+        Показать рекламу за награду
+      </button>
+      )}
+
+  
+     {/*  <button 
         onClick={handleShowRewardedAd}
         style={{ 
           padding: '10px 20px', 
@@ -107,7 +129,7 @@ const AdButton = () => {
         }}
       >
         Показать рекламу за награду
-      </button>
+      </button> */}
       
       <div style={{ marginTop: '20px', fontSize: '12px', color: '#666' }}>
         Режим: {ysdk ? 'SDK подключен' : 'Локальная заглушка'}

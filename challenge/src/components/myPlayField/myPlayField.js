@@ -4,10 +4,11 @@ import Star from '../star/star';
 import { useEffect } from 'react';
 
 const MyPlayField = ({ myCardsCount, setMyCardsCount, enemyPlay, setMyCurrentCard, myCurrentCard,
-    drawRandomCard, life, setLife, result, setResult, setRoundId, showGameOver }) => {
+    drawRandomCard, life, setLife, result, setResult, setRoundId, showGameOver,roundId}) => {
 
     function play(cardType) {
         if (myCardsCount[cardType] > 0 && !showGameOver) {
+          console.log(roundId);
             setResult("▪▪▪");
             setRoundId(prev => prev + 1);
             setMyCurrentCard(cardType);
