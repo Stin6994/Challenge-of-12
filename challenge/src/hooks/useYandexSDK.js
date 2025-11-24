@@ -11,11 +11,11 @@ const useYandexSDK = () => {
       try {
         console.log('Initializing Yandex SDK...');
         
-        if (typeof YaGames === 'undefined') {
+        if (typeof window.YaGames === 'undefined') {
           throw new Error('Yandex SDK not found');
         }
 
-        const sdkInstance = await YaGames.init();
+        const sdkInstance = await window.YaGames.init();
         setYsdk(sdkInstance);
         setIsLoading(false);
         

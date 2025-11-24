@@ -10,7 +10,8 @@ import ResultField from '../resultField/resultField';
 import BuySaleBar from '../buySaleBar/buySaleBar';
 import PlayedCardsCollection from '../cardCollection/cardCollection';
 import InfoButton from '../infoButton/infoButton';
-import AdButton from '../adButton/adButton';
+import AdButton from '../adModalButton/adButton';
+import AdMainButton from '../adMainButton/adMainButton';
 /* import Test from '../testCss/testcss'; */
 
 const GamePage = () => {
@@ -77,7 +78,7 @@ const GamePage = () => {
     }, [myCurrentCard, currentEnemyCard, roundId]);
 
     useEffect(() => {
-       /*  console.log('Current playedCards:', playedCards); */
+        /*  console.log('Current playedCards:', playedCards); */
     }, [playedCards]);
 
 
@@ -114,81 +115,86 @@ const GamePage = () => {
 
 
     return (
-        
-            <div className="game-container">
-                {showGameOver && (
-                    <div className="modal-overlay">
-                        <div className="modal">
-                            <div className="modalContent">
-                                <h2>{gameStatus === 'won' ? 'Победа!' : 'Поражение'}</h2>
-                                <div className="modalText">
-                                    <p>{gameStatus === 'won' ? `Очков: ${myScore.toLocaleString()}` : 'Попробуйте еще раз!'}</p>
-                                </div>
-                                <AdButton 
+
+        <div className="game-container">
+            {showGameOver && (
+                <div className="modal-overlay">
+                    <div className="modal">
+                        <div className="modalContent">
+                            <h2>{gameStatus === 'won' ? 'Победа!' : 'Поражение'}</h2>
+                            <div className="modalText">
+                                <p>{gameStatus === 'won' ? `Очков: ${myScore.toLocaleString()}` : 'Попробуйте еще раз!'}</p>
+                            </div>
+                            <AdButton
                                 setShowGameOver={setShowGameOver}
                                 setLife={setLife}
-                                roundId={roundId}/>
-                                <button className="refreshButton" onClick={resetGame}>
-                                    Новая игра
-                                </button>
-                            </div>
+                                roundId={roundId} />
+                            <button className="refreshButton" onClick={resetGame}>
+                                Новая игра
+                            </button>
                         </div>
                     </div>
-                )}
+                </div>
+            )}
 
-                <EnemyPlayField arr={array} />
-                <ScoreBar
-                    gameStatus={gameStatus}
-                    myScore={myScore} />
+            <EnemyPlayField arr={array} />
+            <ScoreBar
+                gameStatus={gameStatus}
+                myScore={myScore} />
 
-                <MyPlayField enemyPlay={enemyPlay}
-                    myCardsCount={myCardsCount}
-                    setMyCardsCount={setMyCardsCount}
-                    setMyCurrentCard={setMyCurrentCard}
-                    myCurrentCard={myCurrentCard}
-                    drawRandomCard={drawRandomCard}
-                    life={life}
-                    setLife={setLife}
-                    result={result}
-                    setResult={setResult}
-                    setRoundId={setRoundId}
-                    showGameOver={showGameOver}
-                    roundId={roundId}
-                />
+            <MyPlayField enemyPlay={enemyPlay}
+                myCardsCount={myCardsCount}
+                setMyCardsCount={setMyCardsCount}
+                setMyCurrentCard={setMyCurrentCard}
+                myCurrentCard={myCurrentCard}
+                drawRandomCard={drawRandomCard}
+                life={life}
+                setLife={setLife}
+                result={result}
+                setResult={setResult}
+                setRoundId={setRoundId}
+                showGameOver={showGameOver}
+                roundId={roundId}
+            />
 
-                <ReloadButton 
-                    resetGame={resetGame}/>
+            <ReloadButton
+                resetGame={resetGame} />
 
-                <InfoButton />
+            <InfoButton />
 
-                <ResultField myCurrentCard={myCurrentCard}
-                    setMyCurrentCard={setMyCurrentCard}
-                    createDeck={createDeck}
-                    currentEnemyCard={currentEnemyCard}
-                    setCurrentEnemyCard={setCurrentEnemyCard}
-                    drawRandomCard={drawRandomCard}
-                    result={result}
-                    setResult={setResult}
-                    roundId={roundId}
-                />
-                <BuySaleBar
-                    myScore={myScore}
-                    setMyScore={setMyScore}
-                    result={result}
-                    setResult={setResult}
-                    bonus={bonus}
-                    setBonus={setBonus}
-                    life={life}
-                    setLife={setLife}
-                    showGameOver={showGameOver}
-                />
-                <PlayedCardsCollection
-                    playedCards={playedCards} />
+            <ResultField myCurrentCard={myCurrentCard}
+                setMyCurrentCard={setMyCurrentCard}
+                createDeck={createDeck}
+                currentEnemyCard={currentEnemyCard}
+                setCurrentEnemyCard={setCurrentEnemyCard}
+                drawRandomCard={drawRandomCard}
+                result={result}
+                setResult={setResult}
+                roundId={roundId}
+            />
+            <BuySaleBar
+                myScore={myScore}
+                setMyScore={setMyScore}
+                result={result}
+                setResult={setResult}
+                bonus={bonus}
+                setBonus={setBonus}
+                life={life}
+                setLife={setLife}
+                showGameOver={showGameOver}
+            />
+            <PlayedCardsCollection
+                playedCards={playedCards} />
 
-                    
-            </div>
-          
-       
+            <AdMainButton
+                life={life}
+                setLife={setLife}
+            />
+
+
+        </div>
+
+
     )
 }
 

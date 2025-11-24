@@ -1,0 +1,119 @@
+.ad_bonus_cont {
+  position: absolute;
+  left: 80%;
+  bottom: 1%;
+  width: 18%;
+  height: 7%;
+}
+
+.neon-ad-btn {
+  position: relative;
+  background: transparent;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  color: #0ff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5%;
+  border: none;
+}
+
+.neon-icon {
+  position: relative;
+  font-size: min(1.5vw, 2.5vh, 18px);
+  animation: pulse 2s ease-in-out infinite;
+  line-height: 1;
+  filter: drop-shadow(0 0 3px #0ff);
+}
+
+.neon-text {
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 0 5px #0ff;
+  font-size: min(1.5vw, 2.5vh, 18px);
+  line-height: 1;
+}
+
+.neon-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #0ff;
+  border-radius: 4px;
+  box-shadow: 0 0 10px #0ff, inset 0 0 10px #0ff;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.neon-ad-btn:hover:not(.disabled) {
+  color: #ff0;
+  text-shadow: 0 0 10px #ff0;
+}
+
+.neon-ad-btn:hover:not(.disabled) .neon-icon {
+  filter: drop-shadow(0 0 5px #ff0);
+  animation-duration: 1s;
+}
+
+.neon-ad-btn:hover:not(.disabled) .neon-glow {
+  opacity: 1;
+  box-shadow: 0 0 15px #0ff, inset 0 0 15px #0ff;
+  border-color: #ff0;
+}
+
+.neon-ad-btn:active:not(.disabled) {
+  transform: scale(0.95);
+}
+
+.neon-ad-btn:active:not(.disabled) .neon-icon {
+  transform: scale(0.9);
+}
+
+/* Заблокированное состояние */
+.neon-ad-btn.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  color: #888;
+}
+
+.neon-ad-btn.disabled .neon-icon {
+  animation: none;
+  filter: drop-shadow(0 0 2px #888);
+}
+
+.neon-ad-btn.disabled .neon-text {
+  text-shadow: 0 0 2px #888;
+}
+
+.neon-ad-btn.disabled .neon-glow {
+  border-color: #888;
+  box-shadow: 0 0 5px #888, inset 0 0 5px #888;
+  opacity: 0.5;
+}
+
+/* Анимация пульсации для привлечения внимания */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+/* Дополнительная анимация для иконки при наведении */
+.neon-ad-btn:hover:not(.disabled) .neon-icon {
+  animation: pulse 0.5s ease-in-out infinite;
+}

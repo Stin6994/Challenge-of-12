@@ -39,34 +39,10 @@
 
 
 /* Стили счетчиков */
-/* .card-counter {
-  position: relative;
-  bottom: 5%;
-  width: 55%;
-  height: 25%;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at center, rgba(0, 255, 255, 0.2) 0%, rgba(0, 255, 255, 0.1) 70%, transparent 100%),
-    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="none" stroke="%230ff" stroke-width="0.5" stroke-dasharray="2 1"/></svg>');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Orbitron', sans-serif;
-  font-size: min(3.5vw, 3.5vh, 18px);
-  color: #fff;
-  text-shadow: 0 0 8px #0ff;
-  box-shadow: 0 0 15px #0ff, inset 0 0 10px rgba(0, 255, 255, 0.3);
-  transform-style: preserve-3d;
-  animation: float 3s ease-in-out infinite;
-} */
 
 .card-counter {
   position: relative;
   bottom: 5%;
-  /* Используем vmin для сохранения пропорций */
   width: min(8vmin, 8vmax);
   height: min(8vmin, 8vmax);
   border-radius: 50%;
@@ -80,14 +56,12 @@
   align-items: center;
   justify-content: center;
   font-family: 'Orbitron', sans-serif;
-  /* Размер шрифта также привязан к vmin */
   font-size: min(3vmin, 18px);
   color: #fff;
   text-shadow: 0 0 8px #0ff;
   box-shadow: 0 0 15px #0ff, inset 0 0 10px rgba(0, 255, 255, 0.3);
   transform-style: preserve-3d;
   animation: float 3s ease-in-out infinite;
-  /* Гарантируем идеальный круг */
   aspect-ratio: 1;
 }
 
