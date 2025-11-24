@@ -36,11 +36,14 @@ function ScoreBar({ gameStatus, myScore }) {
                     <span className="score-label">Рекорд:</span>
                     <span className="score-value">{highScore.toLocaleString()}</span>
                 </div>
-                <button className='neon-reset-btn' onClick={resetRecord}>
-                    <span className="btn-icon">×</span>
-                    <span className="btn-text">Сбросить</span>
-                    <span className="btn-glow"></span>
-                </button>
+                <div className="tooltip-container-score">
+                    <button className='neon-reset-btn' onClick={resetRecord}>
+                        <span className="btn-icon">×</span>
+                        <span className="btn-text">Сбросить</span>
+                        <span className="btn-glow"></span>
+                    </button>
+                    <span className="tooltip-text-score"> {`Сбросить текущий рекорд`}</span>
+                </div>
             </div>
         </div>
     );
