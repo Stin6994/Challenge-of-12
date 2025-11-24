@@ -48,7 +48,7 @@ window.YaGames = {
                 // Эмулируем успешный просмотр
                 if (params.callbacks.onRewarded) params.callbacks.onRewarded();
                 if (params.callbacks.onClose) params.callbacks.onClose(true);
-              }, 3000);
+              }, 2000);
             }, 100);
           }
           
