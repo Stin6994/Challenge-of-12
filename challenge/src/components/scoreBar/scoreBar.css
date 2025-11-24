@@ -8,7 +8,7 @@
     border-radius: 8px;
     /* box-shadow: 0 0 10px rgba(0, 255, 255, 0.3); */
     border: 2px solid rgb(16, 34, 34);
-  box-shadow: 0 0 15px #03e9f4;
+    box-shadow: 0 0 15px #03e9f4;
 }
 
 .score-bar-container {
@@ -36,7 +36,7 @@
     color: #0ff;
     border-radius: 5px;
     /* border: 3px solid rgb(51, 255, 0); */
-    
+
 }
 
 .score-label {
@@ -44,8 +44,8 @@
     text-shadow: 0 0 5px #0ff;
     letter-spacing: 1px;
     font-size: min(1.5vw, 2.5vh, 18px);
-    
-    
+
+
     /* border: 3px solid rgb(51, 255, 0); */
 }
 
@@ -62,8 +62,7 @@
 
 .tooltip-container-score {
     position: relative;
-    /* border: 2px solid green; */
- right: -30%;
+    right: -30%;
     width: 35%;
     height: 100%;
 }
@@ -84,14 +83,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 
 
 .tooltip-text-score {
     position: absolute;
     bottom: 80%;
-    /* над кнопкой */
     left: 0%;
     transform: translateX(10%);
     background: #333;
@@ -113,9 +110,6 @@
     opacity: 1;
     visibility: visible;
 }
-
-
-
 
 
 .btn-icon {
