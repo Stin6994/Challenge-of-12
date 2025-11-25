@@ -67,7 +67,7 @@
 .tooltip-text-ad {
     position: absolute;
     bottom: 80%;
-    left: -80%;
+    left: -120%;
     transform: translateX(10%);
     background: #333;
     color: white;

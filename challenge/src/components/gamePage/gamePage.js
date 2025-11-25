@@ -1,4 +1,3 @@
-
 import './gamePage.css';
 import EnemyPlayField from '../enemyPlayField/enemyPlayField';
 import { useState, useEffect } from 'react';
@@ -12,9 +11,11 @@ import PlayedCardsCollection from '../cardCollection/cardCollection';
 import InfoButton from '../infoButton/infoButton';
 import AdButton from '../adModalButton/adButton';
 import AdMainButton from '../adMainButton/adMainButton';
-/* import Test from '../testCss/testcss'; */
+import useYandexSDK from '../../hooks/useYandexSDK'; // Добавляем хук SDK
 
 const GamePage = () => {
+    const { ysdk, isLoading: sdkLoading, playerName } = useYandexSDK(); // Получаем готовое имя
+    const [showWelcomeModal, setShowWelcomeModal] = useState(false);
 
     const { reloadEnemyCards, array, enemyPlay, createDeck, currentEnemyCard,
         setCurrentEnemyCard, drawRandomCard, setDeck } = ArrayEnemyCard();
@@ -25,9 +26,6 @@ const GamePage = () => {
         paper: 4
     };
 
-
-
-
     const [myCardsCount, setMyCardsCount] = useState(MyInitialCards);
     const [myCurrentCard, setMyCurrentCard] = useState('default');
     const [result, setResult] = useState();
@@ -35,13 +33,23 @@ const GamePage = () => {
     const [myScore, setMyScore] = useState(0);
     const [bonus, setBonus] = useState(1);
     const [roundId, setRoundId] = useState(0);
-    const [gameStatus, setGameStatus] = useState(null); // 'won' | 'lost' | null
+    const [gameStatus, setGameStatus] = useState(null);
     const [showGameOver, setShowGameOver] = useState(false);
-    const [playedCards, setPlayedCards] = useState([]); // коллекция карт
+    const [playedCards, setPlayedCards] = useState([]);
     const [isAdUsed, setIsAdUsed] = useState(false);
 
+    // Эффект для показа приветственного модального окна при первом запуске
+    useEffect(() => {
+        // Проверяем, было ли уже показано приветственное окно в этой сессии
+        const welcomeShown = sessionStorage.getItem('welcomeShown');
+        
+        if (!welcomeShown && !sdkLoading) {
+            setShowWelcomeModal(true);
+            sessionStorage.setItem('welcomeShown', 'true');
+        }
+    }, [sdkLoading]);
 
-    // Обработчик завершения игры
+    // Остальные эффекты и функции без изменений
     useEffect(() => {
         const gameFinished = life <= 0 ||
             (myCardsCount.rock === 0 &&
@@ -49,17 +57,15 @@ const GamePage = () => {
                 myCardsCount.scissors === 0);
 
         if (gameFinished) {
-            // Даем время на обработку последнего раунда
             const timer = setTimeout(() => {
                 setGameStatus(life <= 0 ? 'lost' : 'won');
                 setShowGameOver(true);
-            }, 100); // Небольшая задержка для обработки последнего раунда
+            }, 100);
 
             return () => clearTimeout(timer);
         }
     }, [life, myCardsCount]);
 
-    // Обновляем коллекцию после каждого раунда
     useEffect(() => {
         if (myCurrentCard !== 'default' && currentEnemyCard) {
             setPlayedCards(prev => [
@@ -67,7 +73,7 @@ const GamePage = () => {
                 {
                     type: myCurrentCard,
                     isPlayer: true,
-                    roundId: roundId // Добавляем ID раунда
+                    roundId: roundId
                 },
                 {
                     type: currentEnemyCard,
@@ -77,11 +83,6 @@ const GamePage = () => {
             ]);
         }
     }, [myCurrentCard, currentEnemyCard, roundId]);
-
-    useEffect(() => {
-        /*  console.log('Current playedCards:', playedCards); */
-    }, [playedCards]);
-
 
     const resetMyCards = () => {
         setMyCardsCount(MyInitialCards);
@@ -95,11 +96,8 @@ const GamePage = () => {
     };
 
     const resetGame = () => {
-        // Сброс основной логики игры
         resetMyCards();
         reloadEnemyCards();
-
-        // Сброс всех состояний
         setGameStatus(null);
         setShowGameOver(false);
         setLife(3);
@@ -109,15 +107,49 @@ const GamePage = () => {
         setResult(null);
         setMyCurrentCard('default');
         setCurrentEnemyCard('default');
-        setIsAdUsed(false);
-        // Сброс коллекции сыгранных карт
         setPlayedCards([]);
+        setIsAdUsed(false); // Сбрасываем состояние использования рекламы
     };
 
+    const handleStartGame = () => {
+        setShowWelcomeModal(false);
+    };
 
     return (
-
         <div className="game-container">
+            {/* Приветственное модальное окно */}
+            {showWelcomeModal && (
+                <div className="modal-overlay">
+                    <div className="modal welcome-modal">
+                        <div className="modalContent">
+                            <h2>Добро пожаловать в игру!</h2>
+                            <div className="modalText">
+                                <p>Привет, <span className="player-name">{playerName}</span>! 🎮</p>
+                                <p>Готовы к увлекательному испытанию?</p>
+                                <div className="welcome-features">
+                                    <div className="feature-item">
+                                        <span className="feature-icon">⚔️</span>
+                                        <span>Сражайтесь с противником</span>
+                                    </div>
+                                    <div className="feature-item">
+                                        <span className="feature-icon">💖</span>
+                                        <span>Управляйте своими жизнями</span>
+                                    </div>
+                                    <div className="feature-item">
+                                        <span className="feature-icon">🎬</span>
+                                        <span>Получайте бонусы за рекламу</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button className="refreshButton start-game-btn" onClick={handleStartGame}>
+                                Начать игру
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Существующее модальное окно окончания игры */}
             {showGameOver && (
                 <div className="modal-overlay">
                     <div className="modal">
@@ -126,10 +158,11 @@ const GamePage = () => {
                             <div className="modalText">
                                 <p>{gameStatus === 'won' ? `Очков: ${myScore.toLocaleString()}` : 'Попробуйте еще раз!'}</p>
                             </div>
-                            <AdButton
+                            <AdButton 
                                 setShowGameOver={setShowGameOver}
                                 setLife={setLife}
-                                roundId={roundId} />
+                                roundId={roundId}
+                            />
                             <button className="refreshButton" onClick={resetGame}>
                                 Новая игра
                             </button>
@@ -138,6 +171,7 @@ const GamePage = () => {
                 </div>
             )}
 
+            {/* Остальной JSX без изменений */}
             <EnemyPlayField arr={array} />
             <ScoreBar
                 gameStatus={gameStatus}
@@ -158,8 +192,8 @@ const GamePage = () => {
                 roundId={roundId}
             />
 
-            <ReloadButton
-                resetGame={resetGame} />
+            <ReloadButton 
+                resetGame={resetGame}/>
 
             <InfoButton />
 
@@ -187,19 +221,14 @@ const GamePage = () => {
             <PlayedCardsCollection
                 playedCards={playedCards} />
 
-            <AdMainButton
+            <AdMainButton 
                 life={life}
                 setLife={setLife}
                 isAdUsed={isAdUsed}
                 setIsAdUsed={setIsAdUsed}
             />
-
-
         </div>
-
-
     )
 }
-
 
 export default GamePage;
