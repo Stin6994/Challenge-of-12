@@ -38,6 +38,7 @@ const GamePage = () => {
     const [gameStatus, setGameStatus] = useState(null); // 'won' | 'lost' | null
     const [showGameOver, setShowGameOver] = useState(false);
     const [playedCards, setPlayedCards] = useState([]); // коллекция карт
+    const [isAdUsed, setIsAdUsed] = useState(false);
 
 
     // Обработчик завершения игры
@@ -108,7 +109,7 @@ const GamePage = () => {
         setResult(null);
         setMyCurrentCard('default');
         setCurrentEnemyCard('default');
-
+        setIsAdUsed(false);
         // Сброс коллекции сыгранных карт
         setPlayedCards([]);
     };
@@ -189,6 +190,8 @@ const GamePage = () => {
             <AdMainButton
                 life={life}
                 setLife={setLife}
+                isAdUsed={isAdUsed}
+                setIsAdUsed={setIsAdUsed}
             />
 
 

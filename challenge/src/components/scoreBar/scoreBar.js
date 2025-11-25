@@ -42,7 +42,7 @@ function ScoreBar({ gameStatus, myScore }) {
                         <span className="btn-text">Сбросить</span>
                         <span className="btn-glow"></span>
                     </button>
-                    <span className="tooltip-text-score"> {`Сбросить текущий рекорд`}</span>
+                    <span className="tooltip-text-score"> Сбросить текущий рекорд </span>
                 </div>
             </div>
         </div>
