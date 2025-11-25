@@ -1,7 +1,7 @@
 .leaderboard-modal {
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-  border: 2px solid #ffd700;
-  box-shadow: 0 0 30px rgba(255, 215, 0, 0.5),
+  border: 2px solid #00ffff;
+  box-shadow: 0 0 30px #94860c,
               inset 0 0 20px rgba(255, 215, 0, 0.2);
   max-width: 600px;
   width: 90%;
@@ -105,7 +105,7 @@
   padding: 15px;
   background: rgba(255, 215, 0, 0.2);
   border-radius: 8px;
-  border: 1px solid #ffd700;
+  border: 1px solid #00ffff;
 }
 
 .player-rank-info p {
