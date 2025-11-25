@@ -12,6 +12,9 @@ import InfoButton from '../infoButton/infoButton';
 import AdButton from '../adModalButton/adButton';
 import AdMainButton from '../adMainButton/adMainButton';
 import useYandexSDK from '../../hooks/useYandexSDK'; // Добавляем хук SDK
+import LeaderboardButton from '../leaderboardButton/leaderboardButton';
+import LeaderboardModal from '../leaderboardModal/LeaderboardModal'
+import useLeaderboard from '../../hooks/useLeaderboard';
 
 const GamePage = () => {
     const { ysdk, isLoading: sdkLoading, playerName } = useYandexSDK(); // Получаем готовое имя
@@ -19,6 +22,9 @@ const GamePage = () => {
 
     const { reloadEnemyCards, array, enemyPlay, createDeck, currentEnemyCard,
         setCurrentEnemyCard, drawRandomCard, setDeck } = ArrayEnemyCard();
+
+    // Инициализируем хук лидерборда
+    const { submitScore, getLeaderboard, playerRank, isLoading: leaderboardLoading } = useLeaderboard(ysdk);
 
     const MyInitialCards = {
         rock: 4,
@@ -38,18 +44,49 @@ const GamePage = () => {
     const [playedCards, setPlayedCards] = useState([]);
     const [isAdUsed, setIsAdUsed] = useState(false);
 
+    // Новые состояния для лидерборда
+    const [showLeaderboard, setShowLeaderboard] = useState(false);
+    const [leaderboardData, setLeaderboardData] = useState(null);
+    const [newRecordRank, setNewRecordRank] = useState(null); // Для отображения нового рекорда
+
     // Эффект для показа приветственного модального окна при первом запуске
     useEffect(() => {
         // Проверяем, было ли уже показано приветственное окно в этой сессии
         const welcomeShown = sessionStorage.getItem('welcomeShown');
-        
+
         if (!welcomeShown && !sdkLoading) {
             setShowWelcomeModal(true);
             sessionStorage.setItem('welcomeShown', 'true');
         }
     }, [sdkLoading]);
 
-    // Остальные эффекты и функции без изменений
+    // Функция открытия лидерборда
+    const handleOpenLeaderboard = async () => {
+        const data = await getLeaderboard();
+        setLeaderboardData(data);
+        setShowLeaderboard(true);
+    };
+
+    // Функция закрытия лидерборда
+    const handleCloseLeaderboard = () => {
+        setShowLeaderboard(false);
+    };
+
+    // При победе отправляем результат и получаем ранг
+    useEffect(() => {
+        if (gameStatus === 'won' && myScore > 0) {
+            const submitResult = async () => {
+                const result = await submitScore(myScore);
+                if (result.success && result.rank) {
+                    setNewRecordRank(result.rank);
+                }
+            };
+            submitResult();
+        }
+    }, [gameStatus, myScore, submitScore]);
+
+
+
     useEffect(() => {
         const gameFinished = life <= 0 ||
             (myCardsCount.rock === 0 &&
@@ -149,7 +186,17 @@ const GamePage = () => {
                 </div>
             )}
 
-            {/* Существующее модальное окно окончания игры */}
+            {/* Модальное окно лидерборда */}
+            {showLeaderboard && (
+                <LeaderboardModal
+                    onClose={handleCloseLeaderboard}
+                    leaderboardData={leaderboardData}
+                    playerName={playerName}
+                    playerRank={playerRank}
+                />
+            )}
+
+            {/* Обновленное модальное окно окончания игры */}
             {showGameOver && (
                 <div className="modal-overlay">
                     <div className="modal">
@@ -157,8 +204,16 @@ const GamePage = () => {
                             <h2>{gameStatus === 'won' ? 'Победа!' : 'Поражение'}</h2>
                             <div className="modalText">
                                 <p>{gameStatus === 'won' ? `Очков: ${myScore.toLocaleString()}` : 'Попробуйте еще раз!'}</p>
+
+                                {/* Отображаем информацию о новом рекорде */}
+                                {gameStatus === 'won' && newRecordRank && (
+                                    <div className="new-record-info">
+                                        <p>🎉 Новый рекорд!</p>
+                                        <p>Ваше место в таблице лидеров: <span className="record-rank">#{newRecordRank}</span></p>
+                                    </div>
+                                )}
                             </div>
-                            <AdButton 
+                            <AdButton
                                 setShowGameOver={setShowGameOver}
                                 setLife={setLife}
                                 roundId={roundId}
@@ -192,8 +247,8 @@ const GamePage = () => {
                 roundId={roundId}
             />
 
-            <ReloadButton 
-                resetGame={resetGame}/>
+            <ReloadButton
+                resetGame={resetGame} />
 
             <InfoButton />
 
@@ -221,12 +276,15 @@ const GamePage = () => {
             <PlayedCardsCollection
                 playedCards={playedCards} />
 
-            <AdMainButton 
+            <AdMainButton
                 life={life}
                 setLife={setLife}
                 isAdUsed={isAdUsed}
                 setIsAdUsed={setIsAdUsed}
             />
+
+            <LeaderboardButton onShowLeaderboard={handleOpenLeaderboard} />
+
         </div>
     )
 }

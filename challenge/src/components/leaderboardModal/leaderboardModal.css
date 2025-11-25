@@ -1,0 +1,157 @@
+.leaderboard-modal {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  border: 2px solid #ffd700;
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.5),
+              inset 0 0 20px rgba(255, 215, 0, 0.2);
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+}
+
+.leaderboard-modal .modalContent {
+  padding: 30px;
+  text-align: center;
+}
+
+.leaderboard-modal h2 {
+  color: #ffd700;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+  margin-bottom: 25px;
+  font-size: 2.2em;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.leaderboard-list {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 8px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.leaderboard-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px;
+  font-weight: bold;
+  color: #ffd700;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+  margin-bottom: 10px;
+}
+
+.leaderboard-header span {
+  flex: 1;
+  text-align: center;
+}
+
+.leaderboard-header span:first-child {
+  text-align: left;
+}
+
+.leaderboard-header span:last-child {
+  text-align: right;
+}
+
+.leaderboard-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  margin: 8px 0;
+  background: rgba(255, 215, 0, 0.1);
+  border-radius: 6px;
+  border-left: 3px solid #ffd700;
+  transition: all 0.3s ease;
+}
+
+.leaderboard-item:hover {
+  background: rgba(255, 215, 0, 0.2);
+  transform: translateX(5px);
+}
+
+.leaderboard-item.current-player {
+  background: rgba(255, 215, 0, 0.3);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+  border-left: 3px solid #00ffff;
+}
+
+.leaderboard-rank {
+  flex: 1;
+  text-align: left;
+  font-weight: bold;
+  color: #ffd700;
+  font-size: 1.1em;
+}
+
+.leaderboard-name {
+  flex: 2;
+  text-align: center;
+  color: #ffffff;
+  font-size: 1em;
+}
+
+.leaderboard-score {
+  flex: 1;
+  text-align: right;
+  font-weight: bold;
+  color: #ffd700;
+  font-size: 1.1em;
+}
+
+.player-rank-info {
+  margin: 20px 0;
+  padding: 15px;
+  background: rgba(255, 215, 0, 0.2);
+  border-radius: 8px;
+  border: 1px solid #ffd700;
+}
+
+.player-rank-info p {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.2em;
+}
+
+.rank-number {
+  color: #ffd700;
+  font-weight: bold;
+  font-size: 1.3em;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.7);
+}
+
+/* Анимация появления */
+@keyframes leaderboardFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.leaderboard-modal {
+  animation: leaderboardFadeIn 0.5s ease-out;
+}
+
+/* Стили для скроллбара */
+.leaderboard-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.leaderboard-list::-webkit-scrollbar-track {
+  background: rgba(255, 215, 0, 0.1);
+  border-radius: 4px;
+}
+
+.leaderboard-list::-webkit-scrollbar-thumb {
+  background: #ffd700;
+  border-radius: 4px;
+}
+
+.leaderboard-list::-webkit-scrollbar-thumb:hover {
+  background: #ffaa00;
+}

@@ -169,3 +169,43 @@
 .welcome-modal {
     animation: welcomeFadeIn 0.5s ease-out;
 }
+
+
+/* для лидерборда */
+
+.new-record-info {
+    margin: 15px 0;
+    padding: 15px;
+    background: rgba(255, 215, 0, 0.2);
+    border-radius: 8px;
+    border: 1px solid #ffd700;
+    animation: pulse-gold 2s ease-in-out infinite;
+}
+
+.new-record-info p {
+    margin: 5px 0;
+    color: #ffffff;
+    font-size: 1.1em;
+}
+
+.new-record-info p:first-child {
+    color: #ffd700;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.record-rank {
+    color: #ffd700;
+    font-weight: bold;
+    font-size: 1.3em;
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.7);
+}
+
+@keyframes pulse-gold {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+    }
+}
