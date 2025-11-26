@@ -183,22 +183,20 @@
 
 .tooltip-text {
     position: absolute;
-    bottom: 10%;
-    /* над кнопкой */
-    left: 50%;
-    transform: translateX(-160%);
-    background: #333;
-    color: white;
+    background: rgba(0, 0, 0, 0.8);
+    color: #0ff;
     padding: 2%;
     border-radius: 4px;
-    border: 1px solid white;
-    font-size: min(1.5vw, 2.2vh, 24px);
+    font-size: min(1.5vw, 2.4vh, 24px);
     font-family: 'Orbitron', sans-serif;
     white-space: nowrap;
     opacity: 0;
-    visibility: hidden;
     transition: all 0.3s ease;
+    pointer-events: none;
     z-index: 1000;
+    text-align: center;
+    border: 1px solid #0ff;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
 }
 
 .tooltip-text::after {
@@ -213,5 +211,5 @@
 
 .tooltip-container:hover .tooltip-text {
     opacity: 1;
-    visibility: visible;
+    transform: translate(-102%, 0%);
 }
