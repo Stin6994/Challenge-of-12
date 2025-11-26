@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './adMainButton.css';
 import useYandexSDK from '../../hooks/useYandexSDK';
 
-function AdMainButton({ life, setLife, isAdUsed, setIsAdUsed }) {
+function AdMainButton({ life, setLife, isAdUsed, setIsAdUsed, setIsAdBlocking }) {
   const { ysdk, isLoading } = useYandexSDK();
   const [isAdLoading, setIsAdLoading] = useState(false);
 
@@ -21,19 +21,24 @@ function AdMainButton({ life, setLife, isAdUsed, setIsAdUsed }) {
 
     console.log('Showing fullscreen ad...');
     setIsAdLoading(true);
+    setIsAdBlocking(true); // Блокируем игру
 
     if (!ysdk.adv || !ysdk.adv.showFullscreenAdv) {
       setTimeout(() => {
         setLife(prev => Math.min(prev + 1, 3));
         setIsAdLoading(false);
         setIsAdUsed(true);
+        setIsAdBlocking(false); // Разблокируем игру
       }, 3000);
       return;
     }
 
-    ysdk.adv.showFullscreenAdv({
+     ysdk.adv.showFullscreenAdv({
       callbacks: {
-        onOpen: () => console.log('🎬 Fullscreen ad opened'),
+        onOpen: () => {
+          console.log('🎬 Fullscreen ad opened');
+          setIsAdBlocking(true); // Блокируем игру
+        },
         onClose: (wasShown) => {
           console.log(`✅ Fullscreen ad closed, was shown: ${wasShown}`);
           if (wasShown && life < 3) {
@@ -41,10 +46,12 @@ function AdMainButton({ life, setLife, isAdUsed, setIsAdUsed }) {
             setIsAdUsed(true);
           }
           setIsAdLoading(false);
+          setIsAdBlocking(false); // Разблокируем игру
         },
         onError: (error) => {
           console.error('❌ Fullscreen ad error:', error);
           setIsAdLoading(false);
+          setIsAdBlocking(false); // Разблокируем игру даже при ошибке
         }
       }
     });

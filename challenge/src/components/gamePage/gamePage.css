@@ -245,3 +245,53 @@
     font-size: min(1.8vmin, 20px);
   }
 }
+
+
+
+/* Блокирующий оверлей */
+.ad-blocking-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000; /* Выше всех остальных элементов */
+  pointer-events: all; /* Блокирует все клики */
+}
+
+.ad-blocking-message {
+  text-align: center;
+  color: #0ff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: min(3vmin, 1.5rem);
+  text-shadow: 0 0 min(1vmin, 10px) #0ff;
+}
+
+.ad-spinner {
+  width: min(8vmin, 60px);
+  height: min(8vmin, 60px);
+  border: min(0.4vmin, 4px) solid rgba(0, 255, 255, 0.3);
+  border-top: min(0.4vmin, 4px) solid #0ff;
+  border-radius: 50%;
+  margin: 0 auto min(2vmin, 20px);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Дополнительно можно заблокировать pointer-events для всех элементов во время рекламы */
+.game-container.blocked {
+  pointer-events: none;
+}
+
+/* Альтернативно можно добавить класс блокировки к контейнеру */
+.game-container.blocked * {
+  pointer-events: none !important;
+}

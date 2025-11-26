@@ -43,6 +43,7 @@ const GamePage = () => {
     const [showGameOver, setShowGameOver] = useState(false);
     const [playedCards, setPlayedCards] = useState([]);
     const [isAdUsed, setIsAdUsed] = useState(false);
+    const [isAdBlocking, setIsAdBlocking] = useState(false);
 
     // Новые состояния для лидерборда
     const [showLeaderboard, setShowLeaderboard] = useState(false);
@@ -154,6 +155,15 @@ const GamePage = () => {
 
     return (
         <div className="game-container">
+            {/* Блокирующий оверлей поверх всего игрового поля */}
+            {isAdBlocking && (
+                <div className="ad-blocking-overlay">
+                    <div className="ad-blocking-message">
+                        <div className="ad-spinner"></div>
+                        <p>Реклама...</p>
+                    </div>
+                </div>
+            )}
             {/* Приветственное модальное окно */}
             {showWelcomeModal && (
                 <div className="modal-overlay">
@@ -281,6 +291,7 @@ const GamePage = () => {
                 setLife={setLife}
                 isAdUsed={isAdUsed}
                 setIsAdUsed={setIsAdUsed}
+                setIsAdBlocking={setIsAdBlocking}
             />
 
             <LeaderboardButton onShowLeaderboard={handleOpenLeaderboard} />
