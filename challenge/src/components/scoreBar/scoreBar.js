@@ -69,10 +69,10 @@ function ScoreBar({ gameStatus, myScore }) {
                             </div>
                             <div className="reset-modal-actions">
                                 <button className="reset-confirm-btn" onClick={resetRecord}>
-                                    Да
+                                    Сбросить
                                 </button>
                                 <button className="reset-cancel-btn" onClick={closeResetModal}>
-                                    Нет
+                                    Вернуться
                                 </button>
                             </div>
                         </div>
