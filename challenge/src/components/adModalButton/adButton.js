@@ -74,8 +74,8 @@ const AdButton = ({ setShowGameOver, setLife, roundId }) => {
   }
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h3>Тест Яндекс SDK</h3>
+    <div>
+      {/* <h3>Тест Яндекс SDK</h3> */}
       
       {roundId < 12 && (
         <button 
@@ -91,13 +91,13 @@ const AdButton = ({ setShowGameOver, setLife, roundId }) => {
         </button>
       )}
       
-      <div style={{ marginTop: '20px', fontSize: '12px', color: '#666' }}>
+    {/*   <div style={{ marginTop: '20px', fontSize: '12px', color: '#666' }}>
         Режим: {ysdk ? 'SDK подключен' : 'Локальная заглушка'}
         <br />
         Статус: {isAdLoading ? 'Реклама показывается...' : 'Готово'}
         <br />
         Открой консоль браузера для просмотра логов
-      </div>
+      </div> */}
     </div>
   );
 };

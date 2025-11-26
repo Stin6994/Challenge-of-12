@@ -37,7 +37,7 @@ function LeaderboardModal({ onClose, leaderboardData, playerName, playerRank }) 
             </div>
           )}
 
-          <button className="refreshButton" onClick={onClose}>
+          <button className="refreshButton-leaderboard" onClick={onClose}>
             Закрыть
           </button>
         </div>

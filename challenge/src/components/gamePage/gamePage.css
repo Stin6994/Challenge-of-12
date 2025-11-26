@@ -3,17 +3,16 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  border: 1px solid #e6cbcb;
+  border: min(0.1vmin, 1px) solid #e6cbcb;
   width: 90vw;
   height: 90vh;
   min-height: 20vw;
   max-height: 50vw;
   min-width: 50vh;
   max-width: 190vh;
-  border: 2px solid #0ff;
-  border-radius: 15px;
-  box-shadow: 0 0 15px #0ff, inset 0 0 10px rgba(0, 255, 255, 0.3);
-
+  border: min(0.2vmin, 2px) solid #0ff;
+  border-radius: min(1.5vmin, 15px);
+  box-shadow: 0 0 min(1.5vmin, 15px) #0ff, inset 0 0 min(1vmin, 10px) rgba(0, 255, 255, 0.3);
 }
 
 /* Общие стили для всех модальных окон */
@@ -32,12 +31,12 @@
 
 .modal {
   background: linear-gradient(145deg, #1a1a2e, #16213e);
-  border-radius: 10px;
-  padding: 2rem;
-  max-width: 500px;
+  border-radius: min(1vmin, 10px);
+  padding: min(2vmin, 2rem);
+  max-width: min(80vmin, 500px);
   width: 90%;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
-  border: 1px solid #0ff;
+  box-shadow: 0 0 min(2vmin, 20px) rgba(0, 255, 255, 0.5);
+  border: min(0.1vmin, 1px) solid #0ff;
   color: #fff;
   font-family: 'Orbitron', sans-serif;
 }
@@ -48,93 +47,94 @@
 
 .modalContent h2 {
   color: #0ff;
-  text-shadow: 0 0 5px #0ff;
-  margin-bottom: 1.5rem;
-  font-size: 2rem;
+  text-shadow: 0 0 min(0.5vmin, 5px) #0ff;
+  margin-bottom: min(1.5vmin, 1.5rem);
+  font-size: min(4vmin, 2rem);
 }
 
 .modalText {
-  margin-bottom: 2rem;
+  margin-bottom: min(2vmin, 2rem);
   line-height: 1.6;
 }
 
 .modalText p {
-  margin-bottom: 1rem;
+  margin-bottom: min(1vmin, 1rem);
+  font-size: min(2.2vmin, 1.1em);
 }
 
 .refreshButton {
   background: transparent;
-  border: 1px solid #0ff;
+  border: min(0.1vmin, 1px) solid #0ff;
   color: #0ff;
-  padding: 10px 20px;
+  padding: min(1vmin, 10px) min(2vmin, 20px);
   font-family: 'Orbitron', sans-serif;
-  font-size: 1rem;
+  font-size: min(2vmin, 1rem);
   cursor: pointer;
   transition: all 0.3s ease;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-top: 1rem;
+  letter-spacing: min(0.1vmin, 1px);
+  margin-top: min(1vmin, 1rem);
+  border-radius: min(0.5vmin, 5px);
 }
 
 .refreshButton:hover {
   background: rgba(0, 255, 255, 0.1);
-  box-shadow: 0 0 10px #0ff;
+  box-shadow: 0 0 min(1vmin, 10px) #0ff;
   color: #fff;
 }
-
-
 
 /* Стили для приветственного модального окна */
 .welcome-modal {
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-    border: 2px solid #00ffff;
-    box-shadow: 0 0 30px rgba(0, 255, 255, 0.5),
-                inset 0 0 20px rgba(0, 255, 255, 0.2);
+    border: min(0.2vmin, 2px) solid #00ffff;
+    box-shadow: 0 0 min(3vmin, 30px) rgba(0, 255, 255, 0.5),
+                inset 0 0 min(2vmin, 20px) rgba(0, 255, 255, 0.2);
 }
 
 .welcome-modal .modalContent {
     text-align: center;
-    padding: 30px;
+    padding: min(3vmin, 30px);
 }
 
 .welcome-modal h2 {
     color: #00ffff;
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
-    margin-bottom: 20px;
-    font-size: 2.5em;
+    text-shadow: 0 0 min(1vmin, 10px) rgba(0, 255, 255, 0.7);
+    margin-bottom: min(2vmin, 20px);
+    font-size: min(5vmin, 2.5em);
     font-family: 'Orbitron', sans-serif;
 }
 
 .player-name {
     color: #ffd700;
-    text-shadow: 0 0 8px rgba(255, 215, 0, 0.7);
+    text-shadow: 0 0 min(0.8vmin, 8px) rgba(255, 215, 0, 0.7);
     font-weight: bold;
 }
 
 .welcome-features {
-    margin: 25px 0;
+    margin: min(2.5vmin, 25px) 0;
     text-align: left;
 }
 
 .feature-item {
     display: flex;
     align-items: center;
-    margin: 15px 0;
-    padding: 10px;
+    margin: min(1.5vmin, 15px) 0;
+    padding: min(1vmin, 10px);
     background: rgba(0, 255, 255, 0.1);
-    border-radius: 8px;
-    border-left: 3px solid #00ffff;
+    border-radius: min(0.8vmin, 8px);
+    border-left: min(0.3vmin, 3px) solid #00ffff;
+    font-size: min(2.2vmin, 1.1em);
 }
 
 .feature-icon {
-    font-size: 1.5em;
-    margin-right: 15px;
-    filter: drop-shadow(0 0 3px rgba(0, 255, 255, 0.7));
+    font-size: min(3vmin, 1.5em);
+    margin-right: min(1.5vmin, 15px);
+    filter: drop-shadow(0 0 min(0.3vmin, 3px) rgba(0, 255, 255, 0.7));
 }
 
 .feature-item span:last-child {
     color: #ffffff;
-    font-size: 1.1em;
+    font-size: min(2.2vmin, 1.1em);
 }
 
 .start-game-btn {
@@ -142,23 +142,24 @@
     border: none;
     color: #000;
     font-weight: bold;
-    font-size: 1.2em;
-    padding: 15px 40px;
-    margin-top: 20px;
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    font-size: min(2.4vmin, 1.2em);
+    padding: min(1.5vmin, 15px) min(4vmin, 40px);
+    margin-top: min(2vmin, 20px);
+    box-shadow: 0 0 min(2vmin, 20px) rgba(0, 255, 255, 0.5);
     transition: all 0.3s ease;
+    border-radius: min(0.5vmin, 5px);
 }
 
 .start-game-btn:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
+    box-shadow: 0 0 min(3vmin, 30px) rgba(0, 255, 255, 0.8);
 }
 
 /* Анимация появления */
 @keyframes welcomeFadeIn {
     from {
         opacity: 0;
-        transform: scale(0.8) translateY(-50px);
+        transform: scale(0.8) translateY(min(-5vmin, -50px));
     }
     to {
         opacity: 1;
@@ -170,42 +171,77 @@
     animation: welcomeFadeIn 0.5s ease-out;
 }
 
-
 /* для лидерборда */
-
 .new-record-info {
-    margin: 15px 0;
-    padding: 15px;
+    margin: min(1.5vmin, 15px) 0;
+    padding: min(1.5vmin, 15px);
     background: rgba(255, 215, 0, 0.2);
-    border-radius: 8px;
-    border: 1px solid #ffd700;
+    border-radius: min(0.8vmin, 8px);
+    border: min(0.1vmin, 1px) solid #ffd700;
     animation: pulse-gold 2s ease-in-out infinite;
 }
 
 .new-record-info p {
-    margin: 5px 0;
+    margin: min(0.5vmin, 5px) 0;
     color: #ffffff;
-    font-size: 1.1em;
+    font-size: min(2.2vmin, 1.1em);
 }
 
 .new-record-info p:first-child {
     color: #ffd700;
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: min(2.4vmin, 1.2em);
 }
 
 .record-rank {
     color: #ffd700;
     font-weight: bold;
-    font-size: 1.3em;
-    text-shadow: 0 0 8px rgba(255, 215, 0, 0.7);
+    font-size: min(2.6vmin, 1.3em);
+    text-shadow: 0 0 min(0.8vmin, 8px) rgba(255, 215, 0, 0.7);
 }
 
 @keyframes pulse-gold {
     0%, 100% {
-        box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        box-shadow: 0 0 min(1vmin, 10px) rgba(255, 215, 0, 0.3);
     }
     50% {
-        box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+        box-shadow: 0 0 min(2vmin, 20px) rgba(255, 215, 0, 0.6);
     }
+}
+
+/* Адаптивность для очень маленьких экранов */
+@media (max-width: 480px) {
+  .modal {
+    padding: min(3vmin, 1.5rem);
+    width: 95%;
+  }
+  
+  .modalContent h2 {
+    font-size: min(6vmin, 1.8rem);
+    margin-bottom: min(2vmin, 1rem);
+  }
+  
+  .feature-item {
+    font-size: min(3vmin, 14px);
+  }
+  
+  .start-game-btn {
+    font-size: min(3vmin, 16px);
+    padding: min(2vmin, 12px) min(5vmin, 30px);
+  }
+}
+
+/* Для очень больших экранов ограничиваем максимальный размер */
+@media (min-width: 1600px) {
+  .modal {
+    max-width: min(60vmin, 600px);
+  }
+  
+  .modalContent h2 {
+    font-size: min(3vmin, 2.5rem);
+  }
+  
+  .feature-item {
+    font-size: min(1.8vmin, 20px);
+  }
 }

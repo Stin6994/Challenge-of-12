@@ -1,44 +1,45 @@
 .leaderboard-modal {
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-  border: 2px solid #00ffff;
-  box-shadow: 0 0 30px #94860c,
-              inset 0 0 20px rgba(255, 215, 0, 0.2);
-  max-width: 600px;
+  border: min(0.2vmin, 2px) solid #00ffff;
+  box-shadow: 0 0 min(3vmin, 30px) #94860c,
+              inset 0 0 min(2vmin, 20px) rgba(255, 215, 0, 0.2);
+  max-width: min(80vmin, 600px);
   width: 90%;
   max-height: 80vh;
 }
 
 .leaderboard-modal .modalContent {
-  padding: 30px;
+  padding: min(3vmin, 30px);
   text-align: center;
 }
 
 .leaderboard-modal h2 {
   color: #ffd700;
-  text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
-  margin-bottom: 25px;
-  font-size: 2.2em;
+  text-shadow: 0 0 min(1vmin, 10px) rgba(255, 215, 0, 0.7);
+  margin-bottom: min(2.5vmin, 25px);
+  font-size: min(4vmin, 2.2em);
   font-family: 'Orbitron', sans-serif;
 }
 
 .leaderboard-list {
-  max-height: 400px;
+  max-height: min(40vmin, 400px);
   overflow-y: auto;
-  margin-bottom: 20px;
-  border: 1px solid rgba(255, 215, 0, 0.3);
-  border-radius: 8px;
-  padding: 10px;
+  margin-bottom: min(2vmin, 20px);
+  border: min(0.1vmin, 1px) solid rgba(255, 215, 0, 0.3);
+  border-radius: min(0.8vmin, 8px);
+  padding: min(1vmin, 10px);
   background: rgba(0, 0, 0, 0.3);
 }
 
 .leaderboard-header {
   display: flex;
   justify-content: space-between;
-  padding: 10px 15px;
+  padding: min(1vmin, 10px) min(1.5vmin, 15px);
   font-weight: bold;
   color: #ffd700;
-  border-bottom: 1px solid rgba(255, 215, 0, 0.3);
-  margin-bottom: 10px;
+  border-bottom: min(0.1vmin, 1px) solid rgba(255, 215, 0, 0.3);
+  margin-bottom: min(1vmin, 10px);
+  font-size: min(2vmin, 1em);
 }
 
 .leaderboard-header span {
@@ -58,23 +59,24 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 15px;
-  margin: 8px 0;
+  padding: min(1.2vmin, 12px) min(1.5vmin, 15px);
+  margin: min(0.8vmin, 8px) 0;
   background: rgba(255, 215, 0, 0.1);
-  border-radius: 6px;
-  border-left: 3px solid #ffd700;
+  border-radius: min(0.6vmin, 6px);
+  border-left: min(0.3vmin, 3px) solid #ffd700;
   transition: all 0.3s ease;
+  font-size: min(2vmin, 1em);
 }
 
 .leaderboard-item:hover {
   background: rgba(255, 215, 0, 0.2);
-  transform: translateX(5px);
+  transform: translateX(min(0.5vmin, 5px));
 }
 
 .leaderboard-item.current-player {
   background: rgba(255, 215, 0, 0.3);
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
-  border-left: 3px solid #00ffff;
+  box-shadow: 0 0 min(1.5vmin, 15px) rgba(255, 215, 0, 0.5);
+  border-left: min(0.3vmin, 3px) solid #00ffff;
 }
 
 .leaderboard-rank {
@@ -82,14 +84,14 @@
   text-align: left;
   font-weight: bold;
   color: #ffd700;
-  font-size: 1.1em;
+  font-size: min(2.2vmin, 1.1em);
 }
 
 .leaderboard-name {
   flex: 2;
   text-align: center;
   color: #ffffff;
-  font-size: 1em;
+  font-size: min(2vmin, 1em);
 }
 
 .leaderboard-score {
@@ -97,35 +99,36 @@
   text-align: right;
   font-weight: bold;
   color: #ffd700;
-  font-size: 1.1em;
+  font-size: min(2.2vmin, 1.1em);
 }
 
 .player-rank-info {
-  margin: 20px 0;
-  padding: 15px;
+  margin: min(2vmin, 20px) 0;
+  padding: min(1.5vmin, 15px);
   background: rgba(255, 215, 0, 0.2);
-  border-radius: 8px;
-  border: 1px solid #00ffff;
+  border-radius: min(0.8vmin, 8px);
+  border: min(0.1vmin, 1px) solid #00ffff;
+  font-size: min(2vmin, 1em);
 }
 
 .player-rank-info p {
   margin: 0;
   color: #ffffff;
-  font-size: 1.2em;
+  font-size: min(2.4vmin, 1.2em);
 }
 
 .rank-number {
   color: #ffd700;
   font-weight: bold;
-  font-size: 1.3em;
-  text-shadow: 0 0 8px rgba(255, 215, 0, 0.7);
+  font-size: min(2.6vmin, 1.3em);
+  text-shadow: 0 0 min(0.8vmin, 8px) rgba(255, 215, 0, 0.7);
 }
 
 /* Анимация появления */
 @keyframes leaderboardFadeIn {
   from {
     opacity: 0;
-    transform: scale(0.8) translateY(-50px);
+    transform: scale(0.8) translateY(min(-5vmin, -50px));
   }
   to {
     opacity: 1;
@@ -139,19 +142,101 @@
 
 /* Стили для скроллбара */
 .leaderboard-list::-webkit-scrollbar {
-  width: 8px;
+  width: min(0.8vmin, 8px);
 }
 
 .leaderboard-list::-webkit-scrollbar-track {
   background: rgba(255, 215, 0, 0.1);
-  border-radius: 4px;
+  border-radius: min(0.4vmin, 4px);
 }
 
 .leaderboard-list::-webkit-scrollbar-thumb {
   background: #ffd700;
-  border-radius: 4px;
+  border-radius: min(0.4vmin, 4px);
 }
 
 .leaderboard-list::-webkit-scrollbar-thumb:hover {
   background: #ffaa00;
+}
+
+/* Дополнительные медиа-запросы для очень маленьких экранов */
+@media (max-width: 480px) {
+  .leaderboard-modal {
+    width: 95%;
+    max-width: 95vw;
+  }
+  
+  .leaderboard-header,
+  .leaderboard-item {
+    font-size: min(2.5vmin, 14px);
+  }
+}
+
+/* Обеспечиваем читаемость на очень больших экранах */
+@media (min-width: 1600px) {
+  .leaderboard-modal {
+    max-width: min(60vmin, 800px);
+  }
+}
+
+/* кнопка */
+
+.refreshButton-leaderboard {
+  position: relative;
+  background: transparent;
+  border: min(0.2vmin, 2px) solid #00ffff;
+  border-radius: min(0.5vmin, 5px);
+  color: #00ffff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: min(2.2vmin, 1.1em);
+  font-weight: bold;
+  padding: min(1.2vmin, 12px) min(2.5vmin, 25px);
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: min(0.1vmin, 1px);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 min(1vmin, 10px) #00ffff,
+              inset 0 0 min(0.5vmin, 5px) rgba(0, 255, 255, 0.2);
+  text-shadow: 0 0 min(0.5vmin, 5px) #00ffff;
+  margin-top: min(1vmin, 10px);
+  min-width: min(15vmin, 150px);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.refreshButton-leaderboard:hover {
+  background: rgba(0, 255, 255, 0.1);
+  box-shadow: 0 0 min(1.5vmin, 15px) #00ffff,
+              inset 0 0 min(0.8vmin, 8px) rgba(0, 255, 255, 0.3);
+  transform: translateY(min(-0.2vmin, -2px));
+  color: #ffffff;
+  text-shadow: 0 0 min(0.8vmin, 8px) #ffffff;
+}
+
+.refreshButton-leaderboard:active {
+  transform: translateY(min(0.1vmin, 1px));
+  box-shadow: 0 0 min(0.5vmin, 5px) #00ffff,
+              inset 0 0 min(0.3vmin, 3px) rgba(0, 0, 0, 0.2);
+}
+
+.refreshButton-leaderboard:focus {
+  outline: none;
+  box-shadow: 0 0 min(1vmin, 10px) #00ffff,
+              0 0 0 min(0.3vmin, 3px) rgba(255, 215, 0, 0.5);
+}
+
+/* Адаптивность для очень маленьких экранов */
+@media (max-width: 480px) {
+  .refreshButton-leaderboard {
+    font-size: min(2.8vmin, 14px);
+    padding: min(1.5vmin, 8px) min(3vmin, 20px);
+    min-width: min(20vmin, 120px);
+  }
+}
+
+/* Для очень больших экранов ограничиваем максимальный размер */
+@media (min-width: 1600px) {
+  .refreshButton-leaderboard {
+    font-size: min(1.8vmin, 22px);
+    padding: min(1vmin, 15px) min(2vmin, 30px);
+  }
 }
