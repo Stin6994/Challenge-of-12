@@ -11,20 +11,28 @@ import PlayedCardsCollection from '../cardCollection/cardCollection';
 import InfoButton from '../infoButton/infoButton';
 import AdButton from '../adModalButton/adButton';
 import AdMainButton from '../adMainButton/adMainButton';
-import useYandexSDK from '../../hooks/useYandexSDK'; // Добавляем хук SDK
+import useYandexSDK from '../../hooks/useYandexSDK';
 import LeaderboardButton from '../leaderboardButton/leaderboardButton';
-import LeaderboardModal from '../leaderboardModal/LeaderboardModal'
-import useLeaderboard from '../../hooks/useLeaderboard';
+import LeaderboardModal from '../leaderboardModal/LeaderboardModal';
+import useGameRecords from '../../hooks/useGameRecords';
 
 const GamePage = () => {
-    const { ysdk, isLoading: sdkLoading, playerName } = useYandexSDK(); // Получаем готовое имя
+    const { ysdk, isLoading: sdkLoading, playerName } = useYandexSDK();
     const [showWelcomeModal, setShowWelcomeModal] = useState(false);
 
     const { reloadEnemyCards, array, enemyPlay, createDeck, currentEnemyCard,
         setCurrentEnemyCard, drawRandomCard, setDeck } = ArrayEnemyCard();
 
-    // Инициализируем хук лидерборда
-    const { submitScore, getLeaderboard, playerRank, isLoading: leaderboardLoading } = useLeaderboard(ysdk);
+    // Используем хук рекордов
+    const { 
+        highScore, 
+        updateHighScore, 
+        resetHighScore, 
+        getLeaderboardData, 
+        leaderboardData, 
+        playerRank,
+        loadLeaderboardData
+    } = useGameRecords();
 
     const MyInitialCards = {
         rock: 4,
@@ -44,50 +52,37 @@ const GamePage = () => {
     const [playedCards, setPlayedCards] = useState([]);
     const [isAdUsed, setIsAdUsed] = useState(false);
     const [isAdBlocking, setIsAdBlocking] = useState(false);
-
-    // Новые состояния для лидерборда
+    const [newRecordRank, setNewRecordRank] = useState(null);
     const [showLeaderboard, setShowLeaderboard] = useState(false);
-    const [leaderboardData, setLeaderboardData] = useState(null);
-    const [newRecordRank, setNewRecordRank] = useState(null); // Для отображения нового рекорда
 
-    // Эффект для показа приветственного модального окна при первом запуске
+    // Эффект для показа приветственного модального окна
     useEffect(() => {
-        // Проверяем, было ли уже показано приветственное окно в этой сессии
         const welcomeShown = sessionStorage.getItem('welcomeShown');
-
         if (!welcomeShown && !sdkLoading) {
             setShowWelcomeModal(true);
             sessionStorage.setItem('welcomeShown', 'true');
         }
     }, [sdkLoading]);
 
-    // Функция открытия лидерборда
-    const handleOpenLeaderboard = async () => {
-        const data = await getLeaderboard();
-        setLeaderboardData(data);
-        setShowLeaderboard(true);
-    };
-
-    // Функция закрытия лидерборда
-    const handleCloseLeaderboard = () => {
-        setShowLeaderboard(false);
-    };
-
-    // При победе отправляем результат и получаем ранг
+    // Обработка окончания игры и обновление рекорда
     useEffect(() => {
         if (gameStatus === 'won' && myScore > 0) {
-            const submitResult = async () => {
-                const result = await submitScore(myScore);
-                if (result.success && result.rank) {
-                    setNewRecordRank(result.rank);
-                }
-            };
-            submitResult();
+            console.log(`🎮 Game won with score: ${myScore}, current high: ${highScore}`);
+            
+            if (myScore > highScore) {
+                const updateRecord = async () => {
+                    const result = await updateHighScore(myScore);
+                    if (result.isNewRecord) {
+                        setNewRecordRank(result.rank);
+                        console.log(`🎉 New record! Rank: ${result.rank}`);
+                    }
+                };
+                updateRecord();
+            }
         }
-    }, [gameStatus, myScore, submitScore]);
+    }, [gameStatus, myScore, highScore, updateHighScore]);
 
-
-
+    // Проверка окончания игры
     useEffect(() => {
         const gameFinished = life <= 0 ||
             (myCardsCount.rock === 0 &&
@@ -99,11 +94,11 @@ const GamePage = () => {
                 setGameStatus(life <= 0 ? 'lost' : 'won');
                 setShowGameOver(true);
             }, 100);
-
             return () => clearTimeout(timer);
         }
     }, [life, myCardsCount]);
 
+    // Добавление сыгранных карт
     useEffect(() => {
         if (myCurrentCard !== 'default' && currentEnemyCard) {
             setPlayedCards(prev => [
@@ -146,16 +141,27 @@ const GamePage = () => {
         setMyCurrentCard('default');
         setCurrentEnemyCard('default');
         setPlayedCards([]);
-        setIsAdUsed(false); // Сбрасываем состояние использования рекламы
+        setIsAdUsed(false);
+        setNewRecordRank(null);
     };
 
     const handleStartGame = () => {
         setShowWelcomeModal(false);
     };
 
+    // Функции для лидерборда
+    const handleOpenLeaderboard = async () => {
+        await getLeaderboardData();
+        setShowLeaderboard(true);
+    };
+
+    const handleCloseLeaderboard = () => {
+        setShowLeaderboard(false);
+    };
+
     return (
         <div className="game-container">
-            {/* Блокирующий оверлей поверх всего игрового поля */}
+            {/* Блокирующий оверлей для рекламы */}
             {isAdBlocking && (
                 <div className="ad-blocking-overlay">
                     <div className="ad-blocking-message">
@@ -164,6 +170,7 @@ const GamePage = () => {
                     </div>
                 </div>
             )}
+
             {/* Приветственное модальное окно */}
             {showWelcomeModal && (
                 <div className="modal-overlay">
@@ -203,10 +210,12 @@ const GamePage = () => {
                     leaderboardData={leaderboardData}
                     playerName={playerName}
                     playerRank={playerRank}
+                    resetHighScore={resetHighScore}
+                    loadLeaderboardData={loadLeaderboardData}
                 />
             )}
 
-            {/* Обновленное модальное окно окончания игры */}
+            {/* Модальное окно окончания игры */}
             {showGameOver && (
                 <div className="modal-overlay">
                     <div className="modal">
@@ -215,11 +224,22 @@ const GamePage = () => {
                             <div className="modalText">
                                 <p>{gameStatus === 'won' ? `Очков: ${myScore.toLocaleString()}` : 'Попробуйте еще раз!'}</p>
 
-                                {/* Отображаем информацию о новом рекорде */}
-                                {gameStatus === 'won' && newRecordRank && (
+                                {/* Отображение нового рекорда */}
+                                {gameStatus === 'won' && newRecordRank && myScore > highScore && (
                                     <div className="new-record-info">
                                         <p>🎉 Новый рекорд!</p>
                                         <p>Ваше место в таблице лидеров: <span className="record-rank">#{newRecordRank}</span></p>
+                                        <p>Рекорд: {myScore.toLocaleString()} очков</p>
+                                    </div>
+                                )}
+                                
+                                {/* Отображение текущего рекорда если не побит */}
+                                {gameStatus === 'won' && (!newRecordRank || myScore <= highScore) && (
+                                    <div className="standard-win-info">
+                                        <p>Текущий рекорд: {highScore.toLocaleString()} очков</p>
+                                        {myScore < highScore && (
+                                            <p>Чтобы побить рекорд, нужно набрать больше {highScore.toLocaleString()} очков</p>
+                                        )}
                                     </div>
                                 )}
                             </div>
@@ -236,13 +256,17 @@ const GamePage = () => {
                 </div>
             )}
 
-            {/* Остальной JSX без изменений */}
+            {/* Игровые компоненты */}
             <EnemyPlayField arr={array} />
+            
             <ScoreBar
                 gameStatus={gameStatus}
-                myScore={myScore} />
+                myScore={myScore}
+                highScore={highScore}
+            />
 
-            <MyPlayField enemyPlay={enemyPlay}
+            <MyPlayField 
+                enemyPlay={enemyPlay}
                 myCardsCount={myCardsCount}
                 setMyCardsCount={setMyCardsCount}
                 setMyCurrentCard={setMyCurrentCard}
@@ -257,12 +281,12 @@ const GamePage = () => {
                 roundId={roundId}
             />
 
-            <ReloadButton
-                resetGame={resetGame} />
+            <ReloadButton resetGame={resetGame} />
 
             <InfoButton />
 
-            <ResultField myCurrentCard={myCurrentCard}
+            <ResultField 
+                myCurrentCard={myCurrentCard}
                 setMyCurrentCard={setMyCurrentCard}
                 createDeck={createDeck}
                 currentEnemyCard={currentEnemyCard}
@@ -272,6 +296,7 @@ const GamePage = () => {
                 setResult={setResult}
                 roundId={roundId}
             />
+            
             <BuySaleBar
                 myScore={myScore}
                 setMyScore={setMyScore}
@@ -283,8 +308,8 @@ const GamePage = () => {
                 setLife={setLife}
                 showGameOver={showGameOver}
             />
-            <PlayedCardsCollection
-                playedCards={playedCards} />
+            
+            <PlayedCardsCollection playedCards={playedCards} />
 
             <AdMainButton
                 life={life}
@@ -295,7 +320,6 @@ const GamePage = () => {
             />
 
             <LeaderboardButton onShowLeaderboard={handleOpenLeaderboard} />
-
         </div>
     )
 }

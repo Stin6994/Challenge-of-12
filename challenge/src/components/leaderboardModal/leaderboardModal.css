@@ -13,10 +13,58 @@
   text-align: center;
 }
 
+.leaderboard-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: min(2.5vmin, 25px);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: min(1vmin, 10px);
+}
+
+.refresh-leaderboard-btn {
+  background: transparent;
+  border: min(0.2vmin, 2px) solid #00ffff;
+  border-radius: 50%;
+  width: min(4vmin, 40px);
+  height: min(4vmin, 40px);
+  color: #00ffff;
+  font-size: min(2vmin, 20px);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.refresh-leaderboard-btn:hover:not(:disabled) {
+  background: rgba(0, 255, 255, 0.1);
+  box-shadow: 0 0 min(1vmin, 10px) #00ffff;
+  transform: rotate(90deg);
+}
+
+.refresh-leaderboard-btn.refreshing {
+  animation: spin 1s linear infinite;
+}
+
+.refresh-leaderboard-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.last-update {
+  font-size: min(1.5vmin, 12px);
+  color: #888;
+  font-family: 'Orbitron', sans-serif;
+}
+
 .leaderboard-modal h2 {
   color: #ffd700;
   text-shadow: 0 0 min(1vmin, 10px) rgba(255, 215, 0, 0.7);
-  margin-bottom: min(2.5vmin, 25px);
   font-size: min(4vmin, 2.2em);
   font-family: 'Orbitron', sans-serif;
 }
@@ -102,6 +150,12 @@
   font-size: min(2.2vmin, 1.1em);
 }
 
+.no-data-message {
+  padding: min(3vmin, 30px);
+  color: #888;
+  font-style: italic;
+}
+
 .player-rank-info {
   margin: min(2vmin, 20px) 0;
   padding: min(1.5vmin, 15px);
@@ -124,62 +178,13 @@
   text-shadow: 0 0 min(0.8vmin, 8px) rgba(255, 215, 0, 0.7);
 }
 
-/* Анимация появления */
-@keyframes leaderboardFadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.8) translateY(min(-5vmin, -50px));
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
+.leaderboard-actions {
+  display: flex;
+  justify-content: center;
+  gap: min(2vmin, 20px);
+  margin-top: min(2vmin, 20px);
+  flex-wrap: wrap;
 }
-
-.leaderboard-modal {
-  animation: leaderboardFadeIn 0.5s ease-out;
-}
-
-/* Стили для скроллбара */
-.leaderboard-list::-webkit-scrollbar {
-  width: min(0.8vmin, 8px);
-}
-
-.leaderboard-list::-webkit-scrollbar-track {
-  background: rgba(255, 215, 0, 0.1);
-  border-radius: min(0.4vmin, 4px);
-}
-
-.leaderboard-list::-webkit-scrollbar-thumb {
-  background: #ffd700;
-  border-radius: min(0.4vmin, 4px);
-}
-
-.leaderboard-list::-webkit-scrollbar-thumb:hover {
-  background: #ffaa00;
-}
-
-/* Дополнительные медиа-запросы для очень маленьких экранов */
-@media (max-width: 480px) {
-  .leaderboard-modal {
-    width: 95%;
-    max-width: 95vw;
-  }
-  
-  .leaderboard-header,
-  .leaderboard-item {
-    font-size: min(2.5vmin, 14px);
-  }
-}
-
-/* Обеспечиваем читаемость на очень больших экранах */
-@media (min-width: 1600px) {
-  .leaderboard-modal {
-    max-width: min(60vmin, 800px);
-  }
-}
-
-/* кнопка */
 
 .refreshButton-leaderboard {
   position: relative;
@@ -198,7 +203,6 @@
   box-shadow: 0 0 min(1vmin, 10px) #00ffff,
               inset 0 0 min(0.5vmin, 5px) rgba(0, 255, 255, 0.2);
   text-shadow: 0 0 min(0.5vmin, 5px) #00ffff;
-  margin-top: min(1vmin, 10px);
   min-width: min(15vmin, 150px);
   background: rgba(0, 0, 0, 0.3);
 }
@@ -212,29 +216,157 @@
   text-shadow: 0 0 min(0.8vmin, 8px) #ffffff;
 }
 
-.refreshButton-leaderboard:active {
-  transform: translateY(min(0.1vmin, 1px));
-  box-shadow: 0 0 min(0.5vmin, 5px) #00ffff,
-              inset 0 0 min(0.3vmin, 3px) rgba(0, 0, 0, 0.2);
+.reset-record-btn {
+  border-color: #ff4444;
+  color: #ff4444;
+  box-shadow: 0 0 min(1vmin, 10px) rgba(255, 68, 68, 0.3),
+              inset 0 0 min(0.5vmin, 5px) rgba(255, 68, 68, 0.2);
+  text-shadow: 0 0 min(0.5vmin, 5px) rgba(255, 68, 68, 0.5);
 }
 
-.refreshButton-leaderboard:focus {
-  outline: none;
-  box-shadow: 0 0 min(1vmin, 10px) #00ffff,
-              0 0 0 min(0.3vmin, 3px) rgba(255, 215, 0, 0.5);
+.reset-record-btn:hover {
+  border-color: #ff6666;
+  color: #fff;
+  background: rgba(255, 68, 68, 0.1);
+  box-shadow: 0 0 min(1.5vmin, 15px) rgba(255, 68, 68, 0.6),
+              inset 0 0 min(0.8vmin, 8px) rgba(255, 68, 68, 0.3);
+  text-shadow: 0 0 min(0.8vmin, 8px) #fff;
 }
 
-/* Адаптивность для очень маленьких экранов */
+.reset-confirm-modal {
+  background: linear-gradient(145deg, #1a1a2e, #16213e);
+  border: min(0.2vmin, 2px) solid #ff4444;
+  box-shadow: 0 0 min(3vmin, 30px) rgba(255, 68, 68, 0.5);
+  max-width: min(70vmin, 500px);
+}
+
+.reset-confirm-modal h2 {
+  color: #ff4444;
+  text-shadow: 0 0 min(0.5vmin, 5px) rgba(255, 68, 68, 0.7);
+}
+
+.warning-message {
+  margin: min(1.5vmin, 15px) 0;
+  padding: min(1vmin, 10px);
+  background: rgba(255, 68, 68, 0.1);
+  border-radius: min(0.5vmin, 5px);
+  border: min(0.1vmin, 1px) solid #ff4444;
+  color: #ff8888;
+  font-size: min(2vmin, 1em);
+}
+
+.current-score-info {
+  margin: min(1vmin, 10px) 0;
+  padding: min(1vmin, 10px);
+  background: rgba(255, 215, 0, 0.1);
+  border-radius: min(0.5vmin, 5px);
+  border: min(0.1vmin, 1px) solid #ffd700;
+  color: #ffd700;
+  font-size: min(2vmin, 1em);
+}
+
+.reset-confirm-actions {
+  display: flex;
+  justify-content: center;
+  gap: min(2vmin, 20px);
+  margin-top: min(2vmin, 20px);
+}
+
+.confirm-reset-btn {
+  border-color: #ff4444;
+  color: #ff4444;
+  box-shadow: 0 0 min(0.5vmin, 5px) rgba(255, 68, 68, 0.3);
+}
+
+.confirm-reset-btn:hover {
+  background: rgba(255, 68, 68, 0.1);
+  box-shadow: 0 0 min(1vmin, 10px) rgba(255, 68, 68, 0.6);
+  color: #fff;
+}
+
+.cancel-reset-btn {
+  border-color: #0ff;
+  color: #0ff;
+  box-shadow: 0 0 min(0.5vmin, 5px) rgba(0, 255, 255, 0.3);
+}
+
+.cancel-reset-btn:hover {
+  background: rgba(0, 255, 255, 0.1);
+  box-shadow: 0 0 min(1vmin, 10px) rgba(0, 255, 255, 0.6);
+  color: #fff;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes leaderboardFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(min(-5vmin, -50px));
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.leaderboard-modal, .reset-confirm-modal {
+  animation: leaderboardFadeIn 0.5s ease-out;
+}
+
+.leaderboard-list::-webkit-scrollbar {
+  width: min(0.8vmin, 8px);
+}
+
+.leaderboard-list::-webkit-scrollbar-track {
+  background: rgba(255, 215, 0, 0.1);
+  border-radius: min(0.4vmin, 4px);
+}
+
+.leaderboard-list::-webkit-scrollbar-thumb {
+  background: #ffd700;
+  border-radius: min(0.4vmin, 4px);
+}
+
+.leaderboard-list::-webkit-scrollbar-thumb:hover {
+  background: #ffaa00;
+}
+
 @media (max-width: 480px) {
+  .leaderboard-modal {
+    width: 95%;
+    max-width: 95vw;
+  }
+  
+  .leaderboard-header,
+  .leaderboard-item {
+    font-size: min(2.5vmin, 14px);
+  }
+  
+  .leaderboard-actions {
+    flex-direction: column;
+    gap: min(1.5vmin, 10px);
+  }
+  
   .refreshButton-leaderboard {
     font-size: min(2.8vmin, 14px);
     padding: min(1.5vmin, 8px) min(3vmin, 20px);
     min-width: min(20vmin, 120px);
   }
+  
+  .reset-confirm-actions {
+    flex-direction: column;
+    gap: min(1.5vmin, 10px);
+  }
 }
 
-/* Для очень больших экранов ограничиваем максимальный размер */
 @media (min-width: 1600px) {
+  .leaderboard-modal {
+    max-width: min(60vmin, 800px);
+  }
+  
   .refreshButton-leaderboard {
     font-size: min(1.8vmin, 22px);
     padding: min(1vmin, 15px) min(2vmin, 30px);

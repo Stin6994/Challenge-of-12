@@ -2,11 +2,10 @@
     position: absolute;
     top: 30%;
     left: 3%;
-    width: 23%;
+    width: 15%;
     height: 7%;
     background: rgba(0, 0, 0, 0.6);
     border-radius: 8px;
-    /* box-shadow: 0 0 10px rgba(0, 255, 255, 0.3); */
     border: 2px solid rgb(16, 34, 34);
     box-shadow: 0 0 15px #03e9f4;
 }
@@ -16,37 +15,27 @@
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    gap: 25%;
-    /* border: 1px solid rgb(51, 255, 0); */
 }
 
-/* Стили отображения счета */
 .score-display {
     position: relative;
-    left: 5%;
-    width: 80%;
+    width: 90%;
     height: 100%;
     display: flex;
-    /* justify-content: center; */
+    justify-content: center;
     align-items: center;
-    gap: 5%;
+    gap: 8%;
     font-family: 'Orbitron', sans-serif;
     color: #0ff;
     border-radius: 5px;
-    /* border: 3px solid rgb(51, 255, 0); */
-
 }
 
 .score-label {
-
     text-shadow: 0 0 5px #0ff;
     letter-spacing: 1px;
     font-size: min(1.5vw, 2.5vh, 18px);
-
-
-    /* border: 3px solid rgb(51, 255, 0); */
 }
 
 .score-value {
@@ -54,118 +43,6 @@
     font-size: min(1.5vw, 2.5vh, 18px);
     color: #fff;
     text-shadow: 0 0 10px #fff;
-    /* border: 3px solid rgb(51, 255, 0); */
-}
-
-
-/* Стили кнопки сброса */
-
-.tooltip-container-score {
-    position: absolute;
-    right: -30%;
-    width: 25%;
-    height: 100%;
-}
-
-.neon-reset-btn {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    color: #f0f;
-    border-radius: 8px;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
-
-.tooltip-text-score {
-    position: absolute;
-    background: rgba(0, 0, 0, 0.8);
-    color: #0ff;
-    padding: 5%;
-    border-radius: 4px;
-    font-size: min(1.5vw, 2.2vh, 24px);
-    font-family: 'Orbitron', sans-serif;
-    white-space: nowrap;
-    opacity: 0;
-    transition: all 0.3s ease;
-    pointer-events: none;
-    z-index: 1000;
-    text-align: center;
-    border: 1px solid #0ff;
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-}
-
-.tooltip-container-score:hover .tooltip-text-score {
-    opacity: 1;
-    transform: translate(-35%, -120%);
-}
-
-
-.btn-icon {
-    font-size: min(1.5vw, 2.5vh, 18px);
-    transition: transform 0.3s ease;
-}
-
-.btn-text {
-    display: none;
-    position: relative;
-    z-index: 1;
-    font-size: min(1.5vw, 2.5vh, 18px);
-}
-
-.btn-glow {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 1px solid #f0f;
-    border-radius: 4px;
-    box-shadow: 0 0 8px #f0f, inset 0 0 5px #f0f;
-    opacity: 0.5;
-    transition: all 0.3s ease;
-}
-
-.neon-reset-btn:hover {
-    color: #fff;
-}
-
-.neon-reset-btn:hover .btn-glow {
-    opacity: 0.8;
-    box-shadow: 0 0 12px #f0f, inset 0 0 8px #f0f;
-}
-
-.neon-reset-btn:hover .btn-icon {
-    transform: rotate(90deg);
-}
-
-.neon-reset-btn:active {
-    transform: scale(0.95);
-}
-
-/* Анимации */
-@keyframes float {
-
-    0%,
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-
-    50% {
-        transform: translateY(-5px);
-        opacity: 0.8;
-    }
 }
 
 .record-pulse {
@@ -176,152 +53,7 @@
     0% {
         text-shadow: 0 0 5px #0ff;
     }
-
     100% {
         text-shadow: 0 0 15px #0ff, 0 0 20px #0ff;
-    }
-}
-
-
-/* Стили для модального окна сброса рекорда */
-.reset-modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.reset-modal {
-    background: linear-gradient(145deg, #1a1a2e, #16213e);
-    border-radius: min(1vmin, 10px);
-    padding: min(2vmin, 2rem);
-    max-width: min(80vmin, 500px);
-    width: 90%;
-    box-shadow: 0 0 min(2vmin, 20px) rgba(0, 255, 255, 0.5);
-    border: min(0.1vmin, 1px) solid #0ff;
-    color: #fff;
-    font-family: 'Orbitron', sans-serif;
-}
-
-.reset-modal-content {
-    text-align: center;
-}
-
-.reset-modal-content h2 {
-    color: #0ff;
-    text-shadow: 0 0 min(0.5vmin, 5px) #0ff;
-    margin-bottom: min(1.5vmin, 1.5rem);
-    font-size: min(4vmin, 2rem);
-}
-
-.reset-modal-text {
-    margin-bottom: min(2vmin, 2rem);
-    line-height: 1.6;
-}
-
-.reset-modal-text p {
-    margin-bottom: min(1vmin, 1rem);
-    font-size: min(2.2vmin, 1.1em);
-}
-
-.reset-modal-actions {
-    display: flex;
-    justify-content: center;
-    gap: min(2vmin, 20px);
-    margin-top: min(2vmin, 20px);
-}
-
-.reset-confirm-btn, .reset-cancel-btn {
-    background: transparent;
-    border: min(0.1vmin, 1px) solid;
-    color: #fff;
-    padding: min(1vmin, 10px) min(2vmin, 20px);
-    font-family: 'Orbitron', sans-serif;
-    font-size: min(2vmin, 1rem);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: min(0.1vmin, 1px);
-    border-radius: min(0.5vmin, 5px);
-    min-width: min(10vmin, 80px);
-}
-
-.reset-confirm-btn {
-    border-color: #ff4444;
-    color: #ff4444;
-    box-shadow: 0 0 min(0.5vmin, 5px) rgba(255, 68, 68, 0.3);
-}
-
-.reset-confirm-btn:hover {
-    background: rgba(255, 68, 68, 0.1);
-    box-shadow: 0 0 min(1vmin, 10px) rgba(255, 68, 68, 0.6);
-    color: #fff;
-}
-
-.reset-cancel-btn {
-    border-color: #0ff;
-    color: #0ff;
-    box-shadow: 0 0 min(0.5vmin, 5px) rgba(0, 255, 255, 0.3);
-}
-
-.reset-cancel-btn:hover {
-    background: rgba(0, 255, 255, 0.1);
-    box-shadow: 0 0 min(1vmin, 10px) rgba(0, 255, 255, 0.6);
-    color: #fff;
-}
-
-/* Анимация появления */
-@keyframes resetModalFadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.8) translateY(min(-5vmin, -50px));
-    }
-    to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
-}
-
-.reset-modal {
-    animation: resetModalFadeIn 0.3s ease-out;
-}
-
-/* Адаптивность для очень маленьких экранов */
-@media (max-width: 480px) {
-    .reset-modal {
-        padding: min(3vmin, 1.5rem);
-        width: 95%;
-    }
-    
-    .reset-modal-content h2 {
-        font-size: min(6vmin, 1.8rem);
-        margin-bottom: min(2vmin, 1rem);
-    }
-    
-    .reset-modal-actions {
-        flex-direction: column;
-        gap: min(1.5vmin, 10px);
-    }
-    
-    .reset-confirm-btn, .reset-cancel-btn {
-        font-size: min(3vmin, 16px);
-        padding: min(1.5vmin, 12px) min(2vmin, 20px);
-    }
-}
-
-/* Для очень больших экранов ограничиваем максимальный размер */
-@media (min-width: 1600px) {
-    .reset-modal {
-        max-width: min(60vmin, 600px);
-    }
-    
-    .reset-modal-content h2 {
-        font-size: min(3vmin, 2.5rem);
     }
 }
