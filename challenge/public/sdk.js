@@ -173,10 +173,10 @@ window.YaGames = {
               leaderboardData.push({
                 uniqueID: currentPlayerID,
                 name: localStorage.getItem('yandex_test_player_name') || 'Test Player',
-                score: 7500,
+                score: 0,
                 extraData: null,
                 timestamp: Date.now(),
-                rank: 4
+                /* rank: 4 */
               });
 
               // Сортируем заново

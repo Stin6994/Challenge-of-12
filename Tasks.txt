@@ -13,3 +13,9 @@
     медиа (картинки, возможно видео(нейросеть))
 
 7) Публикация 
+
+Для сборки
+
+npm run build
+npm install -g serve
+npx serve -s build
