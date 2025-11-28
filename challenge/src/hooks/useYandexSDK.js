@@ -11,19 +11,19 @@ const useYandexSDK = () => {
     const initializeSDK = async () => {
       try {
         console.log('Initializing Yandex SDK...');
-        
+
         if (typeof window.YaGames === 'undefined') {
           throw new Error('Yandex SDK not found');
         }
 
         const sdkInstance = await window.YaGames.init();
         setYsdk(sdkInstance);
-        
+
         // Получаем данные игрока
         try {
           const playerData = await sdkInstance.getPlayer();
           setPlayer(playerData);
-          
+
           // Получаем имя игрока
           const name = await playerData.getName();
           setPlayerName(name || 'Игрок');
@@ -32,9 +32,9 @@ const useYandexSDK = () => {
           console.warn('⚠️ Could not load player data:', playerError);
           setPlayerName('Игрок');
         }
-        
+
         console.log('✅ Yandex SDK initialized successfully');
-        
+
       } catch (err) {
         console.error('❌ Failed to initialize Yandex SDK:', err);
         setError(err.message);

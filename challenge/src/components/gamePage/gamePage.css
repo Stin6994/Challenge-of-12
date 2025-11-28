@@ -85,128 +85,132 @@
 
 /* Стили для приветственного модального окна */
 .welcome-modal {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-    border: min(0.2vmin, 2px) solid #00ffff;
-    box-shadow: 0 0 min(3vmin, 30px) rgba(0, 255, 255, 0.5),
-                inset 0 0 min(2vmin, 20px) rgba(0, 255, 255, 0.2);
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  border: min(0.2vmin, 2px) solid #00ffff;
+  box-shadow: 0 0 min(3vmin, 30px) rgba(0, 255, 255, 0.5),
+    inset 0 0 min(2vmin, 20px) rgba(0, 255, 255, 0.2);
 }
 
 .welcome-modal .modalContent {
-    text-align: center;
-    padding: min(3vmin, 30px);
+  text-align: center;
+  padding: min(3vmin, 30px);
 }
 
 .welcome-modal h2 {
-    color: #00ffff;
-    text-shadow: 0 0 min(1vmin, 10px) rgba(0, 255, 255, 0.7);
-    margin-bottom: min(2vmin, 20px);
-    font-size: min(5vmin, 2.5em);
-    font-family: 'Orbitron', sans-serif;
+  color: #00ffff;
+  text-shadow: 0 0 min(1vmin, 10px) rgba(0, 255, 255, 0.7);
+  margin-bottom: min(2vmin, 20px);
+  font-size: min(5vmin, 2.5em);
+  font-family: 'Orbitron', sans-serif;
 }
 
 .player-name {
-    color: #ffd700;
-    text-shadow: 0 0 min(0.8vmin, 8px) rgba(255, 215, 0, 0.7);
-    font-weight: bold;
+  color: #ffd700;
+  text-shadow: 0 0 min(0.8vmin, 8px) rgba(255, 215, 0, 0.7);
+  font-weight: bold;
 }
 
 .welcome-features {
-    margin: min(2.5vmin, 25px) 0;
-    text-align: left;
+  margin: min(2.5vmin, 25px) 0;
+  text-align: left;
 }
 
 .feature-item {
-    display: flex;
-    align-items: center;
-    margin: min(1.5vmin, 15px) 0;
-    padding: min(1vmin, 10px);
-    background: rgba(0, 255, 255, 0.1);
-    border-radius: min(0.8vmin, 8px);
-    border-left: min(0.3vmin, 3px) solid #00ffff;
-    font-size: min(2.2vmin, 1.1em);
+  display: flex;
+  align-items: center;
+  margin: min(1.5vmin, 15px) 0;
+  padding: min(1vmin, 10px);
+  background: rgba(0, 255, 255, 0.1);
+  border-radius: min(0.8vmin, 8px);
+  border-left: min(0.3vmin, 3px) solid #00ffff;
+  font-size: min(2.2vmin, 1.1em);
 }
 
 .feature-icon {
-    font-size: min(3vmin, 1.5em);
-    margin-right: min(1.5vmin, 15px);
-    filter: drop-shadow(0 0 min(0.3vmin, 3px) rgba(0, 255, 255, 0.7));
+  font-size: min(3vmin, 1.5em);
+  margin-right: min(1.5vmin, 15px);
+  filter: drop-shadow(0 0 min(0.3vmin, 3px) rgba(0, 255, 255, 0.7));
 }
 
 .feature-item span:last-child {
-    color: #ffffff;
-    font-size: min(2.2vmin, 1.1em);
+  color: #ffffff;
+  font-size: min(2.2vmin, 1.1em);
 }
 
 .start-game-btn {
-    background: linear-gradient(45deg, #00ffff, #0080ff);
-    border: none;
-    color: #000;
-    font-weight: bold;
-    font-size: min(2.4vmin, 1.2em);
-    padding: min(1.5vmin, 15px) min(4vmin, 40px);
-    margin-top: min(2vmin, 20px);
-    box-shadow: 0 0 min(2vmin, 20px) rgba(0, 255, 255, 0.5);
-    transition: all 0.3s ease;
-    border-radius: min(0.5vmin, 5px);
+  background: linear-gradient(45deg, #00ffff, #0080ff);
+  border: none;
+  color: #000;
+  font-weight: bold;
+  font-size: min(2.4vmin, 1.2em);
+  padding: min(1.5vmin, 15px) min(4vmin, 40px);
+  margin-top: min(2vmin, 20px);
+  box-shadow: 0 0 min(2vmin, 20px) rgba(0, 255, 255, 0.5);
+  transition: all 0.3s ease;
+  border-radius: min(0.5vmin, 5px);
 }
 
 .start-game-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 min(3vmin, 30px) rgba(0, 255, 255, 0.8);
+  transform: scale(1.05);
+  box-shadow: 0 0 min(3vmin, 30px) rgba(0, 255, 255, 0.8);
 }
 
 /* Анимация появления */
 @keyframes welcomeFadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.8) translateY(min(-5vmin, -50px));
-    }
-    to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(min(-5vmin, -50px));
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 .welcome-modal {
-    animation: welcomeFadeIn 0.5s ease-out;
+  animation: welcomeFadeIn 0.5s ease-out;
 }
 
 /* для лидерборда */
 .new-record-info {
-    margin: min(1.5vmin, 15px) 0;
-    padding: min(1.5vmin, 15px);
-    background: rgba(255, 215, 0, 0.2);
-    border-radius: min(0.8vmin, 8px);
-    border: min(0.1vmin, 1px) solid #ffd700;
-    animation: pulse-gold 2s ease-in-out infinite;
+  margin: min(1.5vmin, 15px) 0;
+  padding: min(1.5vmin, 15px);
+  background: rgba(255, 215, 0, 0.2);
+  border-radius: min(0.8vmin, 8px);
+  border: min(0.1vmin, 1px) solid #ffd700;
+  animation: pulse-gold 2s ease-in-out infinite;
 }
 
 .new-record-info p {
-    margin: min(0.5vmin, 5px) 0;
-    color: #ffffff;
-    font-size: min(2.2vmin, 1.1em);
+  margin: min(0.5vmin, 5px) 0;
+  color: #ffffff;
+  font-size: min(2.2vmin, 1.1em);
 }
 
 .new-record-info p:first-child {
-    color: #ffd700;
-    font-weight: bold;
-    font-size: min(2.4vmin, 1.2em);
+  color: #ffd700;
+  font-weight: bold;
+  font-size: min(2.4vmin, 1.2em);
 }
 
 .record-rank {
-    color: #ffd700;
-    font-weight: bold;
-    font-size: min(2.6vmin, 1.3em);
-    text-shadow: 0 0 min(0.8vmin, 8px) rgba(255, 215, 0, 0.7);
+  color: #ffd700;
+  font-weight: bold;
+  font-size: min(2.6vmin, 1.3em);
+  text-shadow: 0 0 min(0.8vmin, 8px) rgba(255, 215, 0, 0.7);
 }
 
 @keyframes pulse-gold {
-    0%, 100% {
-        box-shadow: 0 0 min(1vmin, 10px) rgba(255, 215, 0, 0.3);
-    }
-    50% {
-        box-shadow: 0 0 min(2vmin, 20px) rgba(255, 215, 0, 0.6);
-    }
+
+  0%,
+  100% {
+    box-shadow: 0 0 min(1vmin, 10px) rgba(255, 215, 0, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 min(2vmin, 20px) rgba(255, 215, 0, 0.6);
+  }
 }
 
 /* Адаптивность для очень маленьких экранов */
@@ -215,16 +219,16 @@
     padding: min(3vmin, 1.5rem);
     width: 95%;
   }
-  
+
   .modalContent h2 {
     font-size: min(6vmin, 1.8rem);
     margin-bottom: min(2vmin, 1rem);
   }
-  
+
   .feature-item {
     font-size: min(3vmin, 14px);
   }
-  
+
   .start-game-btn {
     font-size: min(3vmin, 16px);
     padding: min(2vmin, 12px) min(5vmin, 30px);
@@ -236,11 +240,11 @@
   .modal {
     max-width: min(60vmin, 600px);
   }
-  
+
   .modalContent h2 {
     font-size: min(3vmin, 2.5rem);
   }
-  
+
   .feature-item {
     font-size: min(1.8vmin, 20px);
   }
@@ -259,8 +263,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 2000; /* Выше всех остальных элементов */
-  pointer-events: all; /* Блокирует все клики */
+  z-index: 2000;
+  /* Выше всех остальных элементов */
+  pointer-events: all;
+  /* Блокирует все клики */
 }
 
 .ad-blocking-message {
@@ -282,8 +288,13 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Дополнительно можно заблокировать pointer-events для всех элементов во время рекламы */
