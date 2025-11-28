@@ -225,7 +225,7 @@ const GamePage = () => {
                                 <p>{gameStatus === 'won' ? `Очков: ${myScore.toLocaleString()}` : 'Попробуйте еще раз!'}</p>
 
                                 {/* Отображение нового рекорда */}
-                                {gameStatus === 'won' && newRecordRank && myScore > highScore && (
+                                {gameStatus === 'won'  && myScore >= highScore && (
                                     <div className="new-record-info">
                                         <p>🎉 Новый рекорд!</p>
                                         <p>Ваше место в таблице лидеров: <span className="record-rank">#{newRecordRank}</span></p>
